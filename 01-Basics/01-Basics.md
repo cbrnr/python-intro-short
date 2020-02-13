@@ -23,11 +23,35 @@ Here are some facts about Python (some of which might reflect my personal opinio
 - Huge amount of [third-party packages](https://pypi.org/) that implement even more useful things
 - Large and friendly community (Pythonistas)
 
-Python was first released by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) way back in 1991, and its popularity has skyrocketed in the past few years.
+Python was first released by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) way back in 1991, and its popularity has skyrocketed in the past few years. There are many ways to measure popularity of a programming language, the [TIOBE index](https://www.tiobe.com/tiobe-index/) simply counts the number of search engine results for queries containing the name of the programming language. According to this index, the most popular programming languages in February 2020 were:
 
-IEEE
+| Rank  | Programming language | Rating
+| -----:| ---------------------| ------:
+|     1 | Java                 | 17.36%
+|     2 | C                    | 16.77%
+|     3 | Python               |  9.35%
+|     4 | C++                  |  6.16%
+|   ... | ...                  | ...
+|    13 | R                    |  1.01%
+|   ... | ...                  | ...
+|    16 | MATLAB               |  0.79%
 
-StackOverflow
+[IEEE Spectrum](https://spectrum.ieee.org/static/interactive-the-top-programming-languages-2019) compiles another popular (annual) ranking. These are the top 10 languages for 2019:
+
+| Rank  | Programming language
+| -----:| --------------------
+|     1 | Python
+|     2 | Java
+|     3 | C
+|     4 | C++
+|     5 | R
+|     6 | JavaScript
+|     7 | C#
+|     8 | MATLAB
+|     9 | Swift
+|    10 | Go
+
+Finally, one of the key results of the [Stack Overflow Developer Survey 2019](https://insights.stackoverflow.com/survey/2019) is that *"Python, the fastest-growing major programming language, has risen in the ranks of programming languages in our survey yet again, edging out Java this year and standing as the second most loved language (behind Rust)."*
 
 So far we have only talked about Python without seeing what the language actually looks like. Here's a sneak peak at what you will be able to understand after completing this course:
 

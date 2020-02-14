@@ -11,7 +11,7 @@ With that out of the way, let's get started!
 Overview
 --------
 ![https://xkcd.com/353/](https://imgs.xkcd.com/comics/python.png)
-https://xkcd.com/353/
+(https://xkcd.com/353/)
 
 Here are some facts about Python (some of which might reflect my personal opinion):
 
@@ -165,3 +165,13 @@ Mathematical constants such as Euler's number *e* (`math.e`) and $\pi$ (`math.pi
 
 Exercises
 ---------
+1. Install Anaconda and start the Python interpreter. Which Python version do you use and how can you find out?
+2. What happens if you type `import antigravity` and `import this` in the Python interpreter?
+3. Compute the result of the division $4 / 0.4$. In addition, compute the integer result and the remainder.
+4. Assume you measured the following values: 11, 27, 15, 10, 33, 18, 25, 22, 39, and 11. Calculate the arithmetic mean in a single line of code.
+5. Evaluate the following mathematical expression (in one line of code):
+
+  $$\frac{(5^5 - \pi) \cdot \frac{19}{3}}{\sqrt{13} + 7^{\frac{2}{3}}}$$
+
+---
+![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

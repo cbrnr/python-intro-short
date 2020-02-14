@@ -15,9 +15,7 @@ As for any programming language, a good text editor is also an essential compone
 - [Spyder](https://www.spyder-ide.org)
 - [PyCharm](https://www.jetbrains.com/pycharm/)
 
-We will use Spyder in this workshop, because it is pre-configured to work with Python, comes with a lot of useful features, and integrates its editor with the Python interpreter, a help system, and many other convenient features.
-
-
+We will use Spyder in this workshop, mainly because it comes pre-installed with Anaconda. In addition to a fully featured editor, Spyder boasts many useful features such as an integrated console running the Python interpreter, a comprehensive help system, and more. However, feel free to try out alternative editors and choose the one that best suits your needs.
 
 The following figure summarizes the basic components of a Python environment.
 

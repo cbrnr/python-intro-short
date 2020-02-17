@@ -54,6 +54,8 @@ Graphically, we can think of an object as a Python entity of a specific type wit
 
 ![Python object](python_object.png)
 
+Names
+-----
 
 
 ---

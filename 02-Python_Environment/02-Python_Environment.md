@@ -28,7 +28,65 @@ One of the most important activities when programming is reading documentation. 
 
 Anaconda
 --------
+Even though Anaconda includes many useful packages out of the box, it is still necessary to install additional packages once in a while. Conversely, you might want to uninstall packages that you don't need anymore to save some space. Finally, it is generally a good idea to keep all Anaconda packages up to date, because package maintainers fix bugs and add new features over time.
 
+All these tasks can be performed with the `conda` command line tool, which is part of every Anaconda distribution. We will explore how `conda` performs important package management tasks, but to get started we need to open a terminal. This works slightly differently depending on which operating system you use:
+
+- On Windows, open the "Anaconda Prompt" shortcut from the start menu.
+- On macOS, open the "Terminal" app.
+- On Linux, open the standard terminal program.
+
+A terminal is a program that runs a shell which interprets commands to control the system. This is similar to the Python interpreter, but note that both the terminal and specifically `conda` are *not* Python &ndash; these tools are just necessary to manage an Anaconda Python distribution.
+
+Let's test if you can successfully run the `conda` tool. In the terminal, type:
+
+```
+conda --version
+```
+
+This command should display the `conda` version. If it results in an error message, something is wrong with the Anaconda installation (in this case, consult the [installation instructions](https://docs.anaconda.com/anaconda/install/) to fix the problem).
+
+It is useful to know which packages are installed in our Anaconda distribution. We can use the following command to find out:
+
+```
+conda list
+```
+
+This will generate a list of all installed packages, including their names and versions. If you want to know if a specific package is installed, you can append the package name to the command (replace `<package_name>` with the real name of the package):
+
+```
+conda list <package_name>
+```
+
+If the package is installed, the output will include a row with this package. If it is not installed, the output will be empty.
+
+Before installing a new package, we need to know if it is available in Anaconda (note that we need to know the package *name*, otherwise we can't query and install a package). Use the following command to find out if a package named `<package_name>` is available:
+
+```
+conda search <package_name>
+```
+
+If the search returns results, you can install that package with:
+
+```
+conda install <package_name>
+```
+
+We will see what to do in case `conda` does not find the package in a moment.
+
+It is straightforward to uninstall a package:
+
+```
+conda uninstall <package_name>
+```
+
+Finally, one of the most important commands keeps the Anaconda distribution up to date:
+
+```
+conda update --all
+```
+
+It is good practice to run this command on a regular basis (for example, once a month).
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

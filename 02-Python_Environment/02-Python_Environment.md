@@ -191,6 +191,31 @@ Blocks are necessary to define scopes, something which we will discuss later in 
 
 Finally, the example shows the syntax of function calls. We will discuss functions later in this course, for now you can think of a function as a mini-program. Whenever you call a function, Python runs the whole mini-program defined in the function. The syntax for calling a function is a pair of parenthesis `()` right after the name of the function. In the example code, `range(n_times)`, `print(i)`, `print("Odd")`, `do_something()`, and `print(counter)` are all function calls. Note that you can supply so-called arguments between the parentheses if the function takes parameters. All function calls in the example have exactly one argument, except for `do_something()`, which has no argument.
 
+Like most programming languages, Python is very picky about correct syntax. For example, capitalization matters so that `print` is not the same as `Print`. A missing `:` in places where a colon should be triggers a syntax error. Incorrect indentation can either lead to a syntax error or to non-intended behavior (which means the Python program runs without errors, but does not do what the programmer intended). It is very instructive to just try out code in the interactive interpreter, for example:
+
+```python
+>>> Print("Hello")
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-2-b39576d35bb3> in <module>
+----> 1 Print("Hello")
+
+NameError: name 'Print' is not defined
+```
+
+It is important to be familiar with Python error messages in order to interpret them efficiently (after all, the goal should be to fix the error), so make errors and learn from them!
+
+On the other hand, there are also stylistic issues that Python doesn't care about at all. The following two statements are equivalent for Python:
+
+```python
+>>> x = 1 + 2 + 3 * (16 - 7)
+>>> x=1+    2+  3*  (   16-7    )
+```
+
+Arguably, the first one is much easier to read though. The [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) summarizes coding conventions that describe how Python code should look like in order to enhance readability. It is worth going through the document (at least superficially), but in addition good editors perform PEP8 checks automatically as you type code in your editor. In Spyder, this option is disabled by default, but you can enable it in Preferences &ndash; Completion and linting &ndash; Code style &ndash; Enable code style linting.
+
+![Spyder PEP8](spyder_pep8.png)
+
 Additional learning resources
 -----------------------------
 Here are a few Python resources for beginners that might be helpful in addition to this course.

@@ -213,5 +213,19 @@ Here are a few Python resources for beginners that might be helpful in addition 
 - [Python for You and Me](http://pymbook.readthedocs.io/en/latest/)
 - [Python Crash Course](https://nostarch.com/pythoncrashcourse2e)
 
+Exercises
+---------
+1. Create a list of all installed packages in your Anaconda distribution.
+2. Update all installed Anaconda packages. Find out if `seaborn` and `plotly` are installed, and if not, install the packages.
+3. Install the `mne` package.
+4. Create a short Python script called `test.py` with the following contents:
+   - The first line should be a comment with your name
+   - The second line should be empty
+   - The third line should use the `print` function to print something on the screen
+   - The last line should be empty
+
+   Make sure that the script does not contain any PEP8 warnings.
+5. Display the help text for the `print` function in the Python interpreter (list all three options possible in IPython)?
+
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

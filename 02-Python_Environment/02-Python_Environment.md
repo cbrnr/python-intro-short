@@ -140,11 +140,78 @@ In contrast to the interactive mode, Python can run many lines of code in one go
 1 + 4
 ```
 
-When we run this script with `python test.py` from the command line, Python executes all commands line by line, but it does not automatically show the results. Therefore, there will be no output when running this script in script mode. In Spyder, you can run whole scripts by clicking the "Run script" icon.
+When we run this script with `python test.py` from the command line, Python executes all commands line by line, but it does not automatically show the results. Therefore, there will be no output when running this script in script mode. In Spyder, you can run whole scripts by clicking the "Run script" icon. Alternatively, you can also run a whole script from IPython:
+
+```python
+>>> %run test.py
+```
 
 Python syntax
 -------------
-Let's return to the Python programming language and in particular its syntax (which describes the structure of code statements).
+Let's return to the Python programming language and in particular its syntax (which describes the structure of code statements). One of the most unique features of Python is that it uses significant whitespace (in almost all cases this means spaces) for grouping code into blocks. This results in fewer lines of code, because no special grouping symbols (such as `begin`/`end` or `{`/`}`) are needed.
+
+Consider the following example code:
+
+```python
+# this is a comment
+def do_something(n_times=10):
+    counter = 0
+    for i in range(n_times):
+        print(i)
+        if i % 2:  # odd number
+            counter += 1
+            print("Odd")
+    return counter
+
+counter = do_something(6)
+print(counter)
+```
+
+It is not important to understand what this snippet of code is doing (we will learn that in the following lessons), so let's focus on its structure.
+
+First, we notice lines starting with a `#` character. These lines are comments, and Python ignores everything from the `#` character until the end of the line. This means that we can use comments to explain portions of the code in plain English (comments are important for programmers to help them understand a program). If we forget to prepend a comment with the `#` character, Python tries to interpret this as a command and in most cases this will result in a syntax error:
+
+```python
+>>> this is a comment
+  File "<ipython-input-1-453a0c0169b5>", line 1
+    this is a comment
+              ^
+SyntaxError: invalid syntax
+```
+
+With a proper comment, Python ignores everything and happily (correctly) does nothing:
+
+```python
+>>> # this is a comment
+```
+
+In the code example, we also observe blocks of code indented to the right. By convention, most Pythonistas use four spaces to denote one level of indentation. Indented lines of code belong together. For example, the seven lines below `def do_something(n_times=10):` comprise a block of code belonging to that statement (note that statements introducing a block always end with a `:`). Within this block, there are two additional blocks defined by additional indentation.
+
+Blocks are necessary to define scopes, something which we will discuss later in this course.
+
+Additional learning resources
+-----------------------------
+Here are a few Python resources for beginners that might be helpful in addition to this course.
+
+### Online documentation
+- The [official Python documentation](https://docs.python.org/3/) has everything you need to know, including a nice [tutorial](https://docs.python.org/3/tutorial/index.html).
+- If you search the web for a specific Python problem, chances are that you will land on [Stack Overflow](https://stackoverflow.com/questions/tagged/python), which has many questions and answers related to Python.
+
+### Online courses
+- [Learn to Program: The Fundamentals](https://www.coursera.org/learn/learn-to-program)
+- [Learn to Program: Crafting Quality Code](https://www.coursera.org/learn/program-code)
+- [Programming for Everybody (Getting Started with Python)](https://www.coursera.org/learn/python)
+- [Python Data Structures](https://www.coursera.org/learn/python-data)
+- [An Introduction to Interactive Programming in Python (Part 1)](https://www.coursera.org/learn/interactive-python-1)
+- [An Introduction to Interactive Programming in Python (Part 2)](https://www.coursera.org/learn/interactive-python-2)
+- [Learn Python](http://www.learnpython.org/)
+- [Real Python](https://realpython.com/)
+
+### Books
+- [Think Python](http://greenteapress.com/wp/think-python/)
+- [A Byte of Python](http://python.swaroopch.com/)
+- [Python for You and Me](http://pymbook.readthedocs.io/en/latest/)
+- [Python Crash Course](https://nostarch.com/pythoncrashcourse2e)
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

@@ -166,9 +166,13 @@ Mathematical constants such as Euler's number *e* (`math.e`) and $\pi$ (`math.pi
 Exercises
 ---------
 1. Install Anaconda and start the Python interpreter. Which Python version do you use and how can you find out?
+
 2. What happens if you type `import antigravity` and `import this` in the Python interpreter?
+
 3. Compute the result of the division $4 / 0.4$. In addition, compute the integer result and the remainder.
+
 4. Assume you measured the following values: 11, 27, 15, 10, 33, 18, 25, 22, 39, and 11. Calculate the arithmetic mean in a single line of code.
+
 5. Evaluate the following mathematical expression (in one line of code):
 
   $$\frac{(5^5 - \pi) \cdot \frac{19}{3}}{\sqrt{13} + 7^{\frac{2}{3}}}$$

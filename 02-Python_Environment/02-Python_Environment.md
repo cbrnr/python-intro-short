@@ -163,7 +163,7 @@ def do_something(n_times=10):
             print("Odd")
     return counter
 
-counter = do_something(6)
+counter = do_something()
 print(counter)
 ```
 
@@ -188,6 +188,8 @@ With a proper comment, Python ignores everything and happily (correctly) does no
 In the code example, we also observe blocks of code indented to the right. By convention, most Pythonistas use four spaces to denote one level of indentation. Indented lines of code belong together. For example, the seven lines below `def do_something(n_times=10):` comprise a block of code belonging to that statement (note that statements introducing a block always end with a `:`). Within this block, there are two additional blocks defined by additional indentation.
 
 Blocks are necessary to define scopes, something which we will discuss later in this course.
+
+Finally, the example shows the syntax of function calls. We will discuss functions later in this course, for now you can think of a function as a mini-program. Whenever you call a function, Python runs the whole mini-program defined in the function. The syntax for calling a function is a pair of parenthesis `()` right after the name of the function. In the example code, `range(n_times)`, `print(i)`, `print("Odd")`, `do_something()`, and `print(counter)` are all function calls. Note that you can supply so-called arguments between the parentheses if the function takes parameters. All function calls in the example have exactly one argument, except for `do_something()`, which has no argument.
 
 Additional learning resources
 -----------------------------
@@ -219,10 +221,10 @@ Exercises
 2. Update all installed Anaconda packages. Find out if `seaborn` and `plotly` are installed, and if not, install the packages.
 3. Install the `mne` package.
 4. Create a short Python script called `test.py` with the following contents:
-   - The first line should be a comment with your name
-   - The second line should be empty
-   - The third line should use the `print` function to print something on the screen
-   - The last line should be empty
+   - The first line should be a comment with your name.
+   - The second line should be empty.
+   - The third line should use the `print` function to print something on the screen.
+   - The last line should be empty.
 
    Make sure that the script does not contain any PEP8 warnings.
 5. Display the help text for the `print` function in the Python interpreter (list all three options possible in IPython)?

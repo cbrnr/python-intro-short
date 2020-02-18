@@ -135,7 +135,7 @@ Working inside out, Python replaces each function call with its concrete returne
 23
 ```
 
-Of course, we can also assign a name to the returned value if we want to use it in some subsequent step:
+Of course, we can also assign a name to the returned value if we want to use it in a subsequent step:
 
 ```python
 >>> a = add(add(2, add(5, 7)), 9)
@@ -143,6 +143,12 @@ Of course, we can also assign a name to the returned value if we want to use it 
 3
 ```
 
-
+Exercises
+---------
+1. Define a function `add_one`, which increments and returns the supplied argument (a number) by 1. Then evaluate the following expression:
+   ```python
+   add_one(add_one(add_one(13)))
+   ```
+2.
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

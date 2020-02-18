@@ -91,8 +91,123 @@ float
 float
 ```
 
+Whenever Python works with a name, it tries to evaluate its value. Consider the following example:
+
+```python
+>>> x = 11
+>>> 9 + x  # x is evaluated to 11, then 9 + 11 is evaluated to 20
+20
+>>> x = 2
+>>> 2 * x  # x is evaluated to 2, then 2 * 2 is evaluated to 4
+4
+```
+
 Choosing names
 --------------
+### Basic rules
+Valid names can contain letters (lower and upper case), digits, and underscores (but a name must not start with a digit). [PEP8](https://www.python.org/dev/peps/pep-0008/#naming-conventions) lists recommendations for choosing names &ndash; we only need to remember one rule for starters: in general, names should be lowercase with underscores, for example `lower_case_with_underscores`. Furthermore, names should convey meaning, so instead of a generic `x` we should try to find a name that tells us something about its intended use. Also, it is good practice to use English names, because you never know who will read your code in the future. Here are a few valid examples for naming an object which contains the number of students in a particular class:
+
+```python
+>>> number_of_students_in_class = 23  # too long
+>>> NumberOfStudents = 23  # wrong style, separate with underscores
+>>> n_students = 23  # pretty nice
+>>> n = 23  # too short (but this may be OK sometimes)
+```
+
+### Keywords
+Python defines keywords that are core components of the language. They cannot be used to name objects, so it is important to know what these keywords are. The following code snippet produces a list of all keywords:
+
+```python
+>>> import keyword
+>>> keyword.kwlist
+['False',
+ 'None',
+ 'True',
+ 'and',
+ 'as',
+ 'assert',
+ 'async',
+ 'await',
+ 'break',
+ 'class',
+ 'continue',
+ 'def',
+ 'del',
+ 'elif',
+ 'else',
+ 'except',
+ 'finally',
+ 'for',
+ 'from',
+ 'global',
+ 'if',
+ 'import',
+ 'in',
+ 'is',
+ 'lambda',
+ 'nonlocal',
+ 'not',
+ 'or',
+ 'pass',
+ 'raise',
+ 'return',
+ 'try',
+ 'while',
+ 'with',
+ 'yield']
+ ```
+
+For example, you cannot use the name `break`. If you do, Python will generate an error:
+
+```python
+>>> break = 7
+  File "<ipython-input-4-7d74d75a29c6>", line 1
+    break = 7
+          ^
+SyntaxError: invalid syntax
+```
+
+### Built-in functions
+Python also has a number of [built-in functions](https://docs.python.org/3/library/functions.html) that are always available. Although it is possible to assign the names of these built-in functions to other objects, it is considered bad practice because this might cause subtle bugs. The following code generates a list of all built-ins:
+
+```python
+>>> dir(__builtins__)
+['ArithmeticError',
+ 'AssertionError',
+ 'AttributeError',
+ 'BaseException',
+ 'BlockingIOError',
+ 'BrokenPipeError',
+ ...
+ 'sum',
+ 'super',
+ 'tuple',
+ 'type',
+ 'vars',
+ 'zip']
+```
+
+In summary, do not use built-in names in your own code even though this is technically possible.
+
+Operators
+---------
+In general, operators work on objects. We have already used some operators such as `+`, `-`, `*`, `/`, `**`, `//`, and `%`. Some operators are *binary* and require two operands (for example, the multiplication `2 * 3`), whereas other operators are *unary* and require only one operand (for example, the negation `-5`).
+
+
+Exercises
+---------
+
+1. Find out if the following names are valid, and if they are, determine if they adhere to PEP8 conventions. Finally, decide whether each name is a good name for an object containing a string or an integer number.
+   - `2x`
+   - `_`
+   - `x23`
+   - `_name`
+   - `alpha`
+   - `lambda`
+   - `Name`
+   - `X2`
+   - `sum`
+   - `test-case`
 
 
 ---

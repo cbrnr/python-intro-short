@@ -50,12 +50,49 @@ str
 
 Apparently, whole numbers are of type `int` (integer number), decimal numbers are `float` (floating point number), and character strings are `str` (string).
 
-Graphically, we can think of an object as a Python entity of a specific type with a specific value:
+Conceptually, we can think of an object as a Python entity of a specific type with a specific value:
 
 ![Python object](python_object.png)
 
 Names
 -----
+Objects can have names, in other programming languages names are referred to as variables. We can assign a name to an object with the assignment operator `=`, for example:
+
+```python
+>>> a = 1
+```
+
+This attaches the name `a` to the object `1` (of type `int`). We can visualize names as tags or labels attached to an object.
+
+![Python names 1](python_names_1.png)
+
+Python lets us reassign an existing name to a different object.
+
+```python
+>>> a = 2.4
+```
+
+![Python names 2](python_names_2.png)
+
+An object can have more than one name attached to it:
+
+```python
+>>> b = a
+```
+
+![Python names 3](python_names_3.png)
+
+The type of a name corresponds to the type of the object the name is attached to:
+
+```python
+>>> type(a)
+float
+>>> type(b)
+float
+```
+
+Choosing names
+--------------
 
 
 ---

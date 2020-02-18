@@ -171,5 +171,17 @@ Exercises
    >>> to_celsius(100)
    >>> to_celcius(to_fahrenheit(38))
    ```
+4. Define a function `nonsense` that takes three arguments `a`, `b`, and `c`. Arguments `b` and `c` should be optional and default to `10` and `13`, respectively. The function should return the result of `a**2 - b * 2 + c**2`. Call the function in the following ways:
+
+   - Without arguments
+   - With three positional arguments
+   - With two positional arguments
+   - With one keyword argument
+   - With two keyword arguments
+   - With two positional and one keyword argument
+   - With one positional and one keyword argument
+
+   Write down each function call, each return value, and the values for each of the three arguments!
+
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

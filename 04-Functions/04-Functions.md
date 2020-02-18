@@ -107,13 +107,40 @@ Once the `add` function is defined, we can call it with two arguments:
 
 When the function is called, the arguments (the concrete values `3` and `7`) are used in place of the parameters `x` and `y` inside the function body. That's why the function returns `3 + 7` (evaluating to `10`) in this example.
 
-Notice that we need to supply both arguments when we call `add`. If we don't, Python will throw an error:
+Notice that we need to supply exactly two arguments when we call `add`. If we don't, Python will throw an error:
 
 ```python
 >>> add(5)
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-2-e1d21b2822df> in <module>
+----> 1 add(5)
+
 TypeError: add() missing 1 required positional argument: 'y'
+```
+
+Because this function returns a value, we already know that whenever Python sees a function call like `add(5, 5)` it will evaluate/replace this expression with its return value `10`. Using this knowledge, we can compose more complicated expressions as follows:
+
+```python
+>>> add(add(2, add(5, 7)), 9)
+23
+```
+
+Working inside out, Python replaces each function call with its concrete returned value until the result cannot be further reduced. Here's a breakdown of the steps involved in the previous example:
+
+```python
+>>> add(add(2, add(5, 7)), 9)  # add(5, 7) is evaluated to 12
+>>> add(add(2, 12), 9)  # add(2, 12) is evaluated to 14
+>>> add(14, 9)  # add(14, 9) is evaluated to 23
+23
+```
+
+Of course, we can also assign a name to the returned value if we want to use it in some subsequent step:
+
+```python
+>>> a = add(add(2, add(5, 7)), 9)
+>>> a - 20
+3
 ```
 
 

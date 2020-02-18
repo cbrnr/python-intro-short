@@ -211,6 +211,17 @@ An expression is any combination of values, names, and operators. Importantly, a
 
 Python evaluates an expression to one single value. A more complex expression is evaluated step by step according to (arithmetic) precedence rules (think [PEMDAS](https://en.wikipedia.org/wiki/Order_of_operations#Mnemonics)).
 
+Statements
+----------
+A statement is a unit of code which Python can execute. This is a rather broad definition, and statements therefore include expressions as a special case (an expression is a statement which has a value). However, there are also statements that don't have a value such as an assignment. Here are two examples for statements that are not expressions:
+
+```python
+>>> x = 13
+>>> print("Hello world!")
+Hello world!
+```
+
+Note that although the `print` statement generates output, this output is not its value.
 
 Exercises
 ---------
@@ -226,7 +237,23 @@ Exercises
    - `X2`
    - `sum`
    - `test-case`
-
+2. Consider these three assignments:
+   ```python
+   width = 17
+   height = 12
+   delimiter = "."
+   ```
+   Determine both the value and type of the following expressions:
+   - `width / 2`
+   - `height / 3`
+   - `height * 3`
+   - `height * 3.0`
+   - `delimiter * 5`
+   - `2 * (width + height) + 1.5`
+   - `12 + 3`
+   - `"12 + 3"`
+3. Calculate the area and volume of a sphere with radius $r = 5$. Use the names `r`, `area`, and `volume` to compute these quantities. The number $\pi$ is available as `math.pi` after executing `import math`.
+4. What is the type of the value `True`? What is the type of the value `'True'`? What it the type of the name `math` that you imported in the previous exercise?
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

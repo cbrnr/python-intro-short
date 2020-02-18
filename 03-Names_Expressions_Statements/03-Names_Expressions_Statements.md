@@ -237,6 +237,7 @@ Exercises
    - `X2`
    - `sum`
    - `test-case`
+
 2. Consider these three assignments:
    ```python
    width = 17
@@ -252,7 +253,9 @@ Exercises
    - `2 * (width + height) + 1.5`
    - `12 + 3`
    - `"12 + 3"`
+
 3. Calculate the area and volume of a sphere with radius $r = 5$. Use the names `r`, `area`, and `volume` to compute these quantities. The number $\pi$ is available as `math.pi` after executing `import math`.
+
 4. What is the type of the value `True`? What is the type of the value `'True'`? What it the type of the name `math` that you imported in the previous exercise?
 
 ---

@@ -155,10 +155,21 @@ Function scopes
 
 Exercises
 ---------
-1. Define a function `add_one`, which increments and returns the supplied argument (a number) by 1. Then evaluate the following expression:
+1. Define a function `add_one` which increments and returns the supplied argument (a number) by 1. Then evaluate the following expression:
    ```python
-   add_one(add_one(add_one(13)))
+   >>> add_one(add_one(add_one(13)))
    ```
-2.
+2. Define a function `mult` which multiplies its two input arguments and returns this product. The second parameter should have a default argument of `1` so that the function can also be called with only one argument. Test your function with the following three function calls:
+   ```python
+   >>> mult(3, 7)
+   >>> mult(12)
+   >>> mult(2, mult(8, 8))
+   ```
+3. Define a function `to_fahrenheit` which converts its argument (a temperature in degrees Celsius) into degrees Fahrenheit and returns this result. Furthermore, define another function `to_celsius` which performs the opposite conversion (from degrees Fahrenheit to degrees Celsius). Verify both functions with the following function calls (feel free to test additional temperature values):
+   ```python
+   >>> to_fahrenheit(0)
+   >>> to_celsius(100)
+   >>> to_celcius(to_fahrenheit(38))
+   ```
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

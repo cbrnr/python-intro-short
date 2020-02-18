@@ -145,6 +145,28 @@ Of course, we can also assign a name to the returned value if we want to use it 
 
 Defining default arguments
 --------------------------
+Python functions have an extremely useful feature. When defining a function, parameters can get default values, so-called default arguments. This means that parameters with default values are optional when the function is called &ndash; values for these optional parameters do not need to be passed.
+
+Here's our `add` function definition from before, but this time the second parameter gets a default value:
+
+```python
+>>> def add(x, y=1):
+...    return x + y
+```
+
+Now we can call `add` with just one argument (`x`), because if we do not supply a value for `y` Python will use its default value of `1`:
+
+```python
+>>> add(5)
+6
+```
+
+Note that we can still call the function with two arguments if we want to override the default value for `y`:
+
+```python
+>>> add(5, 3)
+8
+```
 
 Calling with keyword arguments
 ------------------------------

@@ -193,6 +193,24 @@ Operators
 ---------
 In general, operators work on objects. We have already used some operators such as `+`, `-`, `*`, `/`, `**`, `//`, and `%`. Some operators are *binary* and require two operands (for example, the multiplication `2 * 3`), whereas other operators are *unary* and require only one operand (for example, the negation `-5`).
 
+Expressions
+-----------
+An expression is any combination of values, names, and operators. Importantly, an expression evaluates to a value (or short, an expression has a value). Here are a few examples for expressions (the values are automatically printed by the Python interpreter in interactive mode):
+
+```python
+>>> 17  # just one value
+17
+>>> 23 + 4**2 - 2  # four values and three operators
+37
+>>> n = 25  # this is not an expression!
+>>> n  # one name (evaluates to its value)
+25
+>>> n + 5  # a name, an operator, and a value
+30
+```
+
+Python evaluates an expression to one single value. A more complex expression is evaluated step by step according to (arithmetic) precedence rules (think [PEMDAS](https://en.wikipedia.org/wiki/Order_of_operations#Mnemonics)).
+
 
 Exercises
 ---------

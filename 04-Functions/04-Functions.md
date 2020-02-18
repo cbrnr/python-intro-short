@@ -143,6 +143,16 @@ Of course, we can also assign a name to the returned value if we want to use it 
 3
 ```
 
+Defining default arguments
+--------------------------
+
+Calling with keyword arguments
+------------------------------
+
+Function scopes
+---------------
+
+
 Exercises
 ---------
 1. Define a function `add_one`, which increments and returns the supplied argument (a number) by 1. Then evaluate the following expression:

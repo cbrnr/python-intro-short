@@ -244,6 +244,181 @@ In this example, the names `x` and `y` are only defined in the function body. Th
 
 Therefore, a function body is a local scope which cannot be accessed from outside the function (the global scope).
 
+### Example 1
+Some additional examples further illustrate the scoping rules of Python. Consider the following function definition and subsequent function call:
+
+```python
+def test():
+    s = 15  # s only exists in the function body
+    print(s)
+
+test()
+```
+
+The output when running this script is:
+```python
+15
+```
+
+Since `s` only exists in the function body, we get an error if we try to access it outside the function:
+
+```python
+>>> print(s)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-39-8330fbeea4e0> in <module>
+----> 1 print(s)
+
+NameError: name 's' is not defined
+```
+
+### Example 2
+Interestingly, we can access names from higher-level scopes without any problem. For example, we can use names defined in the global scope inside a function body:
+
+```python
+s = 15  # global scope
+def test():
+    print(s)  # s from global scope
+
+test()
+print(s)
+```
+
+This is the output:
+```python
+15
+15
+```
+
+### Example 3
+In Python, local names can shadow global names. In the following example, the local name `s` inside the function body shadows the global name `s`. This means that inside the function, a different (local) name `s` is used. Outside the function, only the global `s` exists.
+
+```python
+s = 15
+
+def test():
+    s = 12  # local s shadows global s
+    print(s)
+
+test()
+print(s)
+```
+
+This time, the output is:
+```python
+12
+15
+```
+
+### Example 4
+Now this is where things can get tricky. This is really already a pretty advanced topic, so feel free to skip the following examples for now.
+
+Inside functions, we can access global names, but we are only allowed to read their values and not modify them unless we take special measures. If a function contains an assignment to a name, this name is treated as a local name. The following example throws an error because the function is trying to change the local name before it is defined:
+
+```python
+s = 15
+
+def test():
+    print(s)  # local s does not exist yet, so we can't print it
+    s = 12  # here we define our local s which shadows the global s
+    print(s)
+
+test()
+print(s)
+```
+
+The output is an error:
+```python
+---------------------------------------------------------------------------
+UnboundLocalError                         Traceback (most recent call last)
+<ipython-input-42-87e2ff1c25ab> in <module>
+      6     print(s)
+      7
+----> 8 test()
+      9 print(s)
+
+<ipython-input-42-87e2ff1c25ab> in test()
+      2
+      3 def test():
+----> 4     print(s)
+      5     s = 12
+      6     print(s)
+
+UnboundLocalError: local variable 's' referenced before assignment
+```
+
+If we really meant to access the global `s`, we need to tell Python with the `global` statement:
+
+```python
+s = 15
+
+def test():
+    global s  # we want to access the global s
+    print(s)
+    s = 12  # modifies global s
+    print(s)
+
+test()
+print(s)
+```
+
+This example now works and outputs:
+```python
+15
+12
+12
+```
+
+### Example 5
+The solution to the previous example with the `global` statement is not ideal and should be avoided whenever possible. If you need to access a name from the global scope, it is better to pass this value to the function as an argument:
+
+```python
+s = 15
+
+def test(s):
+    print(s)
+    s = 12
+    print(s)
+
+print(s)
+test(s)
+print(s)
+```
+
+Note that this does not change the global `s` because the function argument `s`
+merely shadows it:
+```python
+15
+15
+12
+15
+```
+
+### Example 6
+If we also want to modify a value from the global scope, we could have the function return a value, which we can re-assign in global scope:
+
+```python
+s = 15
+
+def test(s):
+    print(s)
+    s = 12
+    print(s)
+    return s
+
+print(s)
+s = test(s)
+print(s)
+```
+
+This is a Pythonic solution and it yields the following output:
+```python
+15
+15
+12
+12
+```
+
 Exercises
 ---------
 1. Define a function `add_one` which increments and returns the supplied argument (a number) by 1. Then evaluate the following expression:

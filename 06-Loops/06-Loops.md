@@ -45,5 +45,15 @@ This yields the following output:
 
 Alright, so `range(5)` produces a sequence of 5 numbers, starting at 0 and ending with 4. The loop iterates over all elements of this sequence until it is exhausted, after which the loop stops. In each iteration of the loop, `i` contains the i-th element of the sequence, and this particular value is used when running the body of the loop.
 
+As a sidenote, `range` can also be called with two arguments, which are then interpreted as start and stop values of the created range. However, the stop value does not belong to the sequence anymore (this is because the difference between stop and start gives the number of elements):
+
+```python
+>>> list(range(2, 8))  # 8 - 2 = 6 values (from 2 to 7)
+[2, 3, 4, 5, 6, 7]
+```
+
+Note that we have to use `list` in order to see all the elements that `range` creates at once (more on lists soon).
+
+
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

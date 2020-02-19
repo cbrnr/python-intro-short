@@ -54,6 +54,30 @@ As a sidenote, `range` can also be called with two arguments, which are then int
 
 Note that we have to use `list` in order to see all the elements that `range` creates at once (more on lists soon).
 
+A loop can iterate not only over `range`, but over any sequence-like object (or rather, over any collection, which is a data type that can contain more than one elements). We will learn more about three widely-used container types (strings, lists, and dictionaries) in the next chapters. Here's a short preview of what a loop can do. First, we can iterate over a string:
+
+```python
+for s in "Hello World!":
+    print(s)
+```
+
+Here, `s` sequentially gets all characters of the string `"Hello World!"` as the loop iterates. That is, in the first iteration `s` contains the character `"H"`, in the second `"e"`, and so on. The `print` function is called in each iteration with the single characters as arguments, so the output looks like this (the `print` function automatically inserts a newline at the end, though this can be changed with its `end` parameter):
+
+```
+H
+e
+l
+l
+o
+
+W
+o
+r
+l
+d
+!
+```
+
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

@@ -168,8 +168,8 @@ Note that we can still call the function with two arguments if we want to overri
 8
 ```
 
-Calling with keyword arguments
-------------------------------
+Calling functions with keyword arguments
+----------------------------------------
 Normally, Python assigns arguments passed in a function call by position. That is, if we call `add(5, 3)`, the first parameter `x` gets the value `5`, and the second parameter `y` gets the value `3`. Specifying arguments in a function call by position is referred to as *positional arguments*.
 
 However, this can quickly get unwieldy if a function has many parameters. Consider the following function definition:
@@ -201,6 +201,53 @@ many_args(10, 5, h=-5)
 
 The first two arguments are matched by position, whereas the third argument is matched by name.
 
+Here is another function to further illustrate the concept (taken directly from the [official Python tutorial](https://docs.python.org/3/tutorial/controlflow.html#keyword-arguments)):
+
+```python
+def parrot(voltage, state='a stiff', action='voom', type='Norwegian Blue'):
+    print("-- This parrot wouldn't", action, end=' ')
+    print("if you put", voltage, "volts through it.")
+    print("-- Lovely plumage, the", type)
+    print("-- It's", state + "!")
+```
+
+The following function calls are valid (outputs omitted):
+
+```python
+# 1 positional argument
+parrot(1000)
+
+# 1 keyword argument
+parrot(voltage=1000)
+
+# 2 keyword arguments
+parrot(voltage=1000000, action='VOOOOOM')
+
+# 2 keyword arguments
+parrot(action='VOOOOOM', voltage=1000000)
+
+# 3 positional arguments
+parrot('a million', 'bereft of life', 'jump')
+
+# 1 positional, 1 keyword argument
+parrot('a thousand', state='pushing up the daisies')
+```
+
+In constrast, all of these function calls produce an error (outputs omitted):
+
+```python
+# required argument 'voltage' missing
+parrot()
+
+# positional argument follows keyword argument
+parrot(voltage=5.0, 'dead')
+
+# multiple values for argument 'voltage'
+parrot(110, voltage=220)
+
+# unexpected keyword argument 'actor'
+parrot(230, actor='John Cleese')
+```
 
 Scopes
 ------

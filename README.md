@@ -7,7 +7,7 @@ This repository contains lecture notes for my workshop "Introduction to Python".
 2. [Python environment](02-Python_Environment/02-Python_Environment.md)
 3. [Names, expressions, statements](03-Names_Expressions_Statements/03-Names_Expressions_Statements.md)
 4. [Functions](04-Functions/04-Functions.md)
-5. Conditions
+5. [Conditions](05-Conditions/05-Conditions.md)
 6. Loops
 7. Strings
 8. Lists

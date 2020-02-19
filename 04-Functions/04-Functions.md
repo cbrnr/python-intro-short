@@ -170,6 +170,37 @@ Note that we can still call the function with two arguments if we want to overri
 
 Calling with keyword arguments
 ------------------------------
+Normally, Python assigns arguments passed in a function call by position. That is, if we call `add(5, 3)`, the first parameter `x` gets the value `5`, and the second parameter `y` gets the value `3`. Specifying arguments in a function call by position is referred to as *positional arguments*.
+
+However, this can quickly get unwieldy if a function has many parameters. Consider the following function definition:
+
+```python
+>>> def many_args(a, b, c=0, d=1, e=0, f=5, g=5, h=0, i=-1):
+...    pass
+```
+
+Parameters `a` and `b` are mandatory, whereas the remaining seven parameters have default values (and are therefore optional). Let's assume we want to call the function with arguments `a=10` and `b=5`, and we want only one of the remaining seven parameters to differ from their default value &ndash; say, we only want `h=-5`. Using positional arguments, we need to include arguments for parameters that we do not want to change:
+
+```python
+many_args(10, 5, 0, 1, 0, 5, 5, -5)
+```
+
+This is where *keyword arguments* come to the rescue. Whenever we call a function, we can always explicitly include the parameter name in addition to its specific value like this:
+
+```python
+many_args(a=10, b=5, h=-5)
+```
+
+That way, parameters that should use their default values do not need to be listed in the function call. In addition, keyword arguments make it obvious which arguments we are actually passing.
+
+We can even mix positional and keyword arguments to optimize readability:
+
+```python
+many_args(10, 5, h=-5)
+```
+
+The first two arguments are matched by position, whereas the third argument is matched by name.
+
 
 Function scopes
 ---------------

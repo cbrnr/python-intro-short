@@ -78,6 +78,41 @@ d
 !
 ```
 
+A list is another popular sequence-like data type that can contain elements of arbitrary types (more on this later). We can iterate over a list like this:
+
+```python
+a = ["Hello", "world!", "I", "love", "Python!"]
+
+for element in a:
+    print(element)
+```
+
+The output is:
+```
+Hello
+world!
+I
+love
+Python!
+```
+
+### Breaking and continuing loops
+Python lets as preemptively break out of a loop or jump to the next iteration from anywhere in the loop body using the `break` and `continue` keywords, respectively.
+
+Sometimes, we want to stop a loop early, like in the following example that demonstrates how to search for a character within a string:
+
+```python
+i = 0
+
+for c in "Seek and destroy":
+    if c == "k":
+        break
+    i += 1
+
+print(i)
+```
+
+This example searches for the first occurrence of the character `"k"` within the string `"Seek and destroy"`. If it finds it, the name `i` contains the position (index) of this character within the string (`3` in this example, because Python starts to count at zero). Notice that once we have found the character (`c == "k"`), we immediately break out of the loop (which means Python immediately jumps to the end of the loop, which is the `print(i)` function call).
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

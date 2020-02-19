@@ -204,7 +204,41 @@ The first two arguments are matched by position, whereas the third argument is m
 
 Function scopes
 ---------------
+It is instructive to inspect how Python runs a script. In general, Python executes a script line by line, starting at the top of the script (the first line).
 
+Whenever Python comes across a line containing a function header, Python is aware that this functions exists, but it doesn't run the function body &ndash; this only happens when a function is called (as opposed to defined). Therefore, to continue with running the script Python skips the body and resumes at the first line outside the function body.
+
+Consider the following script:
+
+```python
+x = 5
+print("Hello")
+
+def test(x, y):
+    x = x + 2
+    y = y - 3
+    return x * y
+
+print("World")
+z = test(5, 6)
+print(z)
+```
+
+Let's see how Python runs this script step by step:
+
+1. Python starts at the first line and assigns `x = 5`.
+2. In the next line, we call the function `print("Hello")`. This function is a built-in function, so we don't know which code gets executed when we call this function (it is defined somewhere else outside our script).
+3. Python registers our `test` function in the next line, taking note that this function requires two arguments `x` and `y` when called.
+4. Now all of the lines in the function body are skipped, and Python calls `print("World")`.
+5. Next, we run our `test` function with arguments `5` and `6`, so Python jumps to the function header and assigns concrete values `x=5` and `y=6` to both parameters.
+6. Python is now running the code in the function body. First, it computes `x + 2` and re-assigns the name `x` to this result (so `x` is now `7`).
+7. Simlarly, Python decreases the value of `y` by `3`, so `y` is now `3`.
+8. The function returns `x * y`, which equals `7 * 3` or `21`.
+9. Python is now back in the function call line and assigns the name `z` to the return value of the function, so `z` is now `21`.
+10. Finally, we call the function `print(z)`, which prints `21` to the screen.
+11. Python has reached the end of the script, so we're done.
+
+You can run this example script interactively on [Python Tutor](http://www.pythontutor.com/visualize.html#mode=edit) &ndash; just paste the code and click on "Visualize Execution" to get a graphical step-by-step representation of what Python is doing behind the scenes.
 
 Exercises
 ---------

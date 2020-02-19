@@ -272,6 +272,11 @@ if p != r:
 
 Exercises
 ---------
-
+1. Write the following program:
+   - First, ask the user to type in two numbers `x` and `y`. You can use the `input` function to get user input. Note that `input` always returns a `str`, but you can use the `int` function to convert a number contained in a `str` to `int`!
+   - Once you have both numbers `x` and `y`, check if their sum is greater than 50.
+   - If the sum is greater than 50, print "Greater than 50!"
+   - If the sum is less than 50, print "Less than 50!"
+   - If the sum is exactly 50, print "50!"
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

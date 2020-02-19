@@ -210,6 +210,65 @@ This results in:
 a is a negative number
 ```
 
+### Example 4
+Due to the fact that Python only runs the code associated with the first condition yielding `True`, the order of the conditions is important. Consider the following two examples containing identical conditions, but in a different order:
+
+```python
+a = 4
+
+if a > 5:
+    print("One")
+elif a < 10:
+    print("Two")
+elif a == 4:
+    print("Three")
+else:
+    print("Four")
+```
+
+This example results in:
+```
+Two
+```
+
+```python
+a = 4
+
+if a > 5:
+    print("One")
+elif a == 4:
+    print("Three")
+elif a < 10:
+    print("Two")
+else:
+    print("Four")
+```
+
+Now this example results in:
+```
+Three
+```
+
+### Example 5
+We haven't really talked about data types other than numeric ones yet, but Python can also compare non-numeric types such as strings:
+
+```python
+>>> p = "Python"
+>>> r = "R"
+>>> p == r
+False
+>>> p > r
+False
+>>> p < r
+True
+```
+
+Therefore, we can use such comparisons in a condition:
+
+```python
+if p != r:
+    print("Python and R are different, but both are pretty cool!")
+```
 
 Exercises
 ---------

@@ -278,5 +278,7 @@ Exercises
    - If the sum is greater than 50, print "Greater than 50!"
    - If the sum is less than 50, print "Less than 50!"
    - If the sum is exactly 50, print "50!"
+
+2. Write a function `is_odd`, which has one parameter `x` and returns `True` if `x` is odd. If `x` is even, the function returns `False`. Note that you can check if a number is odd if dividing this number by 2 has a remainder of 1 (for even numbers, the remainder is 0). Use the modulo operator `%` to compute the remainder!
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

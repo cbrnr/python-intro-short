@@ -121,6 +121,95 @@ When we now compute the integer division result, we would expect the result to b
 
 The reason is that due to limited precision, rounding errors can be introduced.
 
+Conditions
+----------
+We are now ready to discuss conditions. A condition checks whether a specific comparison (boolean expression) is `True` or `False`. Python runs an associated block of code only if the result is `True`.
+
+Here's the structure of a condition in Python as pseudo-code:
+
+```
+if <expression is True>:
+    <do something>
+    ...
+    ...
+elif <expression is True>:  # optional
+    <do something else>
+    ...
+elif <expression is True>:  # optional
+    <do something else>
+    ...
+    ...
+else:  # optional
+    <do something>
+```
+
+Clearly, the indented lines of code belonging to a specific condition are only executed if the condition is `True`. We can test for several condition sequentially by using `elif` statements after the initial `if` statement. If no condition is `True`, the code in the `else` block is run. Importantly, Python only executes the first block of code where the condition returns `True`; once this happens, all other `elif` and `else` blocks are completely ignored.
+
+### Example 1
+Let's work through some examples. Here's a simple condition consisting of only one `if` statement:
+
+```python
+a = 2
+
+if a > 0:
+    print("a is a positive number")
+    print("this is good to know")
+```
+
+If we run these lines, the indented block of code will be executed, because `a` is in fact greater than zero, the condition `a > 0` is `True`, so we get the following output:
+```
+a is a positive number
+this is good to know
+```
+
+If we take the same `if` block, but set `a = 0` before, we do not get any output because the indented block of code is not run (the condition `a > 0` is `False`):
+
+```python
+a = 0
+
+if a > 0:
+    print("a is a positive number")
+    print("this is good to know")
+```
+
+### Example 2
+We can now add an optional `else` branch, which gets executed if none of the previous conditions returned `True`:
+
+```python
+a = 0
+
+if a > 0:
+    print("a is a positive number")
+    print("this is good to know")
+else:
+    print("a is either 0 or a negative number")
+```
+
+Now because `a > 0` is `False`, Python will run the code associated with the `else` branch, so we get the following output:
+```
+a is either 0 or a negative number
+```
+
+### Example 3
+Also optionally, we can add (an arbitrary number of) `elif` branches, for example:
+
+```python
+a = -5
+
+if a > 0:
+    print("a is a positive number")
+    print("this is good to know")
+elif a < 0:
+    print("a is a negative number")
+else:
+    print("a is 0")
+```
+
+This results in:
+```
+a is a negative number
+```
+
 
 Exercises
 ---------

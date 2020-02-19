@@ -202,8 +202,8 @@ many_args(10, 5, h=-5)
 The first two arguments are matched by position, whereas the third argument is matched by name.
 
 
-Function scopes
----------------
+Scopes
+------
 It is instructive to inspect how Python runs a script. In general, Python executes a script line by line, starting at the top of the script (the first line).
 
 Whenever Python comes across a line containing a function header, Python is aware that this functions exists, but it doesn't run the function body &ndash; this only happens when a function is called (as opposed to defined). Therefore, to continue with running the script Python skips the body and resumes at the first line outside the function body.
@@ -211,7 +211,7 @@ Whenever Python comes across a line containing a function header, Python is awar
 Consider the following script:
 
 ```python
-x = 5
+a = 5
 print("Hello")
 
 def test(x, y):
@@ -226,7 +226,7 @@ print(z)
 
 Let's see how Python runs this script step by step:
 
-1. Python starts at the first line and assigns `x = 5`.
+1. Python starts at the first line and assigns `a = 5`.
 2. In the next line, we call the function `print("Hello")`. This function is a built-in function, so we don't know which code gets executed when we call this function (it is defined somewhere else outside our script).
 3. Python registers our `test` function in the next line, taking note that this function requires two arguments `x` and `y` when called.
 4. Now all of the lines in the function body are skipped, and Python calls `print("World")`.
@@ -239,6 +239,10 @@ Let's see how Python runs this script step by step:
 11. Python has reached the end of the script, so we're done.
 
 You can run this example script interactively on [Python Tutor](http://www.pythontutor.com/visualize.html#mode=edit) &ndash; just paste the code and click on "Visualize Execution" to get a graphical step-by-step representation of what Python is doing behind the scenes.
+
+In this example, the names `x` and `y` are only defined in the function body. That is, we cannot use their values outside the function. If we do (for instance with `print(x)` in the last line of the script), Python will throw an error informing us that the name `x` is not defined.
+
+Therefore, a function body is a local scope which cannot be accessed from outside the function (the global scope).
 
 Exercises
 ---------

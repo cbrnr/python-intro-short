@@ -173,5 +173,33 @@ An index can be negative. Negative indices denote the position in a string count
 'P'
 ```
 
+String slicing
+--------------
+Python also lets us extract more than one element from a string &ndash; this is called slicing. Inside the square brackets, we can specify a start index and a stop index separated by a colon. Optionally, we can also specify a step size (separated by another colon). As we have already seen with the `range` function, Python starts counting at zero and does not include the stop index.
+
+```python
+>>> s[0:3]
+'Pyt'
+>>> s[1:3]
+'yt'
+>>> s[0:5:2]
+'Pto'
+>>> s[-4:5]
+'tho'
+>>> s[-4:-6:-1]
+'ty'
+```
+
+There are some shortcuts. If you omit the start index, the slice starts with the first element. If you omit the stop index, the slice ends with the last element (inclusive). If you omit the step size, the default of 1 is used.
+
+```python
+>>> s[:3]
+'Pyt'
+>>> s[3:]
+'hon'
+>>> s[::-1]
+'nohtyP'
+```
+
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

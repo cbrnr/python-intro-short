@@ -66,7 +66,7 @@ To verify that `a` is attached to a different object now, we inspect its ID:
 
 The ID is different than before, which means that `a` now refers to a different object. In other words, re-assigning `a` did *not* change the original `2` object (it cannot be changed because an `int` object is immutable), but the name simply points to a different object.
 
-In this chapter, we will see that strings are also immutable &ndash; once a string is created it cannot be changed/modified anymore. Consider the following example where we are trying to change one character in an existing string (more on that later):
+In this chapter, we will see that strings are also immutable &ndash; once a string is created it cannot be changed/modified anymore. Consider the following example where we are trying to change one character in an existing string (more on the mechanics and meaning of the square brackets later):
 
 ```python
 >>> s = "Pithon"
@@ -82,6 +82,61 @@ TypeError: 'str' object does not support item assignment
 ```
 
 Clearly, modifying a string after it has been created is not supported because strings are immutable.
+
+Creating strings
+----------------
+We now turn to the string data type. A string is an immutable sequence of characters. All elements of a string are of the same type (characters), so we refer to a string as a flat sequence (in contrast, container sequences can contain elements of different arbitrary types). Python uses single or double quotes to enclose the contents of a string, for instance:
+
+```python
+>>> s1 = "String"
+>>> s1
+'String'
+>>> s2 = 'Another string'
+>>> s2
+'Another string'
+```
+
+It doesn't matter if you use single or double quotes as long as the opening and closing quotes are the same. However, there might be cases when you would prefer one type of quote over the other:
+
+```python
+>>> s3 = 'What does "ontology" mean?'
+>>> s4 = "That's a string too!"
+```
+
+Specifically, if the string itself contains a single (double) quote, it is easier to use a double (single) quote to enclose the string. However, what happens if the string contains both single and double quotes? In this case, we need to escape the quote characters with a backslash like this:
+
+```python
+>>> s5 = "This \"string\" has 'both' quotes!"
+>>> s6 = 'This "string" has \'both\' quotes!'
+```
+
+Using such escape sequences, it is also possible to include non-printable characters in a string. For example, a newline is escaped with `"\n"`:
+
+```python
+>>> s7 = "Line one.\nLine two."
+>>> s7
+'Line one.\nLine two.'
+>>> print(s7)
+Line one.
+Line two.
+```
+
+The `print` function converts escape characters to their intended representation, so in the previous example `"\n"` is displayed as an actual line break.
+
+Another option to define a string is to use triple quotes. Triple-quoted strings can span multiple lines, which is not possible with single-quoted strings:
+
+```python
+>>> s8 = """This is
+... a multi-line
+... string."""
+>>> s8
+'This is\na multi-line\nstring.'
+>>> print(s8)
+This is
+a multi-line
+string.
+```
+
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

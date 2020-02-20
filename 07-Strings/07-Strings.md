@@ -137,6 +137,41 @@ a multi-line
 string.
 ```
 
+String indexing
+---------------
+We can access individual elements of a string (characters) &ndash; this is called indexing. Python uses an integer index inside square brackets to extract the character at a particular position corresponding to the index. Note that Python starts counting at zero, so the first character has index 0, the second has index 1, and so on.
+
+Here's an example:
+
+```python
+>>> s = "Python"
+>>> s[0]
+'P'
+>>> s[1]
+'y'
+>>> s[5]
+'n'
+```
+
+If we specify an index which exceeds the length of the string we get an error:
+
+```python
+>>> s[6]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: string index out of range
+```
+
+An index can be negative. Negative indices denote the position in a string counting from the end:
+
+```python
+>>> s[-1]
+'n'
+>>> s[-2]
+'o'
+>>> s[-6]
+'P'
+```
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

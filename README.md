@@ -9,7 +9,7 @@ This repository contains lecture notes for my workshop "Introduction to Python".
 4. [Functions](04-Functions/04-Functions.md)
 5. [Conditions](05-Conditions/05-Conditions.md)
 6. [Loops](06-Loops/06-Loops.md)
-7. Strings
+7. [Strings](07-Strings/07-Strings.md)
 8. Lists
 9. Dictionaries
 10. Modules and packages

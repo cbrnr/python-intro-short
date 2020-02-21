@@ -201,5 +201,69 @@ There are some shortcuts. If you omit the start index, the slice starts with the
 'nohtyP'
 ```
 
+Working with strings
+--------------------
+### Length
+The built-in function `len` returns the length of a sequence, or in other words, the number of element it contains. Therefore, `len` returns the number of characters in a string:
+
+```python
+>>> s = "Python"
+>>> len(s)
+6
+>>> len("This is a pretty long string.")
+29
+```
+
+We can also create an empty string like this:
+
+```python
+>>> s = ""
+>>> len(s)
+0
+```
+
+### Concatenation
+Strings are immutable, so we cannot change them.
+
+```python
+>>> s = "house"
+>>> s[0]
+'h'
+>>> s[0] = "m"
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object does not support item assignment
+```
+
+However, if we want to replace one or more characters in a string, we can always create a *new* string as follows:
+
+```python
+>>> s = "m" + s[1:]
+>>> s
+'mouse'
+```
+
+The previous snippet uses all but the first characters of the initial string `"house"` (so `s[1:]` is just `"ouse"`). It then prepends the string `"m"`, which creates a new string object. Finally, we assign the name `s` to the new string.
+
+Apparently, we can concatenate strings with the `+` operator. This creates a new string by appending all strings in the operation. Another example:
+
+```python
+>>> x = "a" + "a" + "a"
+>>> x
+'aaa'
+```
+
+It follows that the `*` operator performs repeated concatenation as a shortcut just like it arithmetic counterpart:
+
+```python
+>>> x = "a" * 3
+>>> x
+'aaa'
+```
+
+### String methods
+
+
+
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

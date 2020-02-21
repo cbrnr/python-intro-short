@@ -71,8 +71,50 @@ Likewise, the `*` concatenates list elements multiple times:
 ```
 
 ### List methods
-Lists have their own host of methods. Bear in mind that in general, list methods change the given list *in place*, whereas string methods always create a new string.
+Lists have their own host of methods. Bear in mind that in general, list methods change the given list *in place*, whereas string methods always create a new string. One of the most frequently used methods is `append`, which (as the name implies) appends a new element at the end of the list:
 
+```python
+>>> x
+[23, 12345, 'test', 1.44, True]
+>>> x.append(13)
+>>> x
+[23, 12345, 'test', 1.44, True, 13]
+```
+
+If we want to append more than one element, we can use the related `extend` method:
+
+```python
+>>> x.extend(["A", "B", "C"])
+>>> x
+[23, 12345, 'test', 1.44, True, 13, 'A', 'B', 'C']
+```
+
+Note that `x.append(["A", "B", "C"])` also works but produces a different result &ndash; this appends one element, namely the list `["A", "B", "C"]`:
+
+```python
+>>> x.append(["A", "B", "C"])
+>>> x
+[23, 12345, 'test', 1.44, True, 13, 'A', 'B', 'C', ['A', 'B', 'C']]
+```
+
+The `del` command or the `pop` method both remove elements from a list. For example, this removes the two elements `x[1:3]`:
+
+```python
+>>> del x[1:3]
+>>> x
+[23, 1.44, True, 13, 'A', 'B', 'C', ['A', 'B', 'C']]
+```
+
+Similarly, this is how to remove the last element using `pop`:
+
+```python
+>>> x.pop(-1)
+['A', 'B', 'C']
+>>> x
+[23, 1.44, True, 13, 'A', 'B', 'C']
+```
+
+Note that `pop` returns the removed element *and* changes the list in place (`del` does not return anything).
 
 
 Exercises

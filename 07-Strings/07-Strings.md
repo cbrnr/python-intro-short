@@ -276,7 +276,7 @@ The method call `x.upper()` basically calls a function `upper` and automatically
 
 Bear in mind that all string methods return new strings, because existing strings are immutable.
 
-We will now quickly tour some of the most frequently used string methods. We already saw `upper`, and not surprisingly there is also a `lower` method:
+We will now quickly tour some of the most frequently used string methods (see the [official Python string documentation](https://docs.python.org/3/library/stdtypes.html#str) for more details). We already saw `upper`, and not surprisingly there is also a `lower` method:
 
 ```python
 >>> x = "Hello!"
@@ -295,6 +295,155 @@ This is quite some list. However, we can ignore all names starting and ending wi
 
 When using IPython, there is a nicer way to get a list of methods: if you type `x.` and then hit the Tab key, IPython will create a popup containing all available methods (and it will automatically hide all dunder methods). This makes it especially easy to explore what's available, because after selecting a method we can display its documentation with the `?`, for example `x.upper?`.
 
+In addition to `upper` and `lower`, other case-changing methods are `capitalize`, `casefold`, `swapcase`, and `title`.
+
+The `strip` method is particularly useful to remove leading and trailing whitespace (which is often used in cleaning real-world string data):
+
+```python
+>>> s = "      This is an example.                "
+>>> s.strip()
+'This is an example.'
+```
+
+The `split` method splits a string into a list of shorter strings. By default, `split` splits on whitespace, which is a nice way to partition a string into words (we will learn about lists in the upcoming chapter):
+
+```python
+>>> s = "This is an example."
+>>> s.split()
+['This', 'is', 'an', 'example.']
+```
+
+Note that `split` accepts a `sep` argument, which denotes the delimiter used to split the string. We could split by periods:
+
+```python
+>>> s = "Today is Sunday. It is sunny. It is not raining."
+>>> s.split(".")
+['Today is Sunday', ' It is sunny', ' It is not raining', '']
+```
+
+Note how the separator is not part of any substring in the resulting list.
+
+The opposite of `split` is `join`. Given a list of strings, we can create a single string by joining all elements in the list.
+
+```python
+>>> ";".join(["one", "two", "three"])
+'one;two;three'
+```
+
+This might look a bit weird, but we are calling the `join` method on the string `";"`, which means that Python creates a new string by joining the list elements with the `";"` character.
+
+The string does not have to be a single character:
+
+```python
+>>> " --> ".join(["one", "two", "three"])
+'one --> two --> three'
+```
+
+Sometimes, it is useful to count or find specific characters in a string. This is where the `count` and `find` methods come in handy. Suppose we have the following string `s`:
+
+```python
+>>> s = "pneumonoultramicroscopicsilicovolcanoconiosis"
+```
+
+Say we want to know how many `"i"` characters it contains:
+
+```python
+>>> s.count("i")
+6
+```
+
+We can find the index of the first `"i"`:
+
+```python
+>>> s.find("i")
+14
+>>> s[14]
+'i'
+```
+
+Note that `s[14]` refers to the fifteenth letter. The method accepts an optional `start` argument, which denotes where to start the search:
+
+```python
+>>> s.find("i", 15)
+22
+```
+
+### Iterating over strings
+The `in` operator checks whether a certain string is contained in another string:
+
+```python
+>>> s = "computer"
+>>> "mpu" in s
+True
+>>> "y" in s
+False
+```
+
+A for-loop can directly iterate over a string as follows:
+
+```python
+>>> for c in s:
+...     print(c, end=".")
+...
+c.o.m.p.u.t.e.r.
+```
+
+We could also use a while-loop, but this tends to be more cumbersome (and less Pythonic):
+
+```python
+i = 0
+
+while i < len(s):
+    print(s[i])
+    i += 1
+```
+```
+c
+o
+m
+p
+u
+t
+e
+r
+```
+
+We can now combine what we learned about functions, loops, conditions, and strings to mimic the `find` and `count` methods. Note that in general it is never a good idea to ignore built-in functions and methods and roll a custom implementation, but we do it for didactic purposes.
+
+Remember that the `find` method finds a substring in a string and returns the index of the first match. If it does not find the substring, it returns `-1`.
+
+Here's a function that implements the behavior of the `find` method:
+
+```python
+def find(s, sub):
+    i = 0
+    while i < len(s):
+        if s[i] == sub:
+            return i  # found it
+        i += 1
+    return -1  # no match
+```
+
+Similarly, here's a custom function which mimics the `count` method:
+
+```python
+def count(s, sub):
+    i = 0
+    for c in s:
+        if c == sub:  # found it
+            i += 1  # increment our counter
+    return i
+```
+
+Exercises
+---------
+1. Write a function called `reverse`, which takes a string as input argument and returns a reversed version if that string.
+
+2. Assume we have the following string `s = "educational neuroscience"`. Which method creates a new string where each word start with an uppercase letter?
+
+3. Assume we have the following string `s = "Edukational Neuroscience"`. How can we replace the `"k"` with a `"c"` and create a new string with the correct spelling from the given string?
+
+4. A palindrome is a word or a sentence which reads the same forwards as backwards, for example "madam" or "Was it a car or a cat I saw?". Write a function `is_palindrome` which returns `True` if its argument is a palindrome (or `False` if not). It is helpful to convert all characters to lowercase. Furthermore, whitespace and punctuation needs to be ignored if the function should work with sentences.
 
 
 ---

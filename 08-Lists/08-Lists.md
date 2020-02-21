@@ -1,5 +1,5 @@
-Lists
-=====
+Lists and tupels
+================
 Creating lists
 --------------
 A list is a container sequence which, unlike strings, can contain elements of arbitrary types (even lists). We use square brackets to construct a new list (with commas separating the list elements):
@@ -156,7 +156,7 @@ Iteration with a for-loop also works as expected:
 ```python
 >>> for element in x:
 ...     print(element)
-... 
+...
 1
 2
 3
@@ -164,6 +164,101 @@ Iteration with a for-loop also works as expected:
 5
 ```
 
+Tuples
+------
+On a superficial level, tuples are immutable lists. We will not go into more detail why tuples are useful (there are many important applications), but suffice it to say that we should use tuples instead of lists whenever we do not want to change its elements. For example, instead of storing the latitude and longitude of a given location in a list, a tuple might be more reasonable (because the coordinates of a given location will not change).
+
+The syntax for creating a tuple is similar to creating a list, except that it doesn't use square brackets. Strictly speaking, listing elements separated by commas defines a tuple, but sometimes parentheses are required and/or improve readability.
+
+```python
+>>> t = 23, "Hello!", "test", 1.44, True
+>>> t
+(23, 'Hello!', 'test', 1.44, True)
+```
+
+We cannot modify tuples because they are immutable:
+
+```python
+>>> t[1]
+'Hello!'
+>>> t[1] = 12345
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
+```
+
+List comprehensions
+-------------------
+There is another neat way to construct a list in Python. List comprehensions do not introduce any new functionality (everything can be accomplished without list comprehensions), but this so-called *syntactic sugar* makes some list assignments easier to read.
+
+Consider the following example, where we want to create a list containing all squares from 1 to 10. We already know how to do this with a for-loop:
+
+```python
+squares = []
+for n in range(1, 11):
+    squares.append(n**2)
+```
+
+The resulting list looks as expected:
+
+```python
+>>> squares
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+
+An alternative list generation mechanism uses a list comprehension to build the same list. It is generally much more compact and looks as follows:
+
+```python
+>>> squares = [n**2 for n in range(1, 11)]
+>>> squares
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+
+In general, a list comprehension is surrounded by square brackets (to denote that a list will be constructed). Inside the brackets, the first expression defines the individual elements that go into the list (`n**2` in our example). After that, something very similar to a for-loop iterates over some sequence (some iterable) to generate the individual elements (in our case, `n` takes on values from `range(1, 11)`).
+
+Here's another example of a list comprehension, which multiplies each element in a (numeric) list by 2:
+
+```python
+>>> numbers = [-4, -2, 0, 2, 4]
+>>> numbers2 = [n * 2 for n in numbers]
+>>> numbers2
+[-8, -4, 0, 4, 8]
+```
+
+Every time we want to apply some operation to each individual element in a list, a list comprehension might be the way to go. Another example is taking the absolute value of each element in our list:
+
+```python
+>>> numbers_abs = [abs(x) for x in numbers]
+>>> numbers_abs
+[4, 2, 0, 2, 4]
+```
+
+Remember that all of these list comprehensions can be written with a regular loop and the `append` method. We can also include a condition in the list comprehension, which will include an element in the new list only if the condition is `True`. This is useful for filtering values like in the following example, where we filter out all values greater than or equal to zero:
+
+```python
+>>> [x for x in numbers if x >= 0]
+[0, 2, 4]
+```
+
+List comprehension can even be nested:
+
+```python
+>>> lst = [(x - 1, y - 2) for x in [1, 2, 3] for y in [3, 1, 4] if x != y]
+>>> lst
+[(0, 1), (0, 2), (1, 1), (1, -1), (1, 2), (2, -1), (2, 2)]
+```
+
+This is a pretty complex list comprehension already, and in this case the traditional way might be more readable:
+
+```python
+lst = []  # start with an empty list
+for x in [1, 2, 3]:
+    for y in [3, 1, 4]:
+        if x != y:
+            lst.append((x - 1, y - 2))
+```
+
+The results are exactly the same (observe how the individual `for` and `if` statements correspond to each other in both list assignments).
 
 
 Exercises

@@ -260,9 +260,50 @@ for x in [1, 2, 3]:
 
 The results are exactly the same (observe how the individual `for` and `if` statements correspond to each other in both list assignments).
 
+Let's finish up this topic with a slightly less complex list comprehension just to see another example:
+
+```python
+>>> freshfruit = ['  banana', '  loganberry ', 'passion fruit  ']
+>>> [weapon.strip().upper() + "!" for weapon in freshfruit]
+['BANANA!', 'LOGANBERRY!', 'PASSION FRUIT!']
+```
+
 
 Exercises
 ---------
+1. Write a function `histogram`, which accepts a list of numbers as its input argument. The function should convert the argument to a simple (vertical) histogram as follows. Each element of the list defines a row in the histogram, the length of which is defined by the actual value in the list. By default, the histogram should consist of `*` characters (but it should be possible to change this character with a second input parameter).
+
+   Here are two examples that demonstrates the behavior of the function:
+
+   ```python
+   >>> histogram([1, 8, 5, 17, 14, 9, 2])
+   *
+   ********
+   *****
+   *****************
+   **************
+   *********
+   **
+   >>> histogram([1, 8, 5, 17, 2], char="-")
+   -
+   --------
+   -----
+   -----------------
+   --
+   ```
+
+   Use the `print` function to print the histogram row by row. Repeating a string might be useful, for example `"*" * 8` is `"********"`.
+
+2. Define a function `sum_of_squares` which takes a list of numbers and returns the sum of all squared elements (one number). Note that the built-in function `sum` computes the sum of a list of numbers.
+
+3. Create a list `numbers` consisting of the 25 integers from 1 to 25. Based on this list, generate the following five new list:
+   - `squares` containing the squared numbers
+   - `evens` containing the even numbers
+   - `odds` containing the odd numbers
+   - `roots` containing the square roots of the numbers
+   - `logs` containing the natural logarithms of the numbers
+
+   For the last two lists, use the functions `sqrt` and `log` from the `math` module (first, `import math` and then use the functions as `math.sqrt` and `math.log`, respectively).
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

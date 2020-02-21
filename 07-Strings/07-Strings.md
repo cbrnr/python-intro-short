@@ -262,6 +262,38 @@ It follows that the `*` operator performs repeated concatenation as a shortcut j
 ```
 
 ### String methods
+A method is a function which is attached to an object. The syntax for calling a method differs slightly from a normal function, but conceptually methods are just functions. A method call always starts with the object you want to call the method on, followed by a dot, and finally the method call (which involves the method name and a pair of parentheses).
+
+For example, strings have an `upper` method, which returns a new string with all caps:
+
+```python
+>>> x = "Hello!"
+>>> x.upper()
+'HELLO!'
+```
+
+The method call `x.upper()` basically calls a function `upper` and automatically gets `x` as its first argument. However, this special method call syntax makes it clear that `upper` is directly attached to a string object (`int` objects do not have an `upper` method).
+
+Bear in mind that all string methods return new strings, because existing strings are immutable.
+
+We will now quickly tour some of the most frequently used string methods. We already saw `upper`, and not surprisingly there is also a `lower` method:
+
+```python
+>>> x = "Hello!"
+>>> x.lower()
+'hello!'
+```
+
+The built-in `dir` function lists all methods associated with an object. Therefore, if we want to find out which string methods are available, we call `dir` and pass a string as the argument:
+
+```python
+>>> dir(x)   # x was defined in the previous example
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+```
+
+This is quite some list. However, we can ignore all names starting and ending with two underscores (for example, `__add__`, `__class__`, and so on). These so-called "dunder" methods are reserved for internal use.
+
+When using IPython, there is a nicer way to get a list of methods: if you type `x.` and then hit the Tab key, IPython will create a popup containing all available methods (and it will automatically hide all dunder methods). This makes it especially easy to explore what's available, because after selecting a method we can display its documentation with the `?`, for example `x.upper?`.
 
 
 

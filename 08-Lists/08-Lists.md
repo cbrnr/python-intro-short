@@ -116,6 +116,55 @@ Similarly, this is how to remove the last element using `pop`:
 
 Note that `pop` returns the removed element *and* changes the list in place (`del` does not return anything).
 
+The `remove` method removes elements by value (instead of by index). For example, `x.remove(13)` removes the first element in the list which is equal to `13`:
+
+```python
+>>> x.remove(13)
+>>> x
+[23, 1.44, True, 'A', 'B', 'C']
+```
+
+Finally, the `sort` method sorts a list in place if this is possible. This means that all elements should be of the same type, otherwise sorting will result in an error.
+
+```python
+>>> x.sort()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: '<' not supported between instances of 'str' and 'bool'
+```
+
+```python
+>>> h = [6, 9, 23, 1, -78, 44]
+>>> h.sort()
+>>> h
+[-78, 1, 6, 9, 23, 44]
+```
+
+### Iterating over lists
+Just like we saw in strings, the `in` operator checks whether a specific value is contained in a list:
+
+```python
+>>> x = [1, 2, 3, 4, 5]
+>>> 2 in x
+True
+>>> 7 in x
+False
+```
+
+Iteration with a for-loop also works as expected:
+
+```python
+>>> for element in x:
+...     print(element)
+... 
+1
+2
+3
+4
+5
+```
+
+
 
 Exercises
 ---------

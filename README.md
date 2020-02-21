@@ -10,7 +10,7 @@ This repository contains lecture notes for my workshop "Introduction to Python".
 5. [Conditions](05-Conditions/05-Conditions.md)
 6. [Loops](06-Loops/06-Loops.md)
 7. [Strings](07-Strings/07-Strings.md)
-8. Lists
+8. [Lists](08-Lists/08-Lists.md)
 9. Dictionaries
 10. Modules and packages
 11. Input and output

@@ -11,7 +11,7 @@ This repository contains lecture notes for my workshop "Introduction to Python".
 6. [Loops](06-Loops/06-Loops.md)
 7. [Strings](07-Strings/07-Strings.md)
 8. [Lists](08-Lists/08-Lists.md)
-9. Dictionaries
+9. [Dictionaries](09-Dictionaries/09-Dictionaries.md)
 10. Modules and packages
 11. Input and output
 12. Numerical Data

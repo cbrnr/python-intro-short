@@ -5,13 +5,13 @@ The last built-in data type we are going to cover is the dictionary (`dict`). Ju
 Here's how we define a `dict` in Python. We use curly braces to create a dict, and we supply a comma-separated list of key-value pairs inside the braces. The key-value pairs are separated by colons. Let's see an example:
 
 ```python
->>> d = {"house": "Haus", "cat": "Katze", "snake": "Schlange", "python": "Python"}
+>>> d = {"house": "Haus", "cat": "Katze", "snake": "Schlange"}
 ```
 
 Alternatively, we can also use the `dict` function and create key-value pairs with keyword arguments:
 
 ```python
->>> d = dict(house="Haus", cat="Katze", snake="Schlange", python="Python")
+>>> d = dict(house="Haus", cat="Katze", snake="Schlange")
 ```
 
 Note that in the second version, dictionary keys need to be valid Python names, whereas the first version is more flexible. For example, we can use an `int` as a key, but only when we use curly bracket notation:

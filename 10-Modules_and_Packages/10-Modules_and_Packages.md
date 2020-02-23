@@ -84,8 +84,33 @@ Alternatively, we just import the `mean` function:
 50.5
 ```
 
+Optionally, we can rename either the imported module or the imported function during import:
 
+```python
+>>> import stats as st
+>>> st.mean([1, 2, 3])
+2.0
+```
 
+```python
+>>> from stats import mean as m
+>>> m(range(50, 76))
+62.5
+```
+
+Sometimes, this is useful when modules or function names are very long. In addition, some popular third-party modules like NumPy are imported with shorter names by convention:
+
+```python
+>>> import numpy as np  # convention
+```
+
+Behind the scenes, nothing fancy is happening when we use alternative names for imported modules. This is just a shorter version for writing:
+
+```python
+>>> import numpy  # imports module and assigns the name numpy
+>>> np = numpy  # create another name np (an alias)
+>>> del numpy  # delete the original name numpy (we still have np)
+```
 
 
 ---

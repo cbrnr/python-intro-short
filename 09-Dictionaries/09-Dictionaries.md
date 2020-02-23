@@ -188,5 +188,54 @@ This swaps the values of `a` and `b`, which we can confirm by printing their val
 12
 ```
 
+Setting default values
+----------------------
+We have already seen that accessing a non-existing dictionary entry results in a `KeyError`:
+
+```python
+>>> d = {"house": "Haus", "cat": "Katze", "snake": "Schlange"}
+>>> d["dog"]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'dog'
+```
+
+There are two additional options to get values from a dict without raising an error. First, the `get` method returns a user-defined default value (by default `None`) if a key does not exist:
+
+```python
+>>> d.get("dog")  # returns None
+>>> d.get("dog", "UNDEFINED")
+'UNDEFINED'
+>>> d.get("cat", "UNDEFINED")
+'Katze'
+```
+
+However, `get` does not add new entries to the dictionary (in our example, there is still no `"dog"` entry in `d`):
+
+```python
+>>> d
+{'house': 'Haus', 'cat': 'Katze', 'snake': 'Schlange'}
+```
+
+If we do want to add new key/value pairs whenever we access a non-existing entry, we can use the `setdefault` method instead of `get`:
+
+```python
+>>> d.setdefault("dog", "UNDEFINED")
+'UNDEFINED'
+>>> d
+{'house': 'Haus', 'cat': 'Katze', 'snake': 'Schlange', 'dog': 'UNDEFINED'}
+```
+
+Exercises
+---------
+1. Create a dictionary containing three arbitrary elements. How can you access those three values individually?
+
+2. Add a fourth entry to the dictionary.
+
+3. Iterate over the dictionary and output all key/value pairs on separate lines.
+
+4. Access a non-existing element in the dictionary with the three different options discussed in this chapter.
+
+
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

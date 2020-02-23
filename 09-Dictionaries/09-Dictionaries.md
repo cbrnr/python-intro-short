@@ -120,5 +120,73 @@ False
 True
 ```
 
+Iterating over dictionaries
+---------------------------
+Dictionaries are iterable, and if we create a for-loop over a dict, we actually loop over its keys:
+
+```python
+>>> for key in d:
+...     print(key)
+...
+house
+cat
+snake
+```
+
+Using the current key in each iteration, we can access the corresponding value via indexing:
+
+```python
+>>> for key in d:
+...     print(key, ":", d[key])
+...
+house : Haus
+cat : Katze
+snake : Schlange
+```
+
+Of course we could also iterate over `d.values()` specifically, but often it is necessary to iterate over both keys and values simultaneously. The dict method `items` returns key/value pairs as tuples:
+
+```python
+>>> d.items()
+dict_items([('house', 'Haus'), ('cat', 'Katze'), ('snake', 'Schlange')])
+```
+
+We can use this list-like sequence of tuples in our for-loop, which means that we get a tuple in each iteration. However, instead of assigning one name to the tuple, we can unpack its two components into two distinct names (this is called tuple unpacking):
+
+```python
+>>> for key, value in d.items():
+...    print(key, ":", value)
+...
+house : Haus
+cat : Katze
+snake : Schlange
+```
+
+Here's another example of tuple unpacking:
+
+```python
+>>> a, b = 12, 13
+>>> a
+12
+>>> b
+13
+```
+
+The tuple `12, 13` on the right-hand side contains two elements. On the left-hand side we assign two names, one for each tuple component (the tuple components are unpacked into separate names). That way, the canonical way to swap values of two different names in Python is very short and sweet:
+
+```python
+>>> a, b = b, a
+```
+
+This swaps the values of `a` and `b`, which we can confirm by printing their values:
+
+```python
+>>> a, b
+>>> a
+13
+>>> b
+12
+```
+
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

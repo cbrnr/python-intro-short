@@ -12,7 +12,7 @@ This repository contains lecture notes for my workshop "Introduction to Python".
 7. [Strings](07-Strings/07-Strings.md)
 8. [Lists](08-Lists/08-Lists.md)
 9. [Dictionaries](09-Dictionaries/09-Dictionaries.md)
-10. Modules and packages
+10. [Modules and packages](10-Modules_and_Packages/10-Modules_and_Packages.md)
 11. Input and output
 12. Numerical Data
 13. Tabular Data

@@ -102,7 +102,122 @@ The format specification mini-language is very powerful. It is worth going throu
 
 Reading text files
 ------------------
-Often it is necessary to read data from a (text) file. For example, a data analysis script in Python needs to import some data as one of the first steps.
+Often it is necessary to read data from a (text) file. For example, a data analysis script in Python will need to import some data as one of the first steps. If the file is a text file (as opposed to a binary file), reading its contents is straightforward. The `open` function opens the specified file and returns a file handle object, which can be used to read from and/or write to the file:
+
+```python
+>>> f = open("test.txt")
+```
+
+By default, the function opens the file specified in the first argument in read mode. Other valid modes are write and append, which can be set with the `mode` parameter (the argument can take on the strings `"r"` for read, `"w"` for write, and `"a"` for append).
+
+After opening the file, we can read, write or append from/to the file. Once we're done, we need to close the open file by calling the `close` method:
+
+```python
+>>> f.close()
+```
+
+It is easy to forget to close the file, so Python allows us to use a context manager (a `with` block) which automatically closes the file when leaving the block:
+
+```python
+with open("test.txt") as f:
+    print("read file contents")
+    print("once we're done we don't have to close the file")
+
+print("Back to normal, the with block closed the file automatically!")
+```
+
+We will now discuss which commands read the contents of a text file. To this end, we will use methods on the file object `f`. The `read` method reads the complete file and returns its contents as a string. For example, let's assume the file `test.txt` is located in the current working directory and contains the following five lines of text:
+
+```
+Hello!
+
+This is just a test file containing some random text.
+
+Nice!
+```
+
+Remember that line breaks are actually just `\n` special characters, so the file contents is actually equal to this string:
+
+```
+Hello!\n\nThis is just a test file containing some random text.\n\nNice!
+```
+
+The following code snippet creates a string `lines` with the contents of the file:
+
+```python
+with open("test.txt") as f:
+    lines = f.read()
+```
+
+Indeed, `lines` is now associated with the following string:
+
+```python
+>>> lines
+'Hello!\n\nThis is just a test file containing some random text.\n\nNice!'
+```
+
+The file handle `f` works like an old-fashioned tape drive. When you open a file, the file handle points at the start of the file. Every time you read contents from the file, the file handle moves forward past the already read characters. Therefore, if we read the whole contents at once using `f.read()`, the file handle then points to the very end of the file.
+
+If we then try to read from the file again, we get an empty string (assuming the file `f` is still open):
+
+```python
+>>> f.read()
+''
+```
+
+The simplest way to read from the file a second time is to close it and open it. That way, the file handle is initialized and points to the start of the file again.
+
+Sometimes it is useful to read the contents of a file line by line. This is what the `readline` method does:
+
+```python
+with open("test.txt") as f:
+    print("Line 1: ", f.readline(), end="")
+    print("Line 2: ", f.readline(), end="")
+    print("Line 3: ", f.readline(), end="")
+```
+
+When we run the previous example (note the `end=""` argument to suppress line breaks added by the `print` function, and note further the additional whitespace introduced by passing two arguments to `print`), we get the following output:
+
+```
+Line 1:  Hello!
+Line 2:
+Line 3:  This is just a test file containing some random text.
+```
+
+Since reading a file line by line is so common, we can iterate over a file object, which will return one line in each iteration:
+
+```python
+with open("test.txt") as f:
+    for line in f:
+        print(line, end="")
+```
+
+```
+Hello!
+
+This is just a test file containing some random text.
+
+Nice!
+```
+
+This is the Pythonic way to read a text file. One of the perks of iterating is that we can modify the iteration in many useful ways. For example, iterating over `enumerate(f)` instead of `f` returns a tuple of a counter (the current line number) and the contents of the current line:
+
+```python
+with open("test.txt") as f:
+    for no, line in enumerate(f):
+        print(no, line, end="")
+```
+
+```
+0 Hello!
+1
+2 This is just a test file containing some random text.
+3
+4 Nice!
+```
+
+Note that `enumerate` has a `start` parameter, which determines the initial value it returns (default 0). Therefore, if we want to start counting at 1, we can iterate over `enumerate(f, start=1)`.
+
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

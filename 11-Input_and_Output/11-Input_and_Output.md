@@ -102,7 +102,7 @@ The format specification mini-language is very powerful. It is worth going throu
 
 Reading text files
 ------------------
-
+Often it is necessary to read data from a (text) file. For example, a data analysis script in Python needs to import some data as one of the first steps.
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

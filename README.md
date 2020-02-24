@@ -14,6 +14,6 @@ This repository contains lecture notes for my workshop "Introduction to Python".
 9. [Dictionaries](09-Dictionaries/09-Dictionaries.md)
 10. [Modules and packages](10-Modules_and_Packages/10-Modules_and_Packages.md)
 11. [Input and output](11-Input_and_Output/11-Input_and_Output.md)
-12. Numerical Data
-13. Tabular Data
-14. Graphics
+12. Numerical data
+13. Tabular data
+14. Visualizing data

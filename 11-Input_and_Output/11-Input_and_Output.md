@@ -218,6 +218,25 @@ with open("test.txt") as f:
 
 Note that `enumerate` has a `start` parameter, which determines the initial value it returns (default 0). Therefore, if we want to start counting at 1, we can iterate over `enumerate(f, start=1)`.
 
+Writing text files
+------------------
+Writing text files is very similar to reading. First, we open a file for writing. We then call the `write` method on the file handle and pass it a string, which will be the contents of the file:
+
+```python
+s = "This should go into the file."
+
+with open("test2.txt", "w") as f:
+    f.write(s)
+```
+
+Using the `mode="a"` argument, we can append to an existing file:
+
+```python
+s = "\nMore content!"
+
+with open("test2.txt", "a") as f:
+    f.write(s)
+```
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

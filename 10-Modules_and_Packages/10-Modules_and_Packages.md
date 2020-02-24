@@ -170,7 +170,7 @@ Packages
 --------
 A package organizes several modules into a hierarchy. This is useful, because it allows us to group related modules (which makes each module shorter instead of having one module containing a lot of code).
 
-Python uses the directory structure to define a package. If a directory contains an (empty) file named `__init__.py`, Python treats the directory as a package. This way, several modules can be combined in a package like in the following example. Let's assume we have a number of modules related to sound processing. We would like to create a `sound` package to organize all of our modules. Here's a directory structure we could use for our package:
+Python uses the directory structure to define a package. If a directory contains an (empty) file named `__init__.py`, Python treats the directory as a package. This way, several modules can be combined in a package like in the following example. Let's assume we have a number of modules related to sound processing (this is an [example from the official Python documentation](https://docs.python.org/3/tutorial/modules.html#packages)). We would like to create a `sound` package to organize all of our modules. Here's a directory structure we could use for our package:
 
 ```
 sound/
@@ -198,7 +198,71 @@ sound/
               ...
 ```
 
-Each directory containing a file called `__init__.py` is a package. In our example, we have a `sound` package, which contains three sub-packages called `formats`, `effects`, and `filters`. Each of these three sub-packages contains a number of modules.
+Each directory containing a file called `__init__.py` is a package. In our example, we have a `sound` package, which contains three sub-packages called `formats`, `effects`, and `filters`. Each of these three sub-packages contains a number of modules (`wavread.py`, `wavwrite.py`, ...).
+
+Let's see how we can import the contents of the package in Python. We can import individual modules with dot notation:
+
+```python
+>>> import sound.effects.echo
+```
+
+We can then use functions defined in that module, but we have to prepend the full name. For example, calling the function `echofilter` in that module need to be written like this:
+
+```python
+>>> sound.effects.echo.echofilter(input, output, delay=0.7, atten=4)
+```
+
+Alternatively, we can import the module `echo` as:
+
+```python
+>>> from sound.effects import echo
+```
+
+This makes calling functions from that module shorter:
+
+```python
+>>> echo.echofilter(input, output, delay=0.7, atten=4)
+```
+
+Finally, we could also import just the function `echofilter`:
+
+```python
+>>> from sound.effects.echo import echofilter
+>>> echofilter(input, output, delay=0.7, atten=4)
+```
+
+Or even shorter:
+```python
+>>> from sound.effects.echo import echofilter as ef
+>>> ef(input, output, delay=0.7, atten=4)
+```
+
+The packages NumPy, SciPy, Pandas, and Matplotlib are essential tools for performing data science with Python. By convention, these packages are imported as follows:
+
+```python
+import numpy as np
+import scipy as sp
+import pandas as pd
+import matplotlib.pyplot as plt
+```
+
+Exercises
+---------
+
+1. Import the `math` module and print $\pi$ on the screen. Furthermore, list all objects contained in the module.
+
+2. Import the variance function from the `statistics` module as `var`. Compute the result of this expression:
+   ```python
+   var([13, 27.75, 11.56, 22, 17, 32.22, 26.7])
+   ```
+
+3. Create a module called `textutils`, which contains a function `is_palindrome`. This function should check whether its argument is a palindrome or not by returning `True` or `False`, respectively. Call the function from this module in a script with two different strings.
+
+4. The `scipy` package contains many functions for scientific computing. Among others, `scipy` contains a `stats` subpackage. Find a function which computes the Pearson correlation coefficient, and use this function to calculate the correlation between the following two lists of numbers:
+   ```python
+   x = [1, 2, 3, 4]
+   y = [11, 7, 9, 3]
+   ```
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

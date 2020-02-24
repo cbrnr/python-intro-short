@@ -238,5 +238,17 @@ with open("test2.txt", "a") as f:
     f.write(s)
 ```
 
+Exercises
+---------
+1. Write all even numbers from 0 to 100 to a file called `numbers.txt`. The numbers should be separated by a comma. *Hint:* The `",".join` method can be used to create a succinct solution.
+
+2. Use the `random` module to write 1000 random integers (from -1000 to 1000) to a file called `random.txt`. For reproducibility, initialize the random number generator with `random.seed(7)`.
+
+3. Read the file `random.txt` created in the previous exercise. Convert the resulting string into a list of numbers. Finally, compute the mean and variance of all numbers using the `mean` and `variance` functions from the `statistics` module. Print these two statistics on the screen with a precision of two decimal places.
+
+4. Download the [official Scrabble word list](https://www.wordgamedictionary.com/twl06/download/twl06.txt) (`twl06.txt`) and put it into the current working directory. Using Python, count the number of valid Scrabble words. Note that the first two lines in the file should be ignored. Furthermore, the file contains one valid word per line. Since the file contains a large number of words, the optimal solution reads the file line by line (instead of the whole contents at once) to minimize memory use.
+
+5. Extend the solution to the previous example to find the longest valid Scrabble word. How many letters do the longest words have? Can you list all of them if there are more? *Hint:* Do not count the newline characters at the end of every line &ndash; you could use the `strip` method to remove any whitespace characters.
+
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

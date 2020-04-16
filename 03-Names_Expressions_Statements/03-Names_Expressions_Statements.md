@@ -2,7 +2,7 @@ Names, expressions, statements
 ==============================
 Objects, values, and types
 --------------------------
-In Python, everything is an object. Every object has a value and a type. For example, the number `1` we used in our arithmetic calculations is an object. It has the value `1` and is of type `int` (which means integer number). Here are a few examples that can be entered in the interactive interpreter:
+Everything in Python is an object. An object is an entity which has a value and a type. For example, the number `1` we used in our arithmetic calculations is an object. It has the value `1` and the type `int` (which means integer number). Here are a few additional examples that can be entered in the interactive interpreter:
 
 ```python
 >>> 1
@@ -56,7 +56,7 @@ Conceptually, we can think of an object as a Python entity of a specific type wi
 
 Names
 -----
-Objects can have names, in other programming languages names are referred to as variables. We can assign a name to an object with the assignment operator `=`, for example:
+Objects can have names (in other programming languages names are often referred to as variables). We can assign a name to an object with the assignment operator `=`, for example:
 
 ```python
 >>> a = 1
@@ -115,7 +115,7 @@ Valid names can contain letters (lower and upper case), digits, and underscores 
 ```
 
 ### Keywords
-Python defines keywords that are core components of the language. They cannot be used to name objects, so it is important to know what these keywords are. The following code snippet produces a list of all keywords:
+Python defines several keywords that are core components of the language. They cannot be used to name objects, so it is important to know what these keywords are. The following code snippet produces a list of all keywords:
 
 ```python
 >>> import keyword
@@ -191,29 +191,29 @@ In summary, do not use built-in names in your own code even though this is techn
 
 Operators
 ---------
-In general, operators work on objects. We have already used some operators such as `+`, `-`, `*`, `/`, `**`, `//`, and `%`. Some operators are *binary* and require two operands (for example, the multiplication `2 * 3`), whereas other operators are *unary* and require only one operand (for example, the negation `-5`).
+In general, operators work with objects. We have already used some (arithmetic) operators such as `+`, `-`, `*`, `/`, `**`, `//`, and `%`. Some operators are *binary* and require two operands (for example, the multiplication `2 * 3`), whereas other operators are *unary* and require only one operand (for example, the negation `-5`).
 
 Expressions
 -----------
-An expression is any combination of values, names, and operators. Importantly, an expression evaluates to a value (or short, an expression has a value). Here are a few examples for expressions (the values are automatically printed by the Python interpreter in interactive mode):
+An expression is any combination of values, names, and operators. Importantly, an expression always evaluates to a value (or short, an expression has a value). Here are a few examples for expressions (remember that their values are automatically printed by the Python interpreter in interactive mode):
 
 ```python
 >>> 17  # just one value
 17
 >>> 23 + 4**2 - 2  # four values and three operators
 37
->>> n = 25  # this is not an expression!
+>>> n = 25  # assignment is not an expression!
 >>> n  # one name (evaluates to its value)
 25
 >>> n + 5  # a name, an operator, and a value
 30
 ```
 
-Python evaluates an expression to one single value. A more complex expression is evaluated step by step according to (arithmetic) precedence rules (think [PEMDAS](https://en.wikipedia.org/wiki/Order_of_operations#Mnemonics)).
+Python reduces an expression to one single value. A more complex expression is evaluated step by step according to operator precedence rules (think [PEMDAS](https://en.wikipedia.org/wiki/Order_of_operations#Mnemonics)).
 
 Statements
 ----------
-A statement is a unit of code which Python can execute. This is a rather broad definition, and statements therefore include expressions as a special case (an expression is a statement which has a value). However, there are also statements that don't have a value such as an assignment. Here are two examples for statements that are not expressions:
+A statement is a unit of code which Python can execute. This is a rather broad definition, and statements therefore include expressions as a special case (an expression is a statement with a value). However, there are also statements that don't have a value such as an assignment. Here are two examples for statements that are not expressions:
 
 ```python
 >>> x = 13
@@ -226,7 +226,7 @@ Note that although the `print` statement generates output, this output is not it
 Exercises
 ---------
 
-1. Find out if the following names are valid, and if they are, determine if they adhere to PEP8 conventions. Finally, decide whether each name is a good name for an object containing a string or an integer number.
+1. Find out if the following names are valid, and if they are, determine if they adhere to PEP8 conventions. Decide whether each name is a good name for an object containing a string or an integer number.
    - `2x`
    - `_`
    - `x23`
@@ -256,7 +256,7 @@ Exercises
 
 3. Calculate the area and volume of a sphere with radius $r = 5$. Use the names `r`, `area`, and `volume` to compute these quantities. The number $\pi$ is available as `math.pi` after executing `import math`.
 
-4. What is the type of the value `True`? What is the type of the value `'True'`? What it the type of the name `math` that you imported in the previous exercise?
+4. What is the type of the value `True`? What is the type of the value `'True'`? What is the type of the name `math` that you imported in the previous exercise?
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

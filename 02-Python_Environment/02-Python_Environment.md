@@ -2,7 +2,7 @@
 ======================
 Components
 ----------
-Python consists of the Python programming language, a Python interpreter (which is a program that can interpret and run Python code), and an extensive standard library. The reference (official) Python interpreter is written in the C programming language and is therefore called [CPython](https://github.com/python/cpython).
+Python consists of the Python programming language, a Python interpreter (a program that interprets and runs Python code), and an extensive standard library. The reference (official) Python interpreter is written in the C programming language and is therefore called [CPython](https://github.com/python/cpython).
 
 ![Python components](python_components.png)
 
@@ -10,7 +10,7 @@ The Python programming language includes only relatively few keywords and built-
 
 Furthermore, Python can be extended with third-party packages that are not part of the official Python distribution. Installing these packages is straightforward, because they are available from a central repository called the [Python Packaging Index (PyPI)](https://pypi.org). We will discuss how to install, update, and uninstall third-party packages later in this chapter.
 
-As for any programming language, a good text editor or integrated development environment (IDE) is an essential tool for writing Python scripts. Good text editors include support for syntax highlighting, indentation, line numbers, code inspection, and more. Here is a selection of popular text editors (all of them are free, open source, and available on Windows, macOS, and Linux):
+As for any programming language, a good text editor or integrated development environment (IDE) is an essential tool for writing Python scripts. Good text editors include support for syntax highlighting, indentation, line numbers, [linting](https://en.wikipedia.org/wiki/Lint_(software)), code inspection, and more. Here is a selection of popular text editors (all of them are free, open source, and available on Windows, macOS, and Linux):
 
 - [Visual Studio Code](https://code.visualstudio.com)
 - [Atom](https://atom.io)
@@ -28,15 +28,15 @@ One of the most important activities when programming is reading documentation. 
 
 Managing Anaconda
 -----------------
-Even though Anaconda comes with many useful packages out of the box, it is still necessary to install additional packages once in a while. You also might want to uninstall packages that you don't need anymore to save some space. Finally, it is generally a good idea to keep all Anaconda packages up to date, because package maintainers fix bugs and add new features over time.
+Even though Anaconda comes with many useful packages out of the box, it is still necessary to install additional packages once in a while. You might also want to uninstall packages that you don't need anymore to save disk space. Finally, it is generally a good idea to keep all Anaconda packages up to date, because package maintainers fix bugs and add new features over time.
 
-All these tasks can be performed with the `conda` command line tool, which is part of every Anaconda distribution. We will explore how `conda` performs important package management tasks, but to get started we need to open a terminal first:
+All these tasks can be performed with the `conda` command line tool, which is part of every Anaconda distribution. We will explore how `conda` performs important package management tasks, but to get started we need to open a terminal:
 
 - On Windows, open the "Anaconda Prompt" shortcut from the start menu.
 - On macOS, open the "Terminal" app.
 - On Linux, open the standard terminal program.
 
-A terminal is a program that runs a shell which interprets text commands to control the system. This is similar to the Python interpreter, but note that both the terminal and specifically `conda` are *not* Python &ndash; these tools are necessary to manage an Anaconda Python distribution. Note that the `$` sign is the prompt for the terminal, so it is not part of the commands and should not be typed in.
+A terminal is a program that runs a shell which interprets text commands to control the operating system. This is similar to the Python interpreter, but note that both the terminal and specifically `conda` are *not* Python &ndash; these tools are necessary to manage an Anaconda Python distribution. Note that the `$` sign is the prompt for the terminal, so it is not part of the commands and should not be typed in (just like the Python prompt `>>>`).
 
 Let's test if we can successfully run the `conda` tool. In the terminal, type:
 
@@ -47,7 +47,7 @@ conda 4.8.2
 
 This command should display the `conda` version (4.8.2 in the example). If it results in an error message, something is wrong with the Anaconda installation (in this case, consult the [installation instructions](https://docs.anaconda.com/anaconda/install/) to fix the problem).
 
-It is useful to know which packages are installed in our Anaconda distribution. We can use the following command to find out:
+It is useful to know which packages are installed on our computer. We can use the following command to find out:
 
 ```shell
 $ conda list
@@ -89,9 +89,9 @@ $ conda update --all
 
 It is good practice to run this command on a regular basis (for example, once a month).
 
-Anaconda has hundreds of packages in its [package repository](https://docs.anaconda.com/anaconda/packages/pkg-docs/), but there are thousands of Python packages that are not available in Anaconda. Since these packages cannot be installed using `conda`,  we need another way to make them available for use.
+Anaconda has hundreds of packages in its [package repository](https://docs.anaconda.com/anaconda/packages/pkg-docs/), but there are thousands of Python packages that are not available in Anaconda. Since these packages cannot be installed using `conda`,  we need another way to make them available for use. This also applies if you use Python not installed via Anaconda.
 
-The [Python Package Index (PyPI)](https://pypi.org/) is the canonical repository for third-party Python packages. Currently, it hosts over 200,000 packages. We can use the command line tool `pip` to install, uninstall, and update these packages. In essence, `pip` works very similar to `conda`. For example, to list all installed packages, type the following command:
+The [Python Package Index (PyPI)](https://pypi.org/) is the canonical repository for third-party Python packages. Currently, it hosts over 200,000 packages. We can use the command line tool `pip` to install, uninstall, and update these packages. In essence, `pip` is very similar to `conda`. For example, to list all installed packages, type the following command:
 
 ```shell
 $ pip list
@@ -103,7 +103,7 @@ Searching if a package called `<package_name>` is available is also possible:
 $ pip search <package_name>
 ```
 
-A package can then be installed using:
+If available, a package can then be installed using:
 
 ```shell
 $ pip install <package_name>
@@ -115,32 +115,30 @@ Finally, uninstalling works as expected:
 $ pip uninstall <package_name>
 ```
 
-Note that it is actually better to use `python -m pip` instead of `pip` (see this [blogpost](https://snarky.ca/why-you-should-use-python-m-pip/) by Python core developer Brett Cannon for an in-depth explanation).
-
-In summary, the `conda` tool should be used to install packages whenever possible. Only if a package is not available in Anaconda, `pip` can be used instead.
+In summary, if you have Anaconda the `conda` tool should be used to install packages whenever possible. Only if a package is not available in Anaconda, `pip` can be used instead.
 
 Interactive vs. script mode
 ---------------------------
-The Python interpreter can operate in two modes, either in interactive or in script mode.
+The Python interpreter can operate in two modes, namely in interactive or in script mode.
 
 ### Interactive mode
-The interactive mode is useful for running single lines of code. Python immediately executes the command and shows its output. We have already used this mode before when we performed arithmetic calculations in the interactive interpreter window of Spyder. To recap, the interactive mode features a prompt (either `>>>` or `In [1]:`), which means that Python is ready and waiting for user input. Importantly, Python also displays the results of calculations automatically in interactive mode. For example:
+Interactive mode is useful for running single lines of code. Python immediately executes the command and shows its output. We have already used this mode before when we performed arithmetic calculations in the interactive interpreter window of Spyder. To recap, interactive mode features a prompt (either `>>>` or `In [1]:`), which means that Python is ready and waiting for user input. Importantly, Python also displays the results of calculations automatically in interactive mode. For example:
 
 ```python
 >>> 1 + 4
 5
 ```
 
-The result `5` is displayed automatically right after the command. In general, if you start Python by typing `python` or `ipython` on the command line, Python will start in interactive mode. Python editors and IDEs (such as Spyder) typically open an interactive Python interpreter session by default. In addition, you can also select one or more lines of code in the editor pane and click the "Run selection" icon in Spyder. This runs the selected code in the interactive interpreter.
+The result `5` is displayed automatically right after the command. In general, if you start Python by typing `python` or `ipython` on the command line, Python will start in interactive mode. Python editors and IDEs (such as Spyder) typically open an interactive Python interpreter session by default. In addition, you can also select one or more lines of code in the editor pane and click the "Run selection" icon in Spyder. This runs the selected code in the interactive interpreter window.
 
 ### Script mode
-In contrast to the interactive mode, Python can run many lines of code in one go using the script mode. A Python script is a plain text file (ending in `.py`) containing Python code. In general, one line contains exactly one code statement. Compared to the interactive mode, Python does *not* display results automatically. For example, let's assume that the Python script named `test.py` contains the following line:
+In contrast to interactive mode, Python can run many lines of code in one go using script mode. A Python script is a plain text file (ending in `.py`) containing Python code. In general, one line contains exactly one code statement. Compared to interactive mode, Python does *not* display results automatically. For example, let's assume that the Python script named `test.py` contains the following line:
 
 ```python
 1 + 4
 ```
 
-When we run this script with `python test.py` from the command line, Python executes all commands line by line, but it does not automatically show the results. Therefore, there will be no output when running this script in script mode. In Spyder, you can run whole scripts by clicking the "Run script" icon. Alternatively, you can also run a whole script from IPython:
+When we run this script with `python test.py` from the command line, Python executes all commands line by line, but it does not automatically show the results. Therefore, there will be no output when running this script. In Spyder, you can run whole scripts by clicking the "Run script" icon. Alternatively, you can also run a whole script from IPython:
 
 ```python
 >>> %run test.py
@@ -179,7 +177,7 @@ First, we notice lines starting with a `#` character. These lines are comments, 
 SyntaxError: invalid syntax
 ```
 
-With a proper comment, Python ignores everything and happily (correctly) does nothing:
+With a proper comment, Python ignores everything and happily does nothing:
 
 ```python
 >>> # this is a comment
@@ -189,7 +187,7 @@ In the code example, we also observe blocks of code indented to the right. By co
 
 Blocks are necessary to define scopes, something which we will discuss later in this course.
 
-Finally, the example shows the syntax of function calls. We will discuss functions later in this course, for now you can think of a function as a mini-program. Whenever you call a function, Python runs the whole mini-program defined in the function. The syntax for calling a function is a pair of parenthesis `()` right after the name of the function. In the example code, `range(n_times)`, `print(i)`, `print("Odd")`, `do_something()`, and `print(counter)` are all function calls. Note that you can supply so-called arguments between the parentheses if the function takes parameters. All function calls in the example have exactly one argument, except for `do_something()`, which has no argument.
+Finally, the example shows the syntax of function calls. We will discuss functions later in this course, for now you can think of a function as a mini-program (or mini-script). Whenever you call a function, Python runs the whole mini-program defined in the function. The syntax for calling a function is a pair of parenthesis `()` right after the name of the function. In the example code, `range(n_times)`, `print(i)`, `print("Odd")`, `do_something()`, and `print(counter)` are all function calls. Note that you can supply so-called arguments between the parentheses if the function takes parameters. All function calls in the example have exactly one argument, except for `do_something()`, which has no argument. Arguments allow us to pass additional information to the function.
 
 Like most programming languages, Python is very picky about correct syntax. For example, capitalization matters so that `print` is not the same as `Print`. A missing `:` in places where a colon should be triggers a syntax error. Incorrect indentation can either lead to a syntax error or to non-intended behavior (which means the Python program runs without errors, but does not do what the programmer intended). It is very instructive to just try out code in the interactive interpreter, for example:
 
@@ -212,7 +210,7 @@ On the other hand, there are also stylistic issues that Python doesn't care abou
 >>> x=1+    2+  3*  (   16-7    )
 ```
 
-Arguably, the first one is much easier to read though. The [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) summarizes coding conventions that describe how Python code should look like in order to enhance readability. It is worth going through the document (at least superficially), but in addition good editors perform PEP8 checks automatically as you type code in your editor. In Spyder, this option is disabled by default, but you can enable it in Preferences &ndash; Completion and linting &ndash; Code style &ndash; Enable code style linting.
+Arguably, the first one is much easier to read though. The [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) summarizes coding conventions that describe how Python code should look like in order to enhance readability. It is worth going through the document (at least superficially), but good editors perform PEP8 checks automatically as you type code in your editor. In Spyder, this option is disabled by default, but you can enable it in Preferences &ndash; Completion and linting &ndash; Code style &ndash; Enable code style linting.
 
 ![Spyder PEP8](spyder_pep8.png)
 
@@ -252,7 +250,7 @@ Exercises
    - The last line should be empty.
 
    Make sure that the script does not contain any PEP8 warnings.
-5. Display the help text for the `print` function in the Python interpreter (list all three options possible in IPython)?
+5. Display the help text for the `print` function in the Python interpreter (list all three options possible in IPython).
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

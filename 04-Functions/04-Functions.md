@@ -174,7 +174,7 @@ Note that we can still call the function with two arguments if we want to overri
 
 Calling functions with keyword arguments
 ----------------------------------------
-Normally, Python assigns arguments passed in a function call by position. That is, if we call `add(5, 3)`, the first parameter `x` gets the value `5`, and the second parameter `y` gets the value `3`. Specifying arguments in a function call by position is referred to as *positional arguments*.
+Normally, Python assigns arguments passed to a function call by position. That is, if we call `add(5, 3)`, the first parameter `x` gets the value `5`, and the second parameter `y` gets the value `3`. Specifying arguments in a function call by position is referred to as *positional arguments*.
 
 However, this can quickly get unwieldy if a function has many parameters. Consider the following function definition:
 
@@ -195,7 +195,7 @@ This is where *keyword arguments* come to the rescue. Whenever we call a functio
 many_args(a=10, b=5, h=-5)
 ```
 
-That way, arguments that should use their default values do not need to be passed in the function call. In addition, keyword arguments make it obvious which arguments we are actually passing.
+That way, arguments that should use their default values do not need to be passed to the function. In addition, keyword arguments make it obvious which arguments we are actually passing.
 
 We can even mix positional and keyword arguments to optimize readability:
 
@@ -257,7 +257,7 @@ Scopes
 ------
 It is instructive to inspect how Python runs a script. In general, Python executes a script line by line, starting at the top of the script (the first line).
 
-Whenever Python comes across a line containing a function header, Python is aware that this functions exists, but it doesn't run the function body &ndash; this only happens when a function is called (as opposed to defined). Therefore, Python skips the function body and resumes at the first line outside the function body.
+Whenever Python comes across a line containing a function header, Python is aware that this functions exists, but it doesn't run the function body &ndash; this only happens when a function is called (as opposed to defined). Therefore, Python skips the function body and resumes at the first line after the function body.
 
 Consider the following example script:
 

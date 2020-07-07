@@ -167,7 +167,7 @@ print(counter)
 
 It is not important to understand what this snippet of code is doing (we will learn that in the following lessons), so let's focus on its structure.
 
-First, we notice lines starting with a `#` character. These lines are comments, and Python ignores everything from the `#` character until the end of the line. This means that we can use comments to explain portions of the code in plain English (comments are important for programmers to help them understand a program). If we forget to prepend a comment with the `#` character, Python tries to interpret this as a command and in most cases this will result in a syntax error:
+First, we notice lines starting with a `#` character. These lines are comments, and Python ignores everything from the `#` character until the end of the line. This means that we can use comments to explain portions of the code in plain English. If we forget to prepend a comment with the `#` character, Python tries to interpret this as a command and in most cases this will result in a syntax error:
 
 ```python
 >>> this is a comment
@@ -177,17 +177,17 @@ First, we notice lines starting with a `#` character. These lines are comments, 
 SyntaxError: invalid syntax
 ```
 
-With a proper comment, Python ignores everything and happily does nothing:
+Using a proper comment, Python ignores everything and happily does nothing:
 
 ```python
 >>> # this is a comment
 ```
 
-In the code example, we also observe blocks of code indented to the right. By convention, most Pythonistas use four spaces to denote one level of indentation. Indented lines of code belong together. For example, the seven lines below `def do_something(n_times=10):` comprise a block of code belonging to that statement (note that statements introducing a block always end with a `:`). Within this block, there are two additional blocks defined by additional indentation.
+In the code example, we also observe blocks of code indented to the right. By convention, most Pythonistas use four spaces to denote one level of indentation. Indented lines of code belong together. For example, the seven lines below `def do_something(n_times=10):` define a block of code belonging to that statement (note that statements introducing a block always end with a `:`). Within this block, there are two additional blocks defined by additional indentation.
 
 Blocks are necessary to define scopes, something which we will discuss later in this course.
 
-Finally, the example shows the syntax of function calls. We will discuss functions later in this course, for now you can think of a function as a mini-program (or mini-script). Whenever you call a function, Python runs the whole mini-program defined in the function. The syntax for calling a function is a pair of parenthesis `()` right after the name of the function. In the example code, `range(n_times)`, `print(i)`, `print("Odd")`, `do_something()`, and `print(counter)` are all function calls. Note that you can supply so-called arguments between the parentheses if the function takes parameters. All function calls in the example have exactly one argument, except for `do_something()`, which has no argument. Arguments allow us to pass additional information to the function.
+Finally, the example shows the syntax of function calls. We will discuss functions later in this course, for now you can think of a function as a mini-program (or mini-script). Whenever you call a function, Python runs the whole mini-program defined by the function. The syntax for calling a function is a pair of parenthesis `()` right after the name of the function. In the example code, `range(n_times)`, `print(i)`, `print("Odd")`, `do_something()`, and `print(counter)` are all function calls. Note that you can supply so-called arguments between the parentheses if the function takes parameters. All function calls in the example have exactly one argument, except for `do_something()`, which has no argument. Arguments allow us to pass additional information to the function.
 
 Like most programming languages, Python is very picky about correct syntax. For example, capitalization matters so that `print` is not the same as `Print`. A missing `:` in places where a colon should be triggers a syntax error. Incorrect indentation can either lead to a syntax error or to non-intended behavior (which means the Python program runs without errors, but does not do what the programmer intended). It is very instructive to just try out code in the interactive interpreter, for example:
 
@@ -201,7 +201,7 @@ NameError                                 Traceback (most recent call last)
 NameError: name 'Print' is not defined
 ```
 
-It is important to be familiar with Python error messages in order to interpret them efficiently (after all, the goal should be to fix the error), so make errors and learn from them!
+It is important to be familiar with Python error messages to interpret them efficiently (after all, the goal should be to fix the error), so make errors and learn from them!
 
 On the other hand, there are also stylistic issues that Python doesn't care about at all. The following two statements are equivalent for Python:
 
@@ -210,7 +210,7 @@ On the other hand, there are also stylistic issues that Python doesn't care abou
 >>> x=1+    2+  3*  (   16-7    )
 ```
 
-Arguably, the first one is much easier to read though. The [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) summarizes coding conventions that describe how Python code should look like in order to enhance readability. It is worth going through the document (at least superficially), but good editors perform PEP8 checks automatically as you type code in your editor. In Spyder, this option is disabled by default, but you can enable it in Preferences &ndash; Completion and linting &ndash; Code style &ndash; Enable code style linting.
+Arguably, the first one is much easier to read though. The [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) summarizes coding conventions that describe how Python code should look like to enhance readability. It is worth going through the document (at least superficially), but good editors perform PEP8 checks automatically as you type code in your editor. In Spyder, this option is disabled by default, but you can enable it in Preferences &ndash; Completion and linting &ndash; Code style &ndash; Enable code style linting.
 
 ![Spyder PEP8](spyder_pep8.png)
 

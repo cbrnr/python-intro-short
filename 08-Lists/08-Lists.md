@@ -1,4 +1,4 @@
-Lists and tupels
+Lists and tuples
 ================
 Creating lists
 --------------

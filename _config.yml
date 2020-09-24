@@ -1,6 +1,0 @@
-theme: jekyll-theme-cayman
-
-mathjax:
-  enable: true
-  per_page: false
-  cdn: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

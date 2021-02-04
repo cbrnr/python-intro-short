@@ -55,6 +55,36 @@ In constrast to strings, lists are mutable. That is, elements in a list can be m
 [23, 12345, 'test', 1.44, True]
 ```
 
+Remember that you can assign more than one name to any Python object. For example, you could create a second name `y` for the list that is currently named `x`:
+
+```python
+>>> y = x
+```
+
+If you modify the list, changes are visible through both names `x` and `y`, because the underlying list object is one and the same:
+
+```
+>>> x[1] = "Good bye!"
+>>> x
+[23, 'Good bye!', 'test', 1.44, True]
+>>> y
+[23, 'Good bye!', 'test', 1.44, True]
+```
+
+The following example illustrates five possibilities to create a copy of the list `x`:
+
+```python
+>>> import copy
+>>> x = [1, 2, 3, 4]
+>>> x1 = x.copy()
+>>> x2 = list(x)
+>>> x3 = x[:]
+>>> x4 = copy.copy(x)
+>>> x5 = copy.deepcopy(x)
+```
+
+Note that if the list contains mutable objects itself, only `copy.deepcopy` will make copies from all objects (but this is also the slowest method).
+
 ### Concatenation
 Adding lists with the `+` operator concatenates their elements and creates a new list:
 

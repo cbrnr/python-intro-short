@@ -484,7 +484,7 @@ Exercises
    ```python
    >>> to_fahrenheit(0)
    >>> to_celsius(100)
-   >>> to_celcius(to_fahrenheit(38))
+   >>> to_celsius(to_fahrenheit(38))
    ```
 4. Define a function `nonsense` that takes three arguments `a`, `b`, and `c`. Arguments `b` and `c` should be optional and default to `10` and `13`, respectively. The function should return the result of `a**2 - b * 2 + c**2`. Call the function in the following ways:
 

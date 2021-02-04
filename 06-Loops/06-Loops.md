@@ -190,11 +190,13 @@ while True:
 
 Exercises
 ---------
-1. Iterate over the list `lst = ["I", "love", "Python"]` and in each iteration, `print` the current list element on the screen.
+1. Modify the number guessing game by reporting the number of guesses it took a user to guess the correct number!
 
-2. Iterate over the list `lst = ["I", "love", "Python"]` and in each iteration, use a second loop to iterate over the current string and `print` each character on the screen followed by a `-`. Use the `end="-"` argument in `print` to get the desired output, which should look like this: `I-l-o-v-e-P-y-t-h-o-n-`.
+2. Iterate over the list `lst = ["I", "love", "Python"]` and in each iteration, `print` the current list element on the screen.
 
-3. Iterate over the list `[1, 13, 25, -11, 17, 24, 9, -1, 2, 3]` until you encounter the first even number. Once you find this number, break out of the loop and print the number on the screen. Since we have not learned about lists yet, use a for-loop to solve this problem (we could also use a while-loop, but we need to know more about lists before we can do so).
+3. Iterate over the list `lst = ["I", "love", "Python"]` and in each iteration, use a second loop to iterate over the current string and `print` each character on the screen followed by a `-`. Use the `end="-"` argument in `print` to get the desired output, which should look like this: `I-l-o-v-e-P-y-t-h-o-n-`.
+
+4. Iterate over the list `[1, 13, 25, -11, 17, 24, 9, -1, 2, 3]` until you encounter the first even number. Once you find this number, break out of the loop and print the number on the screen. Since we have not learned about lists yet, use a for-loop to solve this problem (we could also use a while-loop, but we need to know more about lists before we can do so).
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

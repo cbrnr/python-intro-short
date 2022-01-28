@@ -6,116 +6,83 @@ Python consists of the Python programming language, a Python interpreter (a prog
 
 ![Python components](python_components.png)
 
-The Python programming language includes only relatively few keywords and built-in functions. However, the [standard library](https://docs.python.org/3/library/) extends the core functionality with additional data types, input/output, regular expressions, mathematical functions, data compression, network data handling, multimedia services, graphical user interfaces, and much more.
+The Python programming language includes only relatively few keywords and built-in functions. However, the [standard library](https://docs.python.org/3/library/) extends the core functionality with additional data types, input/output, regular expressions, mathematical functions, data compression, networking, multimedia services, graphical user interfaces, and much more.
 
-Furthermore, Python can be extended with third-party packages that are not part of the official Python distribution. Installing these packages is straightforward, because they are available from a central repository called the [Python Packaging Index (PyPI)](https://pypi.org). We will discuss how to install, update, and uninstall third-party packages later in this chapter.
+Python can also be extended with third-party packages that are not part of the official Python distribution. Installing these packages is straightforward, because they are available from a central repository called the [Python Packaging Index (PyPI)](https://pypi.org). We will discuss how to install, update, and uninstall third-party packages later in this chapter.
 
 As for any programming language, a good text editor or integrated development environment (IDE) is an essential tool for writing Python scripts. Good text editors include support for syntax highlighting, indentation, line numbers, [linting](https://en.wikipedia.org/wiki/Lint_(software)), code inspection, and more. Here is a selection of popular text editors (all of them are free, open source, and available on Windows, macOS, and Linux):
 
 - [Visual Studio Code](https://code.visualstudio.com)
+- [PyCharm](https://www.jetbrains.com/pycharm/)
 - [Atom](https://atom.io)
 - [Spyder](https://www.spyder-ide.org)
-- [PyCharm](https://www.jetbrains.com/pycharm/)
 
-We will use Spyder in this workshop, mainly because it comes pre-installed with Anaconda. Spyder includes many useful features such as an integrated console running the Python interpreter, a comprehensive help system, and more. However, feel free to try out alternative editors and choose the one that best suits your needs.
-
-![](spyder.png)
+We will use Visual Studio Code in this workshop, but feel free to try out alternative editors and choose the one that best suits your needs.
 
 Getting help
 ------------
-One of the most important activities when programming is reading documentation. Besides running a search query in your favorite web search engine, the Python interpreter can display short help texts for many Python commands. For example, to view the documentation for the `print` function, you can type `help(print)` in the Python interpreter. Spyder includes an enhanced Python interpreter called [IPython](https://ipython.org), which supports the much shorter syntax `?print` or `print?`. Alternatively, you can press Ctrl&nbsp;+&nbsp;I (&#8984;&nbsp;+&nbsp;I on macOS) to display the help text in the integrated Spyder help window.
+One of the most important activities when programming is reading documentation. Besides running a search query in your favorite web search engine, the Python interpreter can display short help texts for many Python commands. For example, to view the documentation for the `print` function, you can type `help(print)` in the Python interpreter. The popular enhanced interactive Python interpreter called [IPython](https://ipython.org) supports the much shorter syntax `?print` or `print?`. We will learn how to install it in the next section.
 
-
-Managing Anaconda
+Managing packages
 -----------------
-Even though Anaconda comes with many useful packages out of the box, it is still necessary to install additional packages once in a while. You might also want to uninstall packages that you don't need anymore to save disk space. Finally, it is generally a good idea to keep all Anaconda packages up to date, because package maintainers fix bugs and add new features over time.
+Almost any real-world project requires functionality that is not available in Python out of the box. Therefore, it is important to know how to install additional packages (from PyPI). You might also want to uninstall packages that you don't need anymore to save disk space. It is also a good idea to keep all installed packages up to date, because package maintainers fix bugs and add new features in new releases.
 
-All these tasks can be performed with the `conda` command line tool, which is part of every Anaconda distribution. We will explore how `conda` performs important package management tasks, but to get started we need to open a terminal:
+All these tasks can be performed with the `pip` command line tool, which is contained in the `pip` package that is bundled with Python. We will explore how `pip` performs important package management tasks. First, we need to open a terminal:
 
-- On Windows, open the "Anaconda Prompt" shortcut from the start menu.
+- On Windows, open the "Command Prompt" or "Windows Terminal" app from the start menu.
 - On macOS, open the "Terminal" app.
-- On Linux, open the standard terminal program.
+- On Linux, open your favorite terminal app.
 
-A terminal is a program that runs a shell which interprets text commands to control the operating system. This is similar to the Python interpreter, but note that both the terminal and specifically `conda` are *not* Python &ndash; these tools are necessary to manage an Anaconda Python distribution. Note that the `$` sign is the prompt for the terminal, so it is not part of the commands and should not be typed in (just like the Python prompt `>>>`).
+A [terminal](https://en.wikipedia.org/wiki/Terminal_emulator) is a program that runs a [shell](https://en.wikipedia.org/wiki/Shell_(computing)) which interprets text commands to control the operating system. Note that the `$` sign is the prompt for the terminal, so it is not part of the commands and should not be typed in (just like the Python prompt `>>>`). On Windows, the default prompt is the path followed by a `>` character (such as `C:\Program Files\>`), but we will use `$` throughout the course material.
 
-Let's test if we can successfully run the `conda` tool. In the terminal, type:
-
-```shell
-$ conda --version
-conda 4.8.2
-```
-
-This command should display the `conda` version (4.8.2 in the example). If it results in an error message, something is wrong with the Anaconda installation (in this case, consult the [installation instructions](https://docs.anaconda.com/anaconda/install/) to fix the problem).
-
-It is useful to know which packages are installed on our computer. We can use the following command to find out:
+Let's test if we can successfully run the `pip` tool. In the terminal, type:
 
 ```shell
-$ conda list
+$ pip --version
+pip 21.3.1 from /usr/local/lib/python3.10/site-packages/pip (python 3.10)
 ```
 
-This will generate a list of all installed packages, including their names and versions. If you want to know if a specific package is installed, you can append the package name to the command (replace `<package_name>` with the real name of the package):
+This command should display the `pip` version (21.3.1 in the example) and its location in the file system. If this results in an error message, something is wrong with your Python installation (in this case, consult the [installation instructions](https://docs.python.org/3/using/index.html) to fix the problem).
 
-```shell
-$ conda list <package_name>
-```
-
-If the package is installed, the output will include a row with this package. If it is not installed, the output will be empty.
-
-Before installing a new package, we need to know if it is available in Anaconda (note that we need to know the package *name*, otherwise we can't query and install a package). Use the following command to find out if a package named `<package_name>` is available:
-
-```shell
-$ conda search <package_name>
-```
-
-If the search returns results, you can install that package with:
-
-```shell
-$ conda install <package_name>
-```
-
-We will see what to do in case `conda` does not find the package in a moment.
-
-It is straightforward to uninstall a package:
-
-```shell
-$ conda uninstall <package_name>
-```
-
-Finally, one of the most important commands keeps the Anaconda distribution up to date:
-
-```shell
-$ conda update --all
-```
-
-It is good practice to run this command on a regular basis (for example, once a month).
-
-Anaconda has hundreds of packages in its [package repository](https://docs.anaconda.com/anaconda/packages/pkg-docs/), but there are thousands of Python packages that are not available in Anaconda. Since these packages cannot be installed using `conda`,  we need another way to make them available for use. This also applies if you use Python not installed via Anaconda.
-
-The [Python Package Index (PyPI)](https://pypi.org/) is the canonical repository for third-party Python packages. Currently, it hosts over 200,000 packages. We can use the command line tool `pip` to install, uninstall, and update these packages. In essence, `pip` is very similar to `conda`. For example, to list all installed packages, type the following command:
+It is useful to know which Python packages are already installed. We can use the following command to find out:
 
 ```shell
 $ pip list
 ```
 
-Searching if a package called `<package_name>` is available is also possible:
+This will generate a list of installed packages, including their names and versions. If you want to see more details about an installed package, use the following command (the example uses the `setuptools` package, so replace the package name with the desired package you would like to inspect):
 
 ```shell
-$ pip search <package_name>
+$ pip show setuptools
 ```
 
-If available, a package can then be installed using:
+If the package is not installed, you will get a warning message.
+
+Before installing a new package, we need to know the name of the package. You can query the [PyPI website](https://pypi.org/) to find out if a specific package exists.
+
+If the search returns results, you can install that package (replace `<package_name>` with the actual name):
 
 ```shell
 $ pip install <package_name>
 ```
 
-Finally, uninstalling works as expected:
+It is pretty straightforward to uninstall a package:
 
 ```shell
 $ pip uninstall <package_name>
 ```
 
-In summary, if you have Anaconda the `conda` tool should be used to install packages whenever possible. Only if a package is not available in Anaconda, `pip` can be used instead.
+Finally, you can get a list of outdated packages with:
+
+```shell
+$ pip list --outdated
+```
+
+If this command shows packages that have newer versions available, you can upgrade each individual package with:
+
+```shell
+$ pip install --upgrade <package_name>
+```
 
 Interactive vs. script mode
 ---------------------------

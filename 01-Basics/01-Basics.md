@@ -16,27 +16,29 @@ Overview
 Here are some facts about Python (some of which might reflect my personal opinion):
 
 - Simple, elegant, and fun to learn and use
-- Open source (not only free as in beer but also free as in speech)
+- Open source (not only [free as in beer but also free as in speech](https://en.wikipedia.org/wiki/Gratis_versus_libre))
 - Cross-platform (Python runs on Windows, macOS, and Linux)
 - General-purpose programming language (Python is not specifically designed to be extremely good in one particular area such as statistics &ndash; it can be used for many different applications including data analysis, web servers, graphical user interfaces, programming the [Raspberry Pi](https://www.raspberrypi.org/), and so on)
 - Batteries included approach (the so-called [standard library](https://docs.python.org/3/library/) shipping with Python contains many useful things ready for use)
 - Huge amount of [third-party packages](https://pypi.org/) that implement even more useful things
 - Large and friendly community (Pythonistas)
 
-Python was first released by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) way back in 1991, and its popularity has skyrocketed in the past few years. While there are many ways to measure popularity of a programming language, the [TIOBE index](https://www.tiobe.com/tiobe-index/) simply counts the number of search engine results for queries containing the name of the programming language. According to this index, the most popular programming languages in February 2020 were:
+Python was first released by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) way back in 1991, and its popularity has skyrocketed in the past few years. While there are many ways to measure popularity of a programming language, the [TIOBE index](https://www.tiobe.com/tiobe-index/) simply counts the number of search engine results for queries containing the name of the programming language. According to this index, the most popular programming languages in January 2022 were:
 
 | Rank  | Programming language | Rating
 | -----:| ---------------------| ------:
-|     1 | Java                 | 17.36%
-|     2 | C                    | 16.77%
-|     3 | Python               |  9.35%
-|     4 | C++                  |  6.16%
+|     1 | Python               | 13.58%
+|     2 | C                    | 12.44%
+|     3 | Java                 | 10.66%
+|     4 | C++                  |  8.29%
 |   ... | ...                  | ...
-|    13 | R                    |  1.01%
+|    12 | R                    |  1.25%
 |   ... | ...                  | ...
-|    16 | MATLAB               |  0.79%
+|    16 | MATLAB               |  0.96%
+|   ... | ...                  | ...
+|    28 | Julia                | 0.39%
 
-[IEEE Spectrum](https://spectrum.ieee.org/static/interactive-the-top-programming-languages-2019) compiles another popular (annual) ranking. These are the top 10 languages for 2019:
+[IEEE Spectrum](https://spectrum.ieee.org/top-programming-languages/) compiles another popular (annual) ranking. These are the top ten languages for 2021:
 
 | Rank  | Programming language
 | -----:| --------------------
@@ -44,14 +46,14 @@ Python was first released by [Guido van Rossum](https://en.wikipedia.org/wiki/Gu
 |     2 | Java
 |     3 | C
 |     4 | C++
-|     5 | R
-|     6 | JavaScript
-|     7 | C#
-|     8 | MATLAB
-|     9 | Swift
-|    10 | Go
+|     5 | JavaScript
+|     6 | C#
+|     7 | R
+|     8 | Go
+|     9 | HTML
+|    10 | Swift
 
-Finally, one of the key results of the [Stack Overflow Developer Survey 2019](https://insights.stackoverflow.com/survey/2019) is that *"Python, the fastest-growing major programming language, has risen in the ranks of programming languages in our survey yet again, edging out Java this year and standing as the second most loved language (behind Rust)."*
+Finally, one of the results of the [Stack Overflow Developer Survey 2021](https://insights.stackoverflow.com/survey/2021) is that *"Python passed SQL to become our third most popular technology"* and *"Python is the most wanted language for its fifth-year"*.
 
 So far we have only talked about Python without seeing what the language actually looks like. Here's a sneak peak at what you will be able to understand after completing this course:
 
@@ -69,29 +71,24 @@ lst = [k**2 for k in range(0, 100, 10)]
 
 Installation
 ------------
-The [official Python website](https://www.python.org/) is a great resource for everything related to Python. The download section contains installers for many platforms, including Windows and macOS. However, it is usually easier for new Pythonistas to download the [Anaconda](https://www.anaconda.com/) distribution instead, because in addition to Python, this distribution includes many useful additional packages out of the box.
+The [official Python website](https://www.python.org/) is a great resource for everything related to Python. The [download](https://www.python.org/downloads/) section contains installers for many platforms, including Windows and macOS. If you are on Linux, I recommend that you use your package manager to install Python (in most cases, Python will already be installed).
 
-The question whether to install Python 2 or Python 3 has been a great source of confusion and debate. As of 2020, the answer is simple: always go for Python 3 (Python 2 is not maintained anymore). Although the differences between the two versions might seem miniscule, it is important that you make sure you are always using Python 3 if you want to follow along in this course. In fact, most code might work in Python 2, but some code will give errors, and I won't cover the differences and modifications required to make it work in Python 2.
 
 First steps
 -----------
-After installing Anaconda, it is fun and instructive to enter some simple Python commands and see what happens. The program which understands and interprets Python commands is called the *Python interpreter*. It can be invoked in various ways, but one of the easiest is to use [Spyder](https://www.spyder-ide.org/), a scientific Python development environment. Luckily, Anaconda already includes Spyder, which we can fire up either from the start menu (on Windows), from the terminal (on macOS), or with [Anaconda Navigator](https://docs.anaconda.com/anaconda/navigator/) (available on all platforms).
+After installing Python, it is fun and instructive to enter some simple Python commands and see what happens. The program which understands and interprets Python commands is called the *Python interpreter*. It can be invoked in various ways, but one of the easiest options is to run it is from the command line (or terminal), a powerful text-based program provided by your operating system.
 
-Using Anaconda Navigator, click on the "Launch" icon at the bottom of the Spyder application box:
+- On Windows, you should see a start menu entry inside the Python folder named "Python 3.10 (64-bit)" (or similar). Alternatively, you can launch Python from a regular command prompt: start "Command Prompt" or "Windows Terminal" and type in `python`.
+- On macOS, start the "Terminal" app and type in `python`.
+- On Linux, start your favorite terminal app and type in `python`.
 
-![Anaconda Navigator](navigator.png)
+A black or white text window will open – this is the so-called *interactive* Python interpreter. You can enter commands, and Python will happily try to execute what you just typed (this workflow is called [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop), short for read-eval-print loop).
 
-Eventually, Spyder should open up and the main program window should look something like this:
-
-![Spyder](spyder.png)
-
-The Python interpreter runs in the section at the bottom right called "IPython console". This is where you can enter Python commands, and Python will happily try to execute what you just typed (this workflow is called [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop), short for read-eval-print loop).
-
-The Python interpreter includes a prompt, which is typically either one of the following two character sequences:
+The interactive Python interpreter includes a *prompt*, which is typically either one of the following two character sequences:
 - `>>>`
 - `In [1]:`
 
-Whatever the prompt looks like (in Spyder it's the latter version), this prompt means that Python is waiting for user input, so you can type in a Python command and hit enter to run it. Python will show the result of this command (if any) on the next line, which will typically start with `Out[1]:` or directly with the output. That way you can distinguish between input and output (see the following examples for this mechanism in action).
+Whatever it looks like, the prompt indicates that Python is ready to receive user input. You can type in a Python command and hit enter to run it. Python will immediately show the result of this command (if any) on the next line.
 
 Let's try to use Python as a calculator. Python supports the four basic arithmetic operations (addition, subtraction, multiplication, and division):
 
@@ -112,7 +109,7 @@ Let's try to use Python as a calculator. Python supports the four basic arithmet
 17.142857142857142
 ```
 
-Furthermore, Python can also compute the result of integer division and its remainder:
+In addition, Python can also compute the result of integer division and its remainder:
 
 ```python
 >>> 120 // 7
@@ -136,16 +133,16 @@ Finally, Python knows the correct order of operations and is able to deal with p
 149.0731707317073
 ```
 
-Note that Python accepts only parentheses (and not square or curly brackets) even when there are nested expressions:
+Note that Python accepts only regular parentheses (and not square or curly brackets) to group expressions:
 
 ```python
 >>> ((13 + 6) * 8) / (12 / (2.5 + 1.6))
 51.93333333333333
 ```
 
-Bear in mind that decimal numbers use a point as decimal separator and not a comma.
+Bear in mind that decimal numbers use a point as decimal separator and not a comma (as is common in German-speaking regions).
 
-For more advanced calculations such as calculating square roots, logarithms or trigonometric functions, we need to import [`math`](https://docs.python.org/3/library/math.html) from the standard library to use functions from this module.
+For more advanced calculations such as square roots, logarithms, or trigonometric functions, we need to `import `[`math`](https://docs.python.org/3/library/math.html) (part of the standard library) to use functions from the `math` module:
 
 ```python
 >>> import math
@@ -163,9 +160,11 @@ Mathematical constants such as Euler's number *e* (`math.e`) and $\pi$ (`math.pi
 4.862996449527442
 ```
 
+There are many more useful things in the `math` module, but we won't cover them here. If you are interested, check out the [`math` module documentation](https://docs.python.org/3/library/math.html).
+
 Exercises
 ---------
-1. Install Anaconda and start the Python interpreter. Which Python version do you use and how can you find out?
+1. Install Python and start the interactive interpreter. Which Python version do you use and how can you find out?
 
 2. What happens if you type `import antigravity` and `import this` in the Python interpreter?
 
@@ -173,7 +172,7 @@ Exercises
 
 4. Assume you measured the following values: 11, 27, 15, 10, 33, 18, 25, 22, 39, and 11. Calculate the arithmetic mean in a single line of code.
 
-5. Evaluate the following mathematical expression (with one line of code):
+5. Evaluate the following mathematical expression in a single line of code (don't forget to `import math` to compute the square root and $\pi$):
 
   $$\frac{(5^5 - \pi) \cdot \frac{19}{3}}{\sqrt{13} + 7^{\frac{2}{3}}}$$
 

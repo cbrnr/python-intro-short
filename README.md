@@ -1,8 +1,6 @@
 A short introduction to Python
 ==============================
 
-This repository contains lecture notes for my workshop "Introduction to Python".
-
 1. [Basics](01-Basics/01-Basics.md)
 2. [Python environment](02-Python_Environment/02-Python_Environment.md)
 3. [Names, expressions, statements](03-Names_Expressions_Statements/03-Names_Expressions_Statements.md)

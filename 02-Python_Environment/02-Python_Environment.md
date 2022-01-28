@@ -66,6 +66,8 @@ If the search returns results, you can install that package (replace `<package_n
 $ pip install <package_name>
 ```
 
+We mentioned the `ipython` package previously, an enhanced interactive Python interpreter. If you want to give it a try, go ahead and install it with `pip install ipython`!
+
 It is pretty straightforward to uninstall a package:
 
 ```shell
@@ -88,34 +90,30 @@ Interactive vs. script mode
 ---------------------------
 The Python interpreter can operate in two modes, namely in interactive or in script mode.
 
-### Interactive mode
-Interactive mode is useful for running single lines of code. Python immediately executes the command and shows its output. We have already used this mode before when we performed arithmetic calculations in the interactive interpreter window of Spyder. To recap, interactive mode features a prompt (either `>>>` or `In [1]:`), which means that Python is ready and waiting for user input. Importantly, Python also displays the results of calculations automatically in interactive mode. For example:
+### Interactive mode (REPL)
+Interactive mode is useful for running single lines of code, because Python immediately shows the result. We have already used this mode before when we used Python as a calculator. To recap, interactive mode features a prompt (either `>>>` or `In [1]:`), which indicates that Python is ready and waiting for user input. Importantly, Python also displays the results of calculations automatically in interactive mode. For example:
 
 ```python
 >>> 1 + 4
 5
 ```
 
-The result `5` is displayed automatically right after the command. In general, if you start Python by typing `python` or `ipython` on the command line, Python will start in interactive mode. Python editors and IDEs (such as Spyder) typically open an interactive Python interpreter session by default. In addition, you can also select one or more lines of code in the editor pane and click the "Run selection" icon in Spyder. This runs the selected code in the interactive interpreter window.
+The result `5` is displayed automatically right after the command. In general, if you start Python by typing `python` (or `ipython` if you have installed the `ipython` package) on the command line, Python will start in interactive mode.
 
 ### Script mode
-In contrast to interactive mode, Python can run many lines of code in one go using script mode. A Python script is a plain text file (ending in `.py`) containing Python code. In general, one line contains exactly one code statement. Compared to interactive mode, Python does *not* display results automatically. For example, let's assume that the Python script named `test.py` contains the following line:
+In contrast to interactive mode, Python can run many lines of code in one go using script mode. A Python script is a plain text file (ending in `.py`) containing Python code. In general, one line contains exactly one code statement. Compared to interactive mode, Python does *not* display results automatically. For example, let's assume that a Python script named `test.py` contains the following line:
 
 ```python
 1 + 4
 ```
 
-When we run this script with `python test.py` from the command line, Python executes all commands line by line, but it does not automatically show the results. Therefore, there will be no output when running this script. In Spyder, you can run whole scripts by clicking the "Run script" icon. Alternatively, you can also run a whole script from IPython:
-
-```python
->>> %run test.py
-```
+When we run this script with `python test.py` from the command line, Python executes all commands line by line, but it does not automatically show the results. Therefore, there will be no output when running this script. However, you can always explicitly print something on the screen with the `print` function (more on functions later), so in this example we could write `print(1 + 4)` instead.
 
 Python syntax
 -------------
-Let's return to the Python programming language and in particular its syntax (which describes the structure of code statements). One of the most unique features of Python is that it uses significant whitespace (in almost all cases this means spaces) for grouping code into blocks. This results in fewer lines of code, because no special grouping symbols (such as `begin`/`end` or `{`/`}`) are needed.
+Let's return to the Python programming language and in particular its syntax (which describes the rules and structure of code statements). One of the most unique features of Python is that it uses significant [whitespace](https://en.wikipedia.org/wiki/Whitespace_character) (in almost all cases this means spaces) for grouping code into blocks. This results in fewer lines of code, because no special grouping symbols (such as `begin`/`end` or `{`/`}`) are needed.
 
-Consider the following example code:
+Consider the following example code snippet:
 
 ```python
 # this is a comment
@@ -132,15 +130,15 @@ counter = do_something()
 print(counter)
 ```
 
-It is not important to understand what this snippet of code is doing (we will learn that in the following lessons), so let's focus on its structure.
+It is not important to understand what this code is doing (we will learn that in the following lessons), so let's focus on its structure.
 
-First, we notice lines starting with a `#` character. These lines are comments, and Python ignores everything from the `#` character until the end of the line. This means that we can use comments to explain portions of the code in plain English. If we forget to prepend a comment with the `#` character, Python tries to interpret this as a command and in most cases this will result in a syntax error:
+First, we notice a line starting with a `#` character. This line is a *comment*, and Python ignores everything from the `#` character until the end of the line. This means that we can use comments to explain portions of the code in plain English. If we forget to prepend a comment with the `#` character, Python tries to interpret this as a command, and in most cases this will result in a syntax error:
 
 ```python
 >>> this is a comment
-  File "<ipython-input-1-453a0c0169b5>", line 1
+  File "<stdin>", line 1
     this is a comment
-              ^
+              ^^^^^^^
 SyntaxError: invalid syntax
 ```
 
@@ -150,26 +148,25 @@ Using a proper comment, Python ignores everything and happily does nothing:
 >>> # this is a comment
 ```
 
-In the code example, we also observe blocks of code indented to the right. By convention, most Pythonistas use four spaces to denote one level of indentation. Indented lines of code belong together. For example, the seven lines below `def do_something(n_times=10):` define a block of code belonging to that statement (note that statements introducing a block always end with a `:`). Within this block, there are two additional blocks defined by additional indentation.
+In the code example, we also observe blocks of code *indented* to the right. By convention, most Pythonistas use four spaces to denote one level of indentation. Indented lines of code belong together. For example, the seven lines below `def do_something(n_times=10):` define a block of code belonging to that statement (note that statements introducing a block always end with a `:`). Within this block, there are two additional blocks defined by additional indentation.
 
 Blocks are necessary to define scopes, something which we will discuss later in this course.
 
-Finally, the example shows the syntax of function calls. We will discuss functions later in this course, for now you can think of a function as a mini-program (or mini-script). Whenever you call a function, Python runs the whole mini-program defined by the function. The syntax for calling a function is a pair of parenthesis `()` right after the name of the function. In the example code, `range(n_times)`, `print(i)`, `print("Odd")`, `do_something()`, and `print(counter)` are all function calls. Note that you can supply so-called arguments between the parentheses if the function takes parameters. All function calls in the example have exactly one argument, except for `do_something()`, which has no argument. Arguments allow us to pass additional information to the function.
+Finally, the example contains *function calls*. We will discuss functions later in this course, for now you can think of a function as a mini-program (or mini-script). Whenever you call a function, Python runs the whole mini-program defined by the function. The syntax for calling a function is a pair of parenthesis `()` right after the name of the function. In the example code, `range(n_times)`, `print(i)`, `print("Odd")`, `do_something()`, and `print(counter)` are all function calls. Note that you can supply so-called *arguments* between the parentheses if the function takes parameters. All function calls in the example have exactly one argument, except for `do_something()`, which has no argument. Arguments allow us to pass additional information to the function.
 
-Like most programming languages, Python is very picky about correct syntax. For example, capitalization matters so that `print` is not the same as `Print`. A missing `:` in places where a colon should be triggers a syntax error. Incorrect indentation can either lead to a syntax error or to non-intended behavior (which means the Python program runs without errors, but does not do what the programmer intended). It is very instructive to just try out code in the interactive interpreter, for example:
+Like most programming languages, Python is very picky about correct syntax. For example, capitalization matters, so `print` is not the same as `Print`. A missing `:` in places where a colon should be triggers a syntax error. Incorrect indentation can either lead to a syntax error or to non-intended behavior (which means the Python program runs without errors, but does not do what the programmer intended). It is very instructive to just try out code in the interactive interpreter, for example:
 
 ```python
 >>> Print("Hello")
----------------------------------------------------------------------------
-NameError                                 Traceback (most recent call last)
-<ipython-input-2-b39576d35bb3> in <module>
-----> 1 Print("Hello")
-
-NameError: name 'Print' is not defined
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'Print' is not defined. Did you mean: 'print'?
 ```
 
 It is important to be familiar with Python error messages to interpret them efficiently (after all, the goal should be to fix the error), so make errors and learn from them!
 
+Python code style
+-----------------
 On the other hand, there are also stylistic issues that Python doesn't care about at all. The following two statements are equivalent for Python:
 
 ```python
@@ -177,9 +174,11 @@ On the other hand, there are also stylistic issues that Python doesn't care abou
 >>> x=1+    2+  3*  (   16-7    )
 ```
 
-Arguably, the first one is much easier to read though. The [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) summarizes coding conventions that describe how Python code should look like to enhance readability. It is worth going through the document (at least superficially), but good editors perform PEP8 checks automatically as you type code in your editor. In Spyder, this option is disabled by default, but you can enable it in Preferences &ndash; Completion and linting &ndash; Code style &ndash; Enable code style linting.
+Arguably, the first one is much easier to read. The [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) summarizes coding conventions that describe how Python code should look like to enhance readability. It is worth going through the document (at least superficially), but most editors perform PEP8 checks automatically as you type. The next section shows how to enable this so-called [linting](https://en.wikipedia.org/wiki/Lint_(software)) in Visual Studio Code.
 
-![Spyder PEP8](spyder_pep8.png)
+Visual Studio Code
+------------------
+TODO
 
 Additional learning resources
 -----------------------------
@@ -196,20 +195,20 @@ Here are a few Python resources for beginners that might be helpful in addition 
 - [Python Data Structures](https://www.coursera.org/learn/python-data)
 - [An Introduction to Interactive Programming in Python (Part 1)](https://www.coursera.org/learn/interactive-python-1)
 - [An Introduction to Interactive Programming in Python (Part 2)](https://www.coursera.org/learn/interactive-python-2)
-- [Learn Python](http://www.learnpython.org/)
 - [Real Python](https://realpython.com/)
 
 ### Books
-- [Think Python](http://greenteapress.com/wp/think-python/)
+- [Python Basics](https://realpython.com/products/python-basics-book/)
+- [Think Python](https://greenteapress.com/wp/think-python-2e/)
 - [A Byte of Python](http://python.swaroopch.com/)
 - [Python for You and Me](http://pymbook.readthedocs.io/en/latest/)
 - [Python Crash Course](https://nostarch.com/pythoncrashcourse2e)
 
 Exercises
 ---------
-1. Create a list of all installed packages in your Anaconda distribution.
-2. Update all installed Anaconda packages. Find out if `seaborn` and `plotly` are installed, and if not, install the packages.
-3. Install the `mne` package.
+1. Create a list of installed packages in your Python environment.
+2. Update all installed packages. Find out if `ipython` and `numpy` are installed, and if not, install these packages.
+3. Install the `mne` package. Afterwards, uninstall it again.
 4. Create a short Python script called `test.py` with the following contents:
    - The first line should be a comment with your name.
    - The second line should be empty.
@@ -217,7 +216,7 @@ Exercises
    - The last line should be empty.
 
    Make sure that the script does not contain any PEP8 warnings.
-5. Display the help text for the `print` function in the Python interpreter (list all three options possible in IPython).
+5. Display the help text for the `print` function in the interactive Python interpreter.
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

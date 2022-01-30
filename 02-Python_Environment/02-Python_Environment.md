@@ -1,4 +1,4 @@
-2 - Python Environment
+2 – Python environment
 ======================
 Components
 ----------

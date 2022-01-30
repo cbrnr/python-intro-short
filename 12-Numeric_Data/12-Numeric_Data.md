@@ -1,5 +1,5 @@
-Numeric data
-============
+12 – Numeric data
+=================
 Introduction
 ------------
 The [NumPy](https://numpy.org/) package is the basis for numeric computing in Python. Almost all packages involving numeric data of some sort are based on NumPy.

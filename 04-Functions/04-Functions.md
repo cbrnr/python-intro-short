@@ -1,5 +1,5 @@
-Functions
-=========
+4 – Functions
+=============
 Functions encapsulate code, or in other words, functions group lines of code that belong together. They promote reusability and prevent code duplication. For example, if you need to perform repeated calculations consisting of several lines of code, this code might be outsourced into its own function. We will see examples of Python functions soon, but first we will discuss how to call and define functions.
 
 Calling functions

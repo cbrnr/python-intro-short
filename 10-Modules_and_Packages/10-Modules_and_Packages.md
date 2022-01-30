@@ -1,5 +1,5 @@
-Modules and Packages
-====================
+10 – Modules and packages
+=========================
 Introduction
 ------------
 The core Python programming language can be extended with so-called modules and packages. The standard library, which ships with every Python installation, is a collection of numerous modules for various purposes.

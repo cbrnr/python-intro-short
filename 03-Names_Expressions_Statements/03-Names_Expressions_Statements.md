@@ -1,5 +1,5 @@
-Names, expressions, statements
-==============================
+3 – Names, expressions, statements
+==================================
 Objects, values, and types
 --------------------------
 Everything in Python is an object. An object is an entity which has a value and a type. For example, the number `1` we used in our arithmetic calculations is an object. It has the value `1` and the type `int` (which means integer number). Here are a few additional examples that can be entered in the interactive interpreter:

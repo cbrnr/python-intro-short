@@ -1,7 +1,5 @@
-Strings
-=======
-Introduction
-------------
+7 – Strings
+===========
 We will now start touring some of the most widely used data types in Python. In this chapter, we will discuss the string (`str`) data type. The following lessons will showcase lists (`list`) and dictionaries (`dict`).
 
 Briefly, the built-in data types can be categorized as follows (the examples in parentheses are not exhaustive):

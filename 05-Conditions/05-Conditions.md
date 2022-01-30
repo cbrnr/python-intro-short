@@ -1,5 +1,5 @@
-Conditions
-==========
+5 – Conditions
+==============
 As our programs grow more complex, we frequently want to execute a block of code only if a specific condition is met. For example, we might want to output a message only if a certain variable is less than some value. This is where conditions come in handy &ndash; they allow us to run code only if a condition is fulfilled. Conditions are another important building block of almost any real-world program. Just like functions, conditions allow as to control the flow of execution (which is otherwise linear from top to bottom).
 
 Comparisons

@@ -1,5 +1,5 @@
-Dictionaries
-============
+9 – Dictionaries
+================
 The last built-in data type we are going to cover is the dictionary (`dict`). Just like its name implies, a dictionary is a mapping data type, which maps keys to values. It works a little like a real-word English-German dictionary. Let's assume we wanted to look up the German translation of "cat". We'd flip through the pages until we found the entry for "cat". This entry would contain the German translation "Katze". In this example, "cat" is the key and "Katze" is its value. Therefore, a dictionary is a mapping from keys to values. A dictionary can contain many key-value pairs.
 
 Creating dictionaries

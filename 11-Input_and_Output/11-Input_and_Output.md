@@ -1,5 +1,5 @@
-Input and Output
-================
+11 – Input and output
+=====================
 We will now delve into simple input and output (I/O) operations, which includes activities such as getting input from the keyboard, reading text files, string formatting, and writing data to text files.
 
 We will start with string formatting.

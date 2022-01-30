@@ -1,5 +1,5 @@
-Loops
-=====
+6 – Loops
+=========
 It is often necessary to repeat statements a certain number of times. For example, let's assume that we wanted to print "Hello!" five times. Rather naively, we could write this simply as:
 
 ```python

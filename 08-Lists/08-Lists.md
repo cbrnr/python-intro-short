@@ -1,5 +1,5 @@
-Lists and tuples
-================
+8 – Lists and tuples
+====================
 Creating lists
 --------------
 A list is a container sequence which, unlike strings, can contain elements of arbitrary types (even lists). We use square brackets to construct a new list (with commas separating the list elements):

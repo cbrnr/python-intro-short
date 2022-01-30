@@ -23,7 +23,7 @@ for i in range(5):
 
 This is obviously much shorter than writing out each repetition manually (even more so if the loop involves more iterations). Furthermore, if we want to make changes, we only need to do it once inside the body of the loop.
 
-Let's analyze the structure of a for-loop in Python. The first part should look familiar: just like functions and conditions, for-loops start with a header. This time, the header is introduced by the `for` keyword. Next, the loop header defines a name (`i` in our case), which gets all values of a sequence-like object, which is specified last (`range(5)` in the example). In each iteration of the loop, the name `i` gets a value of the sequence we are iterating over. We will see how `range(5)` works in a moment. A colon concludes the loop header.
+Let's analyze the structure of a for-loop in Python. The first part should look familiar: just like functions and conditions, for-loops start with a header. This time, the header is introduced by the `for` keyword. Next, the loop header defines a name (`i` in our case), which gets values of a sequence-like object, which is specified last (`range(5)` in the example). In each iteration of the loop, the name `i` gets one value of the sequence we are iterating over. A colon concludes the loop header.
 
 The indented part after the header forms the body of the loop. This code block is what is actually repeated (in our example, `print("Hello")` is repeatedly called five times).
 
@@ -54,14 +54,16 @@ As a sidenote, `range` can also be called with two arguments, which are then int
 
 Note that we have to use `list` in order to see all the elements that `range` creates at once (more on lists soon).
 
-A loop can iterate not only over `range`, but over any sequence-like object (or rather, over any collection, which is a data type that can contain more than one elements). We will learn more about three widely-used container types (strings, lists, and dictionaries) in the next chapters. Here's a short preview of what a loop can do. First, we can iterate over a string:
+A loop can iterate not only over `range`, but over any *sequence-like* object (a data type that can contain more than one elements). We will learn more about three widely-used container types (strings, lists, and dictionaries) in the next chapters.
+
+Here's a short preview of what a loop can do. First, we can iterate over a string:
 
 ```python
 for s in "Hello World!":
     print(s)
 ```
 
-Here, `s` sequentially gets all characters of the string `"Hello World!"` as the loop iterates. That is, in the first iteration `s` contains the character `"H"`, in the second `"e"`, and so on. The `print` function is called in each iteration with the single characters as arguments, so the output looks like this (the `print` function automatically inserts a newline at the end, though this can be changed with its `end` parameter):
+Here, `s` sequentially gets all characters of the string `"Hello World!"` as the loop iterates. That is, in the first iteration `s` contains the character `"H"`, in the second `"e"`, and so on. The `print` function is called in each iteration with the single characters `s` as arguments, so the output looks like this (the `print` function automatically inserts a newline at the end, though this can be changed with its `end` parameter):
 
 ```
 H
@@ -97,9 +99,9 @@ Python!
 ```
 
 ### Breaking and continuing loops
-Python lets as preemptively break out of a loop or jump to the next iteration from anywhere in the loop body using the `break` and `continue` keywords, respectively.
+Python lets us preemptively break out of a loop or jump to the next iteration from anywhere in the loop body using the `break` and `continue` keywords, respectively.
 
-Sometimes, we want to stop a loop early, like in the following example that demonstrates how to search for a character within a string:
+Sometimes, we want to stop a loop early, like in the following example that demonstrates how to search for a character within a given string:
 
 ```python
 i = 0
@@ -112,9 +114,9 @@ for c in "Seek and destroy":
 print(i)
 ```
 
-This example searches for the first occurrence of the character `"k"` within the string `"Seek and destroy"`. If it finds it, the name `i` contains the position (index) of this character within the string (`3` in this example, because Python starts to count at zero). Notice that once we have found the character (`c == "k"`), we immediately break out of the loop (which means Python immediately jumps to the end of the loop, which is the `print(i)` function call). As we will see soon, `break` is especially useful in while-loops.
+This example searches for the first occurrence of the character `"k"` within the string `"Seek and destroy"`. If it finds it, the name `i` contains the position (index) of this character within the string (`3` in this example, because we initialize `i` with zero). Notice that once we have found the character (`c == "k"`), we immediately break out of the loop (which means Python immediately jumps to the end of the loop, which is the `print(i)` function call). As we will see soon, `break` is especially useful in while-loops.
 
-The next (somewhat silly) example demonstrates the use of the `continue` statement, which causes Python to immediately jump back to the loop header and begin the next iteration.
+The next example demonstrates the use of the `continue` statement, which causes Python to immediately jump back to the loop header and begin the next iteration.
 
 ```python
 for num in range(2, 10):
@@ -136,9 +138,11 @@ Found an even number 8
 Found an odd number 9
 ```
 
+Of course we could have used an `else` branch here, but the goal was to show an example for the `continue` statement.
+
 while-loops
 -----------
-In addition to for-loops, Python also supports while-loops. In general, both loop types can be used interchangeably, but while-loops are especially useful when we want a loop that never stops (an infinite loop), or in cases where we don't know in advance how many iteration we are going to perform.
+In addition to for-loops, Python also supports while-loops. In general, both loop types can be used interchangeably, but while-loops are especially useful when we want a loop that never stops (an infinite loop), or in cases where we don't know in advance how many iterations we are going to perform.
 
 Here's our first for-loop example transformed to a while-loop:
 

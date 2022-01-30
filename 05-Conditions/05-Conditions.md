@@ -1,10 +1,10 @@
 5 – Conditions
 ==============
-As our programs grow more complex, we frequently want to execute a block of code only if a specific condition is met. For example, we might want to output a message only if a certain variable is less than some value. This is where conditions come in handy &ndash; they allow us to run code only if a condition is fulfilled. Conditions are another important building block of almost any real-world program. Just like functions, conditions allow as to control the flow of execution (which is otherwise linear from top to bottom).
+As our programs grow more complex, we frequently want to execute a block of code only if a specific condition is met. For example, we might want to output a message only if a certain name is less than some value. This is where conditions come in handy &ndash; they allow us to run code only if a condition is fulfilled. Conditions are another important building block of almost any real-world program. Just like functions, conditions allow us to control the flow of execution.
 
 Comparisons
 -----------
-A condition is based on a comparison. A comparison is an expression, which means that it has a value. Because a condition can be either true or false, Python has a special data type `bool` exactly for this purpose. A `bool` can either be `True` or `False` (notice the capitalization):
+A condition is based on a comparison. A comparison is an expression, which means that it has a value. Because a condition can only be either true or false, Python has a special data type `bool` exactly for this purpose. A `bool` can either be `True` or `False` (notice the capitalization):
 
 ```python
 >>> x = True
@@ -16,7 +16,7 @@ bool
 ```
 
 ### Comparison operators
-Python features the following binary comparison operators:
+Python has the following binary comparison operators:
 
 - Equality `==`
 - Inequality `!=`
@@ -78,22 +78,22 @@ False
 True
 ```
 
-Finally, Python has an `is` and `in` operators that also produce boolean results. The `is` operator checks if two objects are identical (as opposed to `==`, which only checks if two values are identical). This distinction is important, but we won't need it very often especially when we are just beginning to learn Python.
+Finally, Python has `is` and `in` operators that also produce boolean results. The `is` operator checks if two objects are identical (as opposed to `==`, which only checks if two values are identical). This distinction is important, but we won't need it very often especially when we are just beginning to learn Python.
 
 The `in` operator checks whether some value is contained in some sequence. We will come back to this operator when we introduce Python lists (the `list` type).
 
 ### Comparing floating point numbers
-Python distinguishes between integer numbers (`int`) and floating point numbers (`float`). These two types represent numbers enterily differently. Most noteably, `int` have exact internal representations, whereas `float` numbers can only be stored with limited precision in general. This can lead to subtle issues especially when we are comparing two floating point numbers for equality:
+Python distinguishes between integer numbers (`int`) and floating point numbers (`float`). These two types represent numbers differently. Most noteably, `int` numbers have *exact* internal representations, whereas `float` numbers can only be stored with *limited precision*. This can lead to subtle issues especially when comparing two floating point numbers for equality:
 
 ```python
 >>> 0.1 + 0.1 + 0.1 == 0.3
 False
 ```
 
-A common solution is not to test for exact equality, but to allow a certain amount of wiggle space for two numbers to still compare equal:
+A common solution is not to test for exact equality, but to allow a certain amount of "wiggle space" for two numbers to still compare equal:
 
 ```python
->>> (0.1 + 0.1 + 0.1) - 0.3 < 1e-15
+>>> (0.1 + 0.1 + 0.1) - 0.3 < 1e-15  # 1e-15 means 1 * 10**(-15)
 True
 ```
 
@@ -105,21 +105,21 @@ The `math` module has a function called `isclose`, which can be used exactly for
 True
 ```
 
-Here's another example where we are bitten by rounding errors of floating point arithmetic. Let's divide 4 by 0.4, which is 10 as we can readily verify ourselves.
+Here's another example where we are bitten by rounding errors of floating point arithmetic. Let's divide 4 by 0.4, which is of course 10:
 
 ```python
 >>> 4 / 0.4
 10.0
 ```
 
-When we now compute the integer division result, we would expect the result to be 10, but strangely this is not the case in Python:
+When we now compute the integer division result, we would expect the result to be also 10, but strangely this is not the case in Python:
 
 ```python
 >>> 4 // 0.4
 9.0
 ```
 
-The reason is that due to limited precision, rounding errors can be introduced.
+The reason is that due to limited precision, rounding errors can be introduced, and sometimes they produce an entirely unexpected result.
 
 Conditions
 ----------
@@ -143,7 +143,9 @@ else:  # optional
     <do something>
 ```
 
-Clearly, the indented lines of code belonging to a specific condition are only executed if the condition is `True`. We can test for several condition sequentially by using `elif` statements after the initial `if` statement. If no condition is `True`, the code in the `else` block is run. Importantly, Python only executes the first block of code where the condition returns `True`; once this happens, all other `elif` and `else` blocks are completely ignored.
+Clearly, the indented lines of code belonging to a specific condition are only executed if the condition is `True`. We can test several conditions sequentially by using `elif` statements after the initial `if` statement. If no condition is `True`, the code in the `else` block is run.
+
+Importantly, Python only executes the first block of code where the condition returns `True`; once this happens, all other `elif` and `else` blocks are completely ignored.
 
 ### Example 1
 Let's work through some examples. Here's a simple condition consisting of only one `if` statement:
@@ -211,7 +213,7 @@ a is a negative number
 ```
 
 ### Example 4
-Due to the fact that Python only runs the code associated with the first condition yielding `True`, the order of the conditions is important. Consider the following two examples containing identical conditions, but in a different order:
+Due to the fact that Python only runs the code associated with the *first* condition yielding `True`, the order of conditions is important. Consider the following two examples containing identical conditions, but in a different order:
 
 ```python
 a = 4
@@ -275,11 +277,11 @@ Exercises
 1. Write the following program:
    - First, ask the user to type in two numbers `x` and `y`. You can use the `input` function to get user input. Note that `input` always returns a `str`, but you can use the `int` function to convert a number contained in a `str` to `int`!
    - Once you have both numbers `x` and `y`, check if their sum is greater than 50.
-   - If the sum is greater than 50, print "Greater than 50!"
-   - If the sum is less than 50, print "Less than 50!"
-   - If the sum is exactly 50, print "50!"
+   - If the sum is greater than 50, print "Greater than 50!".
+   - If the sum is less than 50, print "Less than 50!".
+   - If the sum is exactly 50, print "50!".
 
-2. Write a function `is_odd`, which has one parameter `x` and returns `True` if `x` is odd. If `x` is even, the function returns `False`. Note that you can check if a number is odd if dividing this number by 2 has a remainder of 1 (for even numbers, the remainder is 0). Use the modulo operator `%` to compute the remainder!
+2. Write a function `is_odd`, which has one parameter `x` and returns `True` if `x` is odd. If `x` is even, the function returns `False`. Note that you can check if a number is odd if dividing this number by 2 has a remainder of 1 (for even numbers, the remainder is 0). Use the `%` operator to compute the remainder!
 
 3. Convert the following nested conditions into one block with `if`/`elif`/`else` branches:
    ```python

@@ -98,7 +98,7 @@ Interactive mode is useful for running single lines of code, because Python imme
 5
 ```
 
-The result `5` is displayed automatically right after the command. In general, if you start Python by typing `python` (or `ipython` if you have installed the `ipython` package) on the command line, Python will start in interactive mode.
+The result `5` is displayed automatically right after the command. In general, if you start Python by typing `python` (or `ipython` if you have installed the `ipython` package) on the command line, Python will start in interactive mode. In case you were wondering, you can exit the interactive interpreter by typing `exit()` (or Ctrl+D on macOS or Linux).
 
 ### Script mode
 In contrast to interactive mode, Python can run many lines of code in one go using script mode. A Python script is a plain text file (ending in `.py`) containing Python code. In general, one line contains exactly one code statement. Compared to interactive mode, Python does *not* display results automatically. For example, let's assume that a Python script named `test.py` contains the following line:
@@ -178,7 +178,11 @@ Arguably, the first one is much easier to read. The [Python Enhancement Proposal
 
 Visual Studio Code
 ------------------
-TODO
+After installing [Visual Studio Code](https://code.visualstudio.com/), there are a few things you need to tweak for a great Python editing experience.
+
+First, go to the *Extensions* section in the left sidebar, search for "Python", and install the official Python extension.
+
+Second, I recommend that you enable PEP8 style checking. Open the Command Palette (Ctrl&nbsp;+&nbsp;Shift&nbsp;+&nbsp;P on Windows and Linux, ⌘&nbsp;+&nbsp;Shift&nbsp;+&nbsp;P on macOS) and type "linter". Click on the entry "Python: Select Linter" and choose "flake8". If Visual Studio Code asks if you want to install the flake8 tool, click on "Install" (alternatively, you can always `pip install flake8` at any time). If everything worked, Visual Studio Code will now highlight code that does not comply with PEP8, and you should try to fix all of these warnings.
 
 Additional learning resources
 -----------------------------

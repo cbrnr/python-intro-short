@@ -2,7 +2,7 @@
 ====================
 Creating lists
 --------------
-A list is a container sequence which, unlike strings, can contain elements of arbitrary types (even lists). We use square brackets to construct a new list (with commas separating the list elements):
+A list is a container sequence which, unlike strings, can contain elements of *arbitrary* types (even lists). We use square brackets to construct a new list (with commas separating the list elements):
 
 ```python
 >>> x = [23, "Hello!", "test", 1.44, True]
@@ -11,7 +11,7 @@ A list is a container sequence which, unlike strings, can contain elements of ar
 
 Indexing and slicing
 --------------------
-Indexing and slicing works exactly like with strings. We use the indexing operator (square brackets) to extract single or multiple elements from a list:
+Indexing and slicing works exactly like in strings. We use the indexing operator (square brackets) to extract single or multiple elements from a list:
 
 ```python
 >>> x[0]
@@ -50,12 +50,12 @@ In constrast to strings, lists are mutable. That is, elements in a list can be m
 ```python
 >>> x
 [23, 'Hello!', 'test', 1.44, True]
->>> x[1] = 12345
+>>> x[1] = 12345  # no problem here
 >>> x
 [23, 12345, 'test', 1.44, True]
 ```
 
-Remember that you can assign more than one name to any Python object. For example, you could create a second name `y` for the list that is currently named `x`:
+Remember that you can assign more than one name to a Python object. For example, you could create a second name `y` for the list that is currently named `x`:
 
 ```python
 >>> y = x
@@ -63,7 +63,7 @@ Remember that you can assign more than one name to any Python object. For exampl
 
 If you modify the list, changes are visible through both names `x` and `y`, because the underlying list object is one and the same:
 
-```
+```python
 >>> x[1] = "Good bye!"
 >>> x
 [23, 'Good bye!', 'test', 1.44, True]
@@ -71,7 +71,7 @@ If you modify the list, changes are visible through both names `x` and `y`, beca
 [23, 'Good bye!', 'test', 1.44, True]
 ```
 
-The following example illustrates five possibilities to create a copy of the list `x`:
+The following example illustrates five possibilities to create a copy of the list `x` (or in other words, a new list):
 
 ```python
 >>> import copy
@@ -83,7 +83,7 @@ The following example illustrates five possibilities to create a copy of the lis
 >>> x5 = copy.deepcopy(x)
 ```
 
-Note that if the list contains mutable objects itself, only `copy.deepcopy` will make copies from all objects (but this is also the slowest method).
+Note that if the list contains mutable objects (such as lists) itself, only `copy.deepcopy` will make copies from all objects (but this is also the slowest method).
 
 ### Concatenation
 Adding lists with the `+` operator concatenates their elements and creates a new list:
@@ -127,7 +127,7 @@ Note that `x.append(["A", "B", "C"])` also works but produces a different result
 [23, 12345, 'test', 1.44, True, 13, 'A', 'B', 'C', ['A', 'B', 'C']]
 ```
 
-The `del` command or the `pop` method both remove elements from a list. For example, this removes the two elements `x[1:3]`:
+The `del` command or the `pop` method both remove elements from a list. For example, this removes the two elements given by `x[1:3]`:
 
 ```python
 >>> del x[1:3]
@@ -196,7 +196,7 @@ Iteration with a for-loop also works as expected:
 
 Tuples
 ------
-On a superficial level, tuples are immutable lists. We will not go into more detail why tuples are useful (there are many important applications), but suffice it to say that we should use tuples instead of lists whenever we do not want to change its elements. For example, instead of storing the latitude and longitude of a given location in a list, a tuple might be more reasonable (because the coordinates of a given location will not change).
+On a superficial level, tuples are immutable lists. We will not go into more detail why tuples are useful, but suffice it to say that we should prefer a tuple instead of a list whenever we do not want to change its elements. For example, instead of storing the latitude and longitude of a given location in a list, a tuple might be more reasonable (because the coordinates of a given location will not change).
 
 The syntax for creating a tuple is similar to creating a list, except that it doesn't use square brackets. Strictly speaking, listing elements separated by commas defines a tuple, but sometimes parentheses are required and/or improve readability.
 
@@ -236,7 +236,7 @@ The resulting list looks as expected:
 [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 ```
 
-An alternative list generation mechanism uses a list comprehension to build the same list. It is generally much more compact and looks as follows:
+An alternative list generation mechanism uses a list comprehension to build the same list. It is generally more compact and looks as follows:
 
 ```python
 >>> squares = [n**2 for n in range(1, 11)]
@@ -244,7 +244,7 @@ An alternative list generation mechanism uses a list comprehension to build the 
 [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 ```
 
-In general, a list comprehension is surrounded by square brackets (to denote that a list will be constructed). Inside the brackets, the first expression defines the individual elements that go into the list (`n**2` in our example). After that, something very similar to a for-loop iterates over some sequence (some iterable) to generate the individual elements (in our case, `n` takes on values from `range(1, 11)`).
+In general, a list comprehension is surrounded by square brackets (to denote that a list will be constructed). Inside the brackets, the first expression defines the individual elements that go into the new list (`n**2` in our example). After that, something very similar to a for-loop iterates over some sequence (some iterable) to generate the individual elements (in our case, `n` takes on values from `range(1, 11)`).
 
 Here's another example of a list comprehension, which multiplies each element in a (numeric) list by 2:
 
@@ -255,7 +255,7 @@ Here's another example of a list comprehension, which multiplies each element in
 [-8, -4, 0, 4, 8]
 ```
 
-Every time we want to apply some operation to each individual element in a list, a list comprehension might be the way to go. Another example is taking the absolute value of each element in our list:
+Every time we want to apply some operation to each individual element in a list, a list comprehension might be the way to go. Another example is taking the absolute value of each element in a list:
 
 ```python
 >>> numbers_abs = [abs(x) for x in numbers]
@@ -263,14 +263,14 @@ Every time we want to apply some operation to each individual element in a list,
 [4, 2, 0, 2, 4]
 ```
 
-Remember that all of these list comprehensions can be written with a regular loop and the `append` method. We can also include a condition in the list comprehension, which will include an element in the new list only if the condition is `True`. This is useful for filtering values like in the following example, where we filter out all values greater than or equal to zero:
+Remember that all of these list comprehensions can be written with a regular loop and the `append` method. We can also include a condition in the list comprehension, which will include an element in the new list only if the condition is `True`. This is useful for filtering values as shown in the following example, where we filter out all values greater than or equal to zero:
 
 ```python
 >>> [x for x in numbers if x >= 0]
 [0, 2, 4]
 ```
 
-List comprehension can even be nested:
+List comprehensions can even be nested:
 
 ```python
 >>> lst = [(x - 1, y - 2) for x in [1, 2, 3] for y in [3, 1, 4] if x != y]
@@ -301,9 +301,9 @@ Let's finish up this topic with a slightly less complex list comprehension just 
 
 Exercises
 ---------
-1. Write a function `histogram`, which accepts a list of numbers as its input argument. The function should convert the argument to a simple (vertical) histogram as follows. Each element of the list defines a row in the histogram, the length of which is defined by the actual value in the list. By default, the histogram should consist of `*` characters (but it should be possible to change this character with a second input parameter).
+1. Write a function `histogram`, which accepts a list of numbers as its input argument. The function should convert the argument to a simple (vertical) histogram as follows: Each element of the list defines a row in the histogram, the length of which is defined by the value in the list. By default, the histogram should consist of `*` characters (but it should be possible to change this character with a second argument).
 
-   Here are two examples that demonstrates the behavior of the function:
+   Here are two examples that demonstrate the behavior of the function:
 
    ```python
    >>> histogram([1, 8, 5, 17, 14, 9, 2])
@@ -326,7 +326,7 @@ Exercises
 
 2. Define a function `sum_of_squares` which takes a list of numbers and returns the sum of all squared elements (one number). Note that the built-in function `sum` computes the sum of a list of numbers.
 
-3. Create a list `numbers` consisting of the 25 integers from 1 to 25. Based on this list, generate the following five new list:
+3. Create a list `numbers` consisting of the 25 integers from 1 to 25. Based on this list, generate the following five new lists:
    - `squares` containing the squared numbers
    - `evens` containing the even numbers
    - `odds` containing the odd numbers
@@ -334,6 +334,12 @@ Exercises
    - `logs` containing the natural logarithms of the numbers
 
    For the last two lists, use the functions `sqrt` and `log` from the `math` module (first, `import math` and then use the functions as `math.sqrt` and `math.log`, respectively).
+
+4. Find out what is wrong with the following code:
+   ```python
+   >>> x = [1, 2, 3, 4]
+   >>> x = x.append(5)
+   ```
 
 ---
 ![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.

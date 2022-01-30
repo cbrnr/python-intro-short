@@ -226,7 +226,7 @@ Note that although the `print` statement generates output, this output is not it
 Exercises
 ---------
 
-1. Find out if the following names are valid, and if they are, determine if they adhere to PEP8 conventions. Decide whether each name is a good name for an object containing a string or an integer number.
+1. Find out if the following names are valid, and if they are, determine if they comply with PEP8 conventions. Decide whether each name is a good name for an object containing a string or an integer number.
    - `2x`
    - `_`
    - `x23`

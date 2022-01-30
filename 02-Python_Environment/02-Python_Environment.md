@@ -219,7 +219,7 @@ Exercises
    - The third line should use the `print` function to print something on the screen.
    - The last line should be empty.
 
-   Make sure that the script does not contain any PEP8 warnings.
+   Make sure that the script does not contain any PEP8 warnings!
 5. Display the help text for the `print` function in the interactive Python interpreter.
 
 ---

@@ -71,8 +71,11 @@ lst = [k**2 for k in range(0, 100, 10)]
 
 Installation
 ------------
-The [official Python website](https://www.python.org/) is a great resource for everything related to Python. The [download](https://www.python.org/downloads/) section contains installers for many platforms, including Windows and macOS. If you are on Linux, I recommend that you use your package manager to install Python (in most cases, Python will already be installed).
+The [official Python website](https://www.python.org/) is a great resource for everything related to Python. The [download](https://www.python.org/downloads/) section contains installers for many platforms, including Windows and macOS. If you are on Linux, I recommend that you use your package manager to install Python (in most cases, Python will already be installed anyway).
 
+> On Windows, make sure to check the option "Add Python 3.10 to PATH" – by default this is disabled. I strongly recommend to use the suggested values for all other settings (but if you do not have administrator privileges you can uncheck the first option "Install launcher for all users (recommended)").
+>
+> ![Install on Windows](install_windows.png)
 
 First steps
 -----------

@@ -25,7 +25,7 @@ After installing [Visual Studio Code](https://code.visualstudio.com/), there are
 
 First, go to the *Extensions* section in the left sidebar, search for "Python", and install the official Python extension.
 
-Second, I recommend that you enable PEP8 style checking. Open the Command Palette (Ctrl&nbsp;+&nbsp;Shift&nbsp;+&nbsp;P on Windows and Linux, ⌘&nbsp;+&nbsp;Shift&nbsp;+&nbsp;P on macOS) and type "linter". Click on the entry "Python: Select Linter" and choose "flake8". If Visual Studio Code asks if you want to install the flake8 tool, click on "Install" (alternatively, you can always `pip install flake8` at any time). If everything worked, Visual Studio Code will now highlight code that does not comply with PEP8, and you should try to fix all of these warnings.
+Second, I recommend that you enable [PEP8](https://www.python.org/dev/peps/pep-0008/) style checking (more on that later). Open the Command Palette (Ctrl&nbsp;+&nbsp;Shift&nbsp;+&nbsp;P on Windows and Linux, ⌘&nbsp;+&nbsp;Shift&nbsp;+&nbsp;P on macOS) and type "linter". Click on the entry "Python: Select Linter" and choose "flake8". If Visual Studio Code asks if you want to install the flake8 tool, click on "Install" (alternatively, you can always `pip install flake8` at any time).
 
 Getting help
 ------------
@@ -182,7 +182,7 @@ On the other hand, there are also stylistic issues that Python doesn't care abou
 >>> x=1+    2+  3*  (   16-7    )
 ```
 
-Arguably, the first one is much easier to read. The [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) summarizes coding conventions that describe how Python code should look like to enhance readability. It is worth going through the document (at least superficially), but most editors perform PEP8 checks automatically as you type. The next section shows how to enable this so-called [linting](https://en.wikipedia.org/wiki/Lint_(software)) in Visual Studio Code.
+Arguably, the first one is much easier to read. The [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) summarizes coding conventions that describe how Python code should look like to enhance readability. It is worth going through the document (at least superficially), but most editors perform PEP8 checks automatically as you type. If you have set up Visual Studio Code as described previously, code that does not comply to PEP8 should be highlighted (and you can manually fix it).
 
 Additional learning resources
 -----------------------------

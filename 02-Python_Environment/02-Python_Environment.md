@@ -19,6 +19,14 @@ As for any programming language, a good text editor or integrated development en
 
 We will use Visual Studio Code in this workshop, but feel free to try out alternative editors and choose the one that best suits your needs.
 
+Visual Studio Code
+------------------
+After installing [Visual Studio Code](https://code.visualstudio.com/), there are a few things you need to tweak for a great Python editing experience.
+
+First, go to the *Extensions* section in the left sidebar, search for "Python", and install the official Python extension.
+
+Second, I recommend that you enable PEP8 style checking. Open the Command Palette (Ctrl&nbsp;+&nbsp;Shift&nbsp;+&nbsp;P on Windows and Linux, ⌘&nbsp;+&nbsp;Shift&nbsp;+&nbsp;P on macOS) and type "linter". Click on the entry "Python: Select Linter" and choose "flake8". If Visual Studio Code asks if you want to install the flake8 tool, click on "Install" (alternatively, you can always `pip install flake8` at any time). If everything worked, Visual Studio Code will now highlight code that does not comply with PEP8, and you should try to fix all of these warnings.
+
 Getting help
 ------------
 One of the most important activities when programming is reading documentation. Besides running a search query in your favorite web search engine, the Python interpreter can display short help texts for many Python commands. For example, to view the documentation for the `print` function, you can type `help(print)` in the Python interpreter. The popular enhanced interactive Python interpreter called [IPython](https://ipython.org) supports the much shorter syntax `?print` or `print?`. We will learn how to install it in the next section.
@@ -175,14 +183,6 @@ On the other hand, there are also stylistic issues that Python doesn't care abou
 ```
 
 Arguably, the first one is much easier to read. The [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) summarizes coding conventions that describe how Python code should look like to enhance readability. It is worth going through the document (at least superficially), but most editors perform PEP8 checks automatically as you type. The next section shows how to enable this so-called [linting](https://en.wikipedia.org/wiki/Lint_(software)) in Visual Studio Code.
-
-Visual Studio Code
-------------------
-After installing [Visual Studio Code](https://code.visualstudio.com/), there are a few things you need to tweak for a great Python editing experience.
-
-First, go to the *Extensions* section in the left sidebar, search for "Python", and install the official Python extension.
-
-Second, I recommend that you enable PEP8 style checking. Open the Command Palette (Ctrl&nbsp;+&nbsp;Shift&nbsp;+&nbsp;P on Windows and Linux, ⌘&nbsp;+&nbsp;Shift&nbsp;+&nbsp;P on macOS) and type "linter". Click on the entry "Python: Select Linter" and choose "flake8". If Visual Studio Code asks if you want to install the flake8 tool, click on "Install" (alternatively, you can always `pip install flake8` at any time). If everything worked, Visual Studio Code will now highlight code that does not comply with PEP8, and you should try to fix all of these warnings.
 
 Additional learning resources
 -----------------------------

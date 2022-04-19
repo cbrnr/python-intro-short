@@ -54,6 +54,17 @@ Conceptually, we can think of an object as an entity of a specific type with a s
 
 ![Python object](python_object.png)
 
+Each object has a unique ID. We can use the `id` function to find out:
+
+```python
+>>> id(3)
+4554277168
+>>> id(4)
+4554277200
+```
+
+The actual numbers are irrelevant (and probably different on your computer). The only thing that's interesting about IDs is whether or not they are identical. In the previous example, the object `3` has a different ID than the object `4`, so we know that these are two different object.
+
 Names
 -----
 Objects can have names (in other programming languages names are often called variables). We can assign a name to an object with the assignment operator `=` as follows:
@@ -81,6 +92,22 @@ An object can also have more than one name attached to it:
 ```
 
 ![Python names 3](python_names_3.png)
+
+We can confirm that `a` and `b` point to the same object by inspecting the corresponding IDs:
+
+```python
+>>> id(a)
+4555368400
+>>> id(b)
+4555368400
+```
+
+Indeed, they are identical, so there is just one object with two names. If we want to check if two names are attached to one and the same object, we can use the `is` keyword as a shortcut:
+
+```python
+>>> a is b
+True
+```
 
 The type of a name corresponds to the type of the object the name is attached to:
 

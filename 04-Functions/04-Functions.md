@@ -6,7 +6,7 @@ Calling functions
 -----------------
 We have already mentioned that we *call* an existing function with its name followed by a pair of parentheses. Inside the parentheses, a function can accept arguments, which are specific values we provide when we call the function.
 
-For example, we already know two built-in functions: `print` and `type`. Here's how we call these functions:
+For example, we already saw the built-in functions `print` and `type`. Here's how we call these functions:
 
 ```python
 >>> print("Hello")
@@ -37,7 +37,7 @@ def function_name(<arg1>, <arg2>, ...):
     <optionally return something>
 ```
 
-A function definition starts with a function header introduced with the keyword `def`. Then we specify the function name (keeping in mind the naming rules we've already discussed) followed by a pair of parentheses. If our function requires additional information to do its job, we specify its parameters inside the parentheses (separated by commas). Each parameter gets its own name, and the function replaces all parameters with specific values that are provided when the function is called (these specific values are called *arguments*). Finally, the function header needs to be concluded with a `:`.
+Let's break this down. A function definition starts with a function header introduced with the keyword `def`. Then we specify the function name (keeping in mind the naming rules we've already discussed) followed by a pair of parentheses. If our function requires additional information to do its job, we specify its parameters inside the parentheses (separated by commas). Each parameter gets its own name, and the function replaces all parameters with specific values that are provided when the function is called (these specific values are called *arguments*). Finally, the function header needs to be concluded with a `:`.
 
 Next, we indent all lines that belong to the function body. That way, Python knows which lines to execute when we call the function. A function body can consist of one or several lines of code. If the function has parameters, their specific values are available within the function body (that is, parameter names get replaced with specific argument values). Optionally, a function can return a value (for example the result of a computation). This return value can be evaluated and used just like any expression.
 
@@ -77,7 +77,7 @@ This function contains a `return` statement, which in this case means that the f
 'Hello world!'
 ```
 
-Since we are using Python in interactive mode, the returned value is automatically printed on the screen. However, we can now work with the returned value, for example by giving it a name:
+Since we are using Python in interactive mode, the returned value is automatically printed on the screen. However, we can now continue to work with the returned value, for example by giving it a name:
 
 ```python
 >>> h = test2()
@@ -93,7 +93,7 @@ str
 ```
 
 ### Example 3
-Let's define an even more sophisticated function, this time we add two parameters `x` and `y`. The function should return the sum of these two parameters, which is why we will call our function `add`:
+Let's define an even more sophisticated function, this time we add two parameters `x` and `y`. The function should return the sum of these two parameters, which is why we call our function `add`:
 
 ```python
 >>> def add(x, y):
@@ -118,7 +118,7 @@ Traceback (most recent call last):
 TypeError: add() missing 1 required positional argument: 'y'
 ```
 
-Because this function returns a value, Python will evaluate a function call like `add(5, 5)` to its return value `10`. Using this knowledge, we can *compose* more complicated expressions as follows:
+Because this function returns a value, Python will reduce a function call like `add(5, 5)` to its return value `10`. Using this knowledge, we can *compose* more complicated expressions as follows:
 
 ```python
 >>> add(add(2, add(5, 7)), 9)
@@ -136,7 +136,7 @@ Working its way from inside out, Python replaces each function call with its ret
 23
 ```
 
-Of course, we can also assign a name to the returned value if we want to use it in a subsequent step:
+Of course, we can also assign a name to the returned value if we want to use it later on:
 
 ```python
 >>> a = add(add(2, add(5, 7)), 9)  # 23
@@ -180,7 +180,7 @@ def many_args(a, b, c=0, d=1, e=0, f=5, g=5, h=0, i=-1):
    pass
 ```
 
-Parameters `a` and `b` are mandatory, whereas the remaining seven parameters have default values (and are therefore optional). Let's assume we want to call the function with arguments `a=10` and `b=5`, and we want only one of the remaining seven parameters to differ from their default value &ndash; say, we only want `h=-5`. Using positional arguments, we need to include arguments for parameters that we do not want to change:
+Parameters `a` and `b` are mandatory, whereas the remaining seven parameters have default values (and are therefore optional). Let's assume we want to call the function with arguments `a=10` and `b=5`, and we want only one of the remaining seven parameters to differ from their default value &ndash; say, we only want `h=-5`. Using positional arguments, we need to include arguments for parameters that we do not want to change (because we need to get to the eigth parameter):
 
 ```python
 many_args(10, 5, 0, 1, 0, 5, 5, -5)
@@ -252,9 +252,9 @@ parrot(230, actor='John Cleese')
 
 Flow of execution
 -----------------
-It is instructive to inspect how Python runs code. In general, Python executes code line by line, starting at the top (the first line).
+It is instructive to inspect how Python runs code. In general, Python executes code line by line, starting at the very top (the first line).
 
-Whenever Python comes across a line containing a function header, Python is aware that this functions exists, but it doesn't run the function body &ndash; this only happens when a function is called (as opposed to defined). Therefore, Python skips the function body and resumes at the first line after the function body.
+Whenever Python comes across a line containing a function header, it takes note that this functions exists, but it doesn't run the function body &ndash; this only happens when a function is called (as opposed to defined). Therefore, Python skips the function body and resumes at the first line after the function body.
 
 Consider the following example:
 
@@ -277,7 +277,7 @@ Let's see how Python runs this script step by step:
 1. Python starts at the first line and assigns `a = 5`.
 2. In the next line, we call the function `print("Hello")`. This function is a built-in function, so we don't know which code gets executed when we call this function (it is defined somewhere else outside our script).
 3. Python registers our `test` function in the next line, taking note that this function requires two arguments `x` and `y` when called.
-4. Now all of the lines in the function body are skipped, and Python calls `print("World")`.
+4. Now all of the lines in the function body are skipped, and Python runs the first statement after the function, namely `print("World")`.
 5. Next, Python calls the `test` function with arguments `5` and `6`, so it jumps to the function header and assigns concrete values `x=5` and `y=6` to both parameters.
 6. Python will now run the code in the function body. First, it computes `x + 2` and re-assigns the name `x` to this result (so `x` is now `7`).
 7. Similarly, Python decreases the value of `y` by `3`, so `y` is now `3`.
@@ -292,7 +292,7 @@ Alternatively, you can use the debug facilities of Visual Studio Code to step th
 
 Scope
 -----
-In the previous example, the function `test` has two parameters `x` and `y` which are only accessible within the function. These names do not exists outside the function, so they are bound to the local scope of that function.
+In the previous example, the function `test` has two parameters `x` and `y`, which are only accessible *within* the function. These names do *not* exist outside the function, so they are bound to the local scope of that function.
 
 ### Example 1
 Some additional examples further illustrate the scoping rules of Python. Consider the following function definition and subsequent function call:
@@ -358,7 +358,7 @@ This time, the output is:
 ```
 
 ### Example 4
-Now this is where things can get tricky. Inside functions, we can access global names, but we are only allowed to read their values and not modify them unless we take special measures. If a function contains an assignment to a name, this name is automatically treated as a local name. The following example throws an error because the function is trying to change the local name before it is defined:
+Now this is where things can get tricky. Inside functions, we can access global names, but we are only allowed to read their values and not modify them unless we take special measures. If a function contains an assignment to a name, this name is automatically treated as a local name. The following example will throw an error because the function is trying to change the local name before it is defined:
 
 ```python
 s = 15
@@ -367,12 +367,9 @@ def test():
     print(s)  # local s does not exist yet, so we can't print it
     s = 12  # here we define our local s which shadows the global s
     print(s)
-
-test()
-print(s)
 ```
 
-The output is an error:
+Calling that function results in an error:
 ```python
 >>> test()
 Traceback (most recent call last):
@@ -381,7 +378,7 @@ Traceback (most recent call last):
 UnboundLocalError: local variable 's' referenced before assignment
 ```
 
-If we really meant to access the global `s`, we need to tell Python with the `global` statement:
+If we really meant to access the global `s`, we need to tell Python by using the `global` statement:
 
 ```python
 s = 15
@@ -471,7 +468,7 @@ Exercises
    >>> to_celsius(100)
    >>> to_celsius(to_fahrenheit(38))
    ```
-4. Define a function `nonsense` that takes three arguments `a`, `b`, and `c`. Arguments `b` and `c` should be optional and default to `10` and `13`, respectively. The function should return the result of `a**2 - b * 2 + c**2`. Call the function in the following ways:
+4. Define a function `nonsense` with three parameters `a`, `b`, and `c`. Arguments `b` and `c` should be optional and default to `10` and `13`, respectively. The function should return the result of `a**2 - b * 2 + c**2`. Call the function in the following ways:
 
    - Without arguments
    - With three positional arguments
@@ -484,4 +481,4 @@ Exercises
    Write down each function call, each return value, and the values for each of the three arguments. Make sure that the function calls do not throw errors &ndash; this is always possible except for the first case (no arguments)!
 
 ---
-![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.
+![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by [Clemens Brunner](https://cbrnr.github.io/).

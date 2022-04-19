@@ -23,7 +23,7 @@ for i in range(5):
 
 This is obviously much shorter than writing out each repetition manually (even more so if the loop involves more iterations). Furthermore, if we want to make changes, we only need to do it once inside the body of the loop.
 
-Let's analyze the structure of a for-loop in Python. The first part should look familiar: just like functions and conditions, for-loops start with a header. This time, the header is introduced by the `for` keyword. Next, the loop header defines a name (`i` in our case), which gets values of a sequence-like object, which is specified last (`range(5)` in the example). In each iteration of the loop, the name `i` gets one value of the sequence we are iterating over. A colon concludes the loop header.
+Let's analyze the structure of a for-loop in Python. The first part should look familiar: just like functions and conditions, for-loops start with a header. This time, the header is introduced by the `for` keyword. Next, the loop header defines a name (`i` in our case), which will get individual values of a sequence-like object, which is specified last (`range(5)` in the example). In each iteration of the loop, the name `i` gets one value of the sequence we are iterating over. A colon concludes the loop header.
 
 The indented part after the header forms the body of the loop. This code block is what is actually repeated (in our example, `print("Hello")` is repeatedly called five times).
 
@@ -43,7 +43,9 @@ This yields the following output:
 4
 ```
 
-Alright, so `range(5)` produces a sequence of 5 numbers, starting at 0 and ending with 4. The loop iterates over all elements of this sequence until it is exhausted, after which the loop stops. In each iteration of the loop, `i` contains the i-th element of the sequence, and this particular value is used when running the body of the loop.
+Note that `i` remains available after the loop – its value will be `4`, because this was the most recent assignment in the last iteration of the loop.
+
+Alright, so `range(5)` produces a sequence of five numbers, starting at 0 and ending with 4. The loop iterates over all elements of this sequence until it is exhausted, after which the loop stops. In each iteration of the loop, `i` contains the i-th element of the sequence, and this particular value is used when running the body of the loop.
 
 As a sidenote, `range` can also be called with two arguments, which are then interpreted as start and stop values of the created range. However, the stop value does not belong to the sequence anymore (this is because the difference between stop and start gives the number of elements):
 
@@ -54,7 +56,7 @@ As a sidenote, `range` can also be called with two arguments, which are then int
 
 Note that we have to use `list` in order to see all the elements that `range` creates at once (more on lists soon).
 
-A loop can iterate not only over `range`, but over any *sequence-like* object (a data type that can contain more than one elements). We will learn more about three widely-used container types (strings, lists, and dictionaries) in the next chapters.
+A loop can iterate not only over `range`, but over any *sequence-like* object (a data type that can contain more than one element). We will learn more about three widely-used container types (strings, lists, and dictionaries) in the next chapters.
 
 Here's a short preview of what a loop can do. First, we can iterate over a string:
 
@@ -63,7 +65,7 @@ for s in "Hello World!":
     print(s)
 ```
 
-Here, `s` sequentially gets all characters of the string `"Hello World!"` as the loop iterates. That is, in the first iteration `s` contains the character `"H"`, in the second `"e"`, and so on. The `print` function is called in each iteration with the single characters `s` as arguments, so the output looks like this (the `print` function automatically inserts a newline at the end, though this can be changed with its `end` parameter):
+Here, `s` sequentially gets all characters of the string `"Hello World!"` as the loop iterates. That is, in the first iteration, `s` contains the character `"H"`, in the second `"e"`, and so on. The `print` function is called in each iteration with the single character `s` as its argument, so the output looks like this (the `print` function automatically inserts a newline at the end, though this can be changed with its `end` parameter):
 
 ```
 H
@@ -104,12 +106,12 @@ Python lets us preemptively break out of a loop or jump to the next iteration fr
 Sometimes, we want to stop a loop early, like in the following example that demonstrates how to search for a character within a given string:
 
 ```python
-i = 0
+i = 0  # current position (index)
 
 for c in "Seek and destroy":
-    if c == "k":
+    if c == "k":  # we're searching for a "k"
         break
-    i += 1
+    i += 1  # increment i by 1
 
 print(i)
 ```
@@ -165,7 +167,7 @@ This produces the same output as its for-loop counterpart:
 
 In this case, we would prefer the for-loop because it requires us to write only two lines of code as opposed to four lines for the while-loop.
 
-However, while-loops are useful if we don't know the number of iterations, which is often the case when user input is involved. Consider the following example, which prompts the user to input a key and runs until the input equals the `"q"` character:
+However, while-loops are useful if we don't know the number of iterations, which is often the case when user input is involved. Consider the following example, which prompts the user to input a character and runs until the input equals `"q"`:
 
 ```python
 while True:
@@ -174,7 +176,7 @@ while True:
         break
 ```
 
-The while-loop makes this use case quite natural. Apparently, `while True` is always `True`, so the loop will go on forever. However, notice that there is a `break` statement inside the loop body, which will exit the loop immediately. This will only happen if the user input (stored in `line`) equals `"q"`.
+The while-loop makes this use case quite natural. Apparently, `while True` is *always* `True`, so the loop will go on forever. However, notice that there is a `break` statement inside the loop body, which will exit the loop immediately. This will only happen if the user input (stored in `line`) equals `"q"`.
 
 Here's another fun little example which involves a (potentially) infinite while-loop. It also contains a condition with `if`, `elif`, and `else` blocks. The job of the user is to guess the value of `number` (which is 23 in this case, but we assume that the user doesn't know this value). If the guess is correct, we `break` out of the loop and the program is done. If the user's guess is incorrect, we give a hint and go to the next iteration.
 
@@ -203,4 +205,4 @@ Exercises
 4. Iterate over the list `[1, 13, 25, -11, 17, 24, 9, -1, 2, 3]` until you encounter the first even number. Once you find this number, break out of the loop and print the number on the screen. Since we have not learned about lists yet, use a for-loop to solve this problem (we could also use a while-loop, but we need to know more about lists before we can do so).
 
 ---
-![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.
+![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by [Clemens Brunner](https://cbrnr.github.io/).

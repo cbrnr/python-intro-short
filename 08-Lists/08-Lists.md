@@ -2,7 +2,7 @@
 ====================
 Creating lists
 --------------
-A list is a container sequence which, unlike strings, can contain elements of *arbitrary* types (even lists). We use square brackets to construct a new list (with commas separating the list elements):
+A list is a container sequence which, unlike strings, can contain elements of *arbitrary* types (even lists). We use square brackets to create a new list (with commas separating the list elements):
 
 ```python
 >>> x = [23, "Hello!", "test", 1.44, True]
@@ -45,7 +45,7 @@ An empty list has length 0:
 ```
 
 ### Mutating lists
-In constrast to strings, lists are mutable. That is, elements in a list can be modified after the list has been created. For example:
+In contrast to strings, lists are mutable. That is, elements in a list can be modified after the list has been created. For example:
 
 ```python
 >>> x
@@ -127,7 +127,7 @@ Note that `x.append(["A", "B", "C"])` also works but produces a different result
 [23, 12345, 'test', 1.44, True, 13, 'A', 'B', 'C', ['A', 'B', 'C']]
 ```
 
-The `del` command or the `pop` method both remove elements from a list. For example, this removes the two elements given by `x[1:3]`:
+The `del` keyword or the `pop` method both remove elements from a list. For example, this removes the two elements given by `x[1:3]`:
 
 ```python
 >>> del x[1:3]
@@ -171,7 +171,7 @@ TypeError: '<' not supported between instances of 'str' and 'bool'
 ```
 
 ### Iterating over lists
-Just like we saw in strings, the `in` operator checks whether a specific value is contained in a list:
+Just like we saw in strings, the `in` keyword checks whether a specific value is contained in a list:
 
 ```python
 >>> x = [1, 2, 3, 4, 5]
@@ -196,7 +196,7 @@ Iteration with a for-loop also works as expected:
 
 Tuples
 ------
-On a superficial level, tuples are immutable lists. We will not go into more detail why tuples are useful, but suffice it to say that we should prefer a tuple instead of a list whenever we do not want to change its elements. For example, instead of storing the latitude and longitude of a given location in a list, a tuple might be more reasonable (because the coordinates of a given location will not change).
+Tuples are basically immutable lists. We will not go into more detail why tuples are useful, but suffice it to say that we should prefer a tuple instead of a list whenever we do not want to change its elements. For example, instead of storing the latitude and longitude of a given location in a list, a tuple might be more reasonable (because the coordinates of a given location will not change).
 
 The syntax for creating a tuple is similar to creating a list, except that it doesn't use square brackets. Strictly speaking, listing elements separated by commas defines a tuple, but sometimes parentheses are required and/or improve readability.
 
@@ -219,9 +219,9 @@ TypeError: 'tuple' object does not support item assignment
 
 List comprehensions
 -------------------
-There is another neat way to construct a list in Python. List comprehensions do not introduce any new functionality (everything can be accomplished without list comprehensions), but this so-called *syntactic sugar* makes some list assignments easier to read.
+There is another neat way to construct a list in Python: list comprehensions. These do not introduce any new functionality (everything can be accomplished without list comprehensions), but this so-called *syntactic sugar* makes some list assignments easier to read.
 
-Consider the following example, where we want to create a list containing all squares from 1 to 10. We already know how to do this with a for-loop:
+Consider the following example, where we want to create a list containing all squares from numbers 1 to 10. We already know how to do this with a for-loop:
 
 ```python
 squares = []
@@ -236,7 +236,7 @@ The resulting list looks as expected:
 [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 ```
 
-An alternative list generation mechanism uses a list comprehension to build the same list. It is generally more compact and looks as follows:
+The alternative list comprehension is generally more compact and looks as follows:
 
 ```python
 >>> squares = [n**2 for n in range(1, 11)]
@@ -263,7 +263,7 @@ Every time we want to apply some operation to each individual element in a list,
 [4, 2, 0, 2, 4]
 ```
 
-Remember that all of these list comprehensions can be written with a regular loop and the `append` method. We can also include a condition in the list comprehension, which will include an element in the new list only if the condition is `True`. This is useful for filtering values as shown in the following example, where we filter out all values greater than or equal to zero:
+Remember that all list comprehensions can be written with a regular loop and the `append` method. We can also include a condition in the list comprehension, which will include an element in the new list only if the condition is `True`. This is useful for filtering values as shown in the following example, where we filter all values greater than or equal to zero:
 
 ```python
 >>> [x for x in numbers if x >= 0]
@@ -301,7 +301,7 @@ Let's finish up this topic with a slightly less complex list comprehension just 
 
 Exercises
 ---------
-1. Write a function `histogram`, which accepts a list of numbers as its input argument. The function should convert the argument to a simple (vertical) histogram as follows: Each element of the list defines a row in the histogram, the length of which is defined by the value in the list. By default, the histogram should consist of `*` characters (but it should be possible to change this character with a second argument).
+1. Write a function `histogram` which accepts a list of numbers as its input argument. The function should convert the argument to a simple (vertical) histogram as follows: Each element of the list defines a row in the histogram, the length of which is defined by the value in the list. By default, the histogram should consist of `*` characters (but it should be possible to change this character with a second argument).
 
    Here are two examples that demonstrate the behavior of the function:
 
@@ -342,4 +342,4 @@ Exercises
    ```
 
 ---
-![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.
+![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by [Clemens Brunner](https://cbrnr.github.io/).

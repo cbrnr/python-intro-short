@@ -2,7 +2,7 @@
 =========================
 Introduction
 ------------
-The core Python programming language can be extended with so-called modules and packages. The standard library, which ships with every Python installation, is a collection of numerous modules for various purposes.
+The core Python programming language can be extended with modules and packages. The standard library, which ships with every Python installation, is a collection of numerous modules for various purposes.
 
 A *module* is a Python script that we can import in our own code in order to use whatever is defined in the module. A *package* organizes a collection of modules. We will see examples for both modules and packages later in this chapter.
 
@@ -47,7 +47,7 @@ That way, we can use the functions directly as `sqrt` and `pi` instead of `math.
 
 Writing custom modules
 ----------------------
-We are not restricted to using predefined modules &ndash; Python lets us write our own modules. This is especially useful to structure a longer program into several files. For example, let's assume that we wrote our own `mean` function which computes the arithmetic mean of a list of numbers:
+We are not restricted to using predefined modules &ndash; Python lets us write our own modules. This is especially useful to structure a longer program into several files. For example, let's assume that we wrote our own `mean` function, which computes the arithmetic mean of a list of numbers with the following relatively naive implementation:
 
 ```python
 def mean(values):
@@ -59,9 +59,9 @@ def mean(values):
 
 We could put this function in our own module called `stats`. This is just a Python file called `stats.py`, and its sole contents is the function definition.
 
-Note that this file should be saved in the current working directory, that is, the directory that the Python interpreter is working in. In IPython, we can find out what the working directory is by typing `pwd` (print working directory). If this is not the location we want, we can change the working directory using the `cd` (change directory) command (followed by the path to the directory we would like to use).
+Note that this file should be saved in the current working directory, which corresponds to the directory that the Python interpreter is currently working in. In IPython, we can find out what the working directory is by typing `pwd` (print working directory). If this is not the location we want, we can change the working directory using the `cd` (change directory) command (followed by the path to the directory we would like to use).
 
-We can then import either our `stats` module or the `mean` function from the `stats` module directly:
+We can then import either our `stats` module or the `mean` function from our `stats` module directly:
 
 ```python
 >>> import stats
@@ -76,7 +76,7 @@ The only non-dunder name is indeed our `mean` function, which we can now use as:
 50.5
 ```
 
-Alternatively, we just import the `mean` function:
+Alternatively, we can only import the `mean` function:
 
 ```python
 >>> from stats import mean
@@ -134,7 +134,6 @@ Note that computers cannot produce true random numbers. Instead, they use sophis
 
 ```python
 >>> random.seed(42)  # initialize the random number generator
->>> random.randint()
 >>> random.randint(0, 100)
 81
 >>> random.randint(0, 100)
@@ -143,9 +142,9 @@ Note that computers cannot produce true random numbers. Instead, they use sophis
 3
 ```
 
-The initial function call `random.seed(42)` puts the random number generator in a defined state. The concrete number `42` is not important, but if we use the same number every time we re-run the script, we will get the same random numbers. In other words, if we run the previous five lines again, we will get the same random numbers 81, 14, and 3.
+The initial function call `random.seed(42)` puts the random number generator in a defined state. The concrete number `42` is not important, but if we use the same number every time we re-run the script, we will get the same random numbers. In other words, if we run the previous four lines again, we will get the same random numbers 81, 14, and 3.
 
-The `random` module has many more extremely useful functions. For example, we can randomly sample from a list with `random.choice` (we do not set `random.seed` every time for the sake of brevity):
+The `random` module has many useful functions. For example, we can randomly sample from a list with `random.choice` (we do not set `random.seed` every time, this should only happen once per session, preferrably at the very top of a script):
 
 ```python
 >>> x = ["a", "b", "c", "d", "e"]
@@ -155,7 +154,7 @@ The `random` module has many more extremely useful functions. For example, we ca
 251
 ```
 
-There is also a function that randomly shuffles a the elements of a list in-place:
+There is also a function that randomly shuffles the elements of a list in-place:
 
 ```python
 >>> x = ["a", "b", "c", "d", "e"]
@@ -168,34 +167,34 @@ This concludes our extremely short tour of some important modules in the standar
 
 Packages
 --------
-A package organizes several modules into a hierarchy. This is useful, because it allows us to group related modules (which makes each module shorter instead of having one module containing a lot of code).
+A package organizes several modules into a hierarchy. This allows us to group related modules into a common structure (which makes each module shorter instead of having one module containing a lot of code).
 
 Python uses the directory structure to define a package. If a directory contains an (empty) file named `__init__.py`, Python treats the directory as a package. This way, several modules can be combined in a package like in the following example. Let's assume we have a number of modules related to sound processing (this is an [example from the official Python documentation](https://docs.python.org/3/tutorial/modules.html#packages)). We would like to create a `sound` package to organize all of our modules. Here's a directory structure we could use for our package:
 
 ```
 sound/
-      __init__.py
-      formats/
-              __init__.py
-              wavread.py
-              wavwrite.py
-              aiffread.py
-              aiffwrite.py
-              auread.py
-              auwrite.py
-              ...
-      effects/
-              __init__.py
-              echo.py
-              surround.py
-              reverse.py
-              ...
-      filters/
-              __init__.py
-              equalizer.py
-              vocoder.py
-              karaoke.py
-              ...
+    __init__.py
+    formats/
+        __init__.py
+        wavread.py
+        wavwrite.py
+        aiffread.py
+        aiffwrite.py
+        auread.py
+        auwrite.py
+        ...
+    effects/
+        __init__.py
+        echo.py
+        surround.py
+        reverse.py
+        ...
+    filters/
+        __init__.py
+        equalizer.py
+        vocoder.py
+        karaoke.py
+        ...
 ```
 
 Each directory containing a file called `__init__.py` is a package. In our example, we have a `sound` package, which contains three sub-packages called `formats`, `effects`, and `filters`. Each of these three sub-packages contains a number of modules (`wavread.py`, `wavwrite.py`, ...).
@@ -206,7 +205,7 @@ Let's see how we can import the contents of the package in Python. We can import
 >>> import sound.effects.echo
 ```
 
-We can then use functions defined in that module, but we have to prepend the full name. For example, calling the function `echofilter` in that module need to be written like this:
+We can then use functions defined in that module, but we have to prepend the full name. For example, calling the function `echofilter` in that module needs to be written like this:
 
 ```python
 >>> sound.effects.echo.echofilter(input, output, delay=0.7, atten=4)
@@ -265,4 +264,4 @@ Exercises
    ```
 
 ---
-![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.
+![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by [Clemens Brunner](https://cbrnr.github.io/).

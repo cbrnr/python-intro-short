@@ -22,8 +22,8 @@ Python has the following binary comparison operators:
 - Inequality `!=`
 - Less than `<`
 - Greater than `>`
-- Less than or equal `<=`
-- Greater than or equal `>=`
+- Less than or equal to `<=`
+- Greater than or equal to `>=`
 
 Here are some examples:
 
@@ -39,7 +39,7 @@ False
 True
 ```
 
-We can combine two or more comparison expressions using the `and` and `or` operators.
+We can combine two or more comparisons using the `and` and `or` keywords:
 
 ```python
 >>> x > 0 and x < 10
@@ -59,7 +59,7 @@ True
 True
 ```
 
-The `not` operator inverts a boolean expression:
+The `not` keyword inverts a boolean expression:
 ```python
 >>> not True
 False
@@ -72,15 +72,15 @@ False
 We can always use parentheses to change precedence or improve readability:
 
 ```python
->>> not(0 < x < 10)
+>>> not (0 < x < 10)
 False
 >>> (x < 0) or (x >= 2)
 True
 ```
 
-Finally, Python has `is` and `in` operators that also produce boolean results. The `is` operator checks if two objects are identical (as opposed to `==`, which only checks if two values are identical). This distinction is important, but we won't need it very often especially when we are just beginning to learn Python.
+Finally, Python has `is` and `in` keywords that also produce boolean results. The `is` keyword checks if two *objects* are identical (as opposed to `==`, which only checks if two *values* are identical). This distinction is important, but we won't need it very often (especially because we are just beginning to learn Python).
 
-The `in` operator checks whether some value is contained in some sequence. We will come back to this operator when we introduce Python lists (the `list` type).
+The `in` keyword checks whether some value is contained in some sequence. We will come back to this operator when we introduce Python lists (the `list` type).
 
 ### Comparing floating point numbers
 Python distinguishes between integer numbers (`int`) and floating point numbers (`float`). These two types represent numbers differently. Most noteably, `int` numbers have *exact* internal representations, whereas `float` numbers can only be stored with *limited precision*. This can lead to subtle issues especially when comparing two floating point numbers for equality:
@@ -93,7 +93,7 @@ False
 A common solution is not to test for exact equality, but to allow a certain amount of "wiggle space" for two numbers to still compare equal:
 
 ```python
->>> (0.1 + 0.1 + 0.1) - 0.3 < 1e-15  # 1e-15 means 1 * 10**(-15)
+>>> (0.1 + 0.1 + 0.1) - 0.3 < 1e-15  # 1e-15 means 1 * 10**(-15) = 0.000000000000001
 True
 ```
 
@@ -143,7 +143,7 @@ else:  # optional
     <do something>
 ```
 
-Clearly, the indented lines of code belonging to a specific condition are only executed if the condition is `True`. We can test several conditions sequentially by using `elif` statements after the initial `if` statement. If no condition is `True`, the code in the `else` block is run.
+The indented lines of code belonging to a specific condition are only executed if the corresponding condition is `True`. We can test several conditions sequentially by using `elif` statements after the initial `if` statement. If no condition is `True`, the code in the `else` block is run.
 
 Importantly, Python only executes the first block of code where the condition returns `True`; once this happens, all other `elif` and `else` blocks are completely ignored.
 
@@ -158,7 +158,7 @@ if a > 0:
     print("this is good to know")
 ```
 
-If we run these lines, the indented block of code will be executed, because `a` is in fact greater than zero, the condition `a > 0` is `True`, so we get the following output:
+If we run these lines, the indented block of code will be executed, because `a` is in fact greater than zero. Since the condition `a > 0` is `True`, we get the following output:
 ```
 a is a positive number
 this is good to know
@@ -233,6 +233,8 @@ This example results in:
 Two
 ```
 
+Now we only swap the order of the two `elif` branches:
+
 ```python
 a = 4
 
@@ -246,7 +248,7 @@ else:
     print("Four")
 ```
 
-Now this example results in:
+This example then results in:
 ```
 Three
 ```
@@ -295,4 +297,4 @@ Exercises
    ```
 
 ---
-![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.
+![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by [Clemens Brunner](https://cbrnr.github.io/).

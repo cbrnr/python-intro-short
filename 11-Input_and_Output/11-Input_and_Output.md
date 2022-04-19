@@ -1,12 +1,10 @@
 11 – Input and output
 =====================
-We will now delve into simple input and output (I/O) operations, which includes activities such as getting input from the keyboard, reading text files, string formatting, and writing data to text files.
-
-We will start with string formatting.
+We will now delve into simple input and output (I/O) operations, which includes activities such as getting input from the keyboard, reading text files, string formatting, and writing data to text files. Let's start with string formatting.
 
 String formatting
 -----------------
-We are already familiar with the built-in `print` function. If we pass it an argument, the function will write this argument on the screen (more technically, it will write to standard output):
+We are already familiar with the built-in `print` function. If we pass it an argument, the function will print this argument on the screen (more technically, it will write to standard output):
 
 ```python
 >>> print("Hello")
@@ -60,14 +58,14 @@ Alternatively, we could build our desired output string and pass that as the sol
 Notice that we must take care of whitespace ourselves, because the `print` function with one argument just outputs this argument.
 
 ### f-strings
-Constructing output strings like this quickly becomes cumbersome. Luckily, Python has a feature called f-strings that greatly facilitate this task. An f-string (formatted string) is a special way to define a string that may contain expressions (such as the names `a` and `b` from the previous example). Whenever Python encounters an expression enclosed in curly braces in an f-string, Python replaces that with its value. To define an f-string, we simple prepend `f` to the string literal:
+Constructing output strings like this quickly becomes cumbersome. Luckily, Python has a feature called f-strings, which greatly facilitates this task. An f-string (a "formatted" string) is a special way to define a string that may contain expressions (such as the names `a` and `b` from the previous example). Whenever Python encounters an expression enclosed in curly braces in an f-string, Python replaces that expression with its value. To define an f-string, we simply prepend `f` to the string literal (right before the opening quote character):
 
 ```python
 >>> f"This is an f-string"
 'This is an f-string'
 ```
 
-In this example, we don't really need an f-string, because a regular string could also do the job. However, we can now add an expression in the string, which Python will evaluate and replace in the result (note that we use the name `a` defined previously):
+In this example, we don't really need an f-string, because a regular string could also do the job. However, we can now add an expression inside the string, which Python will evaluate and replace in the result (note that we use the name `a` defined previously as `a = 5`):
 
 ```python
 >>> f"The first number is {a}."
@@ -89,7 +87,7 @@ Sometimes, it is necessary to control the format of the evaluated expressions. F
 The value of pi is approximately 3.141592653589793.
 ```
 
-It seems like Python prints floating point numbers with 15 decimal places by default. We can change the format of the expressions inside the curly braces with a special [format specification mini-language](https://docs.python.org/3/library/string.html#format-specification-mini-language). In a nutshell, we can optionally append a `:` and the desired format after the expression. For example, we specify the precision of a floating point number to be five decimal places by appending `:.5f`:
+It seems like Python prints floating point numbers with 15 decimal places by default. We can change the format of expressions inside the curly braces with a special [format specification mini-language](https://docs.python.org/3/library/string.html#format-specification-mini-language). In a nutshell, we can optionally append a `:` and the desired format code after the expression. For example, we specify the precision of a floating point number to be five decimal places by appending `:.5f`:
 
 ```python
 >>> print(f"The value of pi is approximately {math.pi:.5f}.")
@@ -108,25 +106,25 @@ Often it is necessary to read data from a (text) file. For example, a data analy
 >>> f = open("test.txt")
 ```
 
-By default, the function opens the file specified in the first argument in read mode. Other valid modes are write and append, which can be set with the `mode` parameter (the argument can take on the strings `"r"` for read, `"w"` for write, and `"a"` for append).
+By default, the function opens the file specified in the first argument in "read" mode. Other valid modes are "write" and "append", which can be set with the `mode` parameter (the argument can take on the strings `"r"` for read, `"w"` for write, and `"a"` for append).
 
-After opening the file, we can read, write or append from/to the file. Once we're done, we need to close the open file by calling the `close` method:
+After opening the file, we can read, write, or append from/to the file (we'll see how to do this in a minute). Once we're done, we need to close the file by calling the `close` method:
 
 ```python
 >>> f.close()
 ```
 
-It is easy to forget to close the file, so Python allows us to use a context manager (a `with` block) which automatically closes the file when leaving the block:
+It is easy to forget to close the file, so Python provides a context manager (a `with` block) which automatically closes the file when leaving the block:
 
 ```python
 with open("test.txt") as f:
     print("read file contents")
     print("once we're done we don't have to close the file")
 
-print("Back to normal, the with block closed the file automatically!")
+print("Back to normal, the end of the with block closed the file automatically!")
 ```
 
-We will now discuss which commands read the contents of a text file. To this end, we will use methods on the file object `f`. The `read` method reads the complete file and returns its contents as a string. For example, let's assume the file `test.txt` is located in the current working directory and contains the following five lines of text:
+We will now discuss which commands read the contents of a text file. To do this, we will use methods of the file object `f`. The `read` method reads the entire file and returns its contents as a string. For example, let's assume the file `test.txt` is located in the current working directory and contains the following five lines of text (there are three lines with text and two blank lines):
 
 ```
 Hello!
@@ -156,7 +154,7 @@ Indeed, `lines` is now associated with the following string:
 'Hello!\n\nThis is just a test file containing some random text.\n\nNice!'
 ```
 
-The file handle `f` works like an old-fashioned tape drive. When you open a file, the file handle points at the start of the file. Every time you read contents from the file, the file handle moves forward past the already read characters. Therefore, if we read the whole contents at once using `f.read()`, the file handle then points to the very end of the file.
+The file handle `f` works like an old-fashioned tape drive. When you open a file, the file handle points at the start of the file. Every time you read from the file, the file handle moves forward past the already read characters. Therefore, if we read the whole contents at once using `f.read()`, the file handle points to the very end of the file.
 
 If we then try to read from the file again, we get an empty string (assuming the file `f` is still open):
 
@@ -184,7 +182,7 @@ Line 2:
 Line 3:  This is just a test file containing some random text.
 ```
 
-Since reading a file line by line is so common, we can iterate over a file object, which will return one line in each iteration:
+Since reading a file line by line is such a common task, we can iterate over a file object, which will return one line in each iteration:
 
 ```python
 with open("test.txt") as f:
@@ -200,7 +198,7 @@ This is just a test file containing some random text.
 Nice!
 ```
 
-This is the Pythonic way to read a text file. One of the perks of iterating is that we can modify the iteration in many useful ways. For example, iterating over `enumerate(f)` instead of `f` returns a tuple of a counter (the current line number) and the contents of the current line:
+This is the Pythonic way to read a text file. One of the perks of iterating is that we can modify the iteration in many useful ways. For example, iterating over `enumerate(f)` instead of just `f` returns a tuple of a counter (the current line number) and the contents of the current line:
 
 ```python
 with open("test.txt") as f:
@@ -220,7 +218,7 @@ Note that `enumerate` has a `start` parameter, which determines the initial valu
 
 Writing text files
 ------------------
-Writing text files is very similar to reading. First, we open a file for writing. We then call the `write` method on the file handle and pass it a string, which will be the contents of the file:
+Writing text files is similar to reading. First, we open a file for writing by passing `"w"` as the `mode` argument. We then call the `write` method of the file handle and pass it a string, which will be the contents of the new file:
 
 ```python
 s = "This should go into the file."
@@ -246,9 +244,9 @@ Exercises
 
 3. Read the file `random.txt` created in the previous exercise. Convert the resulting string into a list of numbers. Finally, compute the mean and variance of all numbers using the `mean` and `variance` functions from the `statistics` module. Print these two statistics on the screen with a precision of two decimal places.
 
-4. Download the [official Scrabble word list](https://www.wordgamedictionary.com/twl06/download/twl06.txt) (`twl06.txt`) and put it into the current working directory. Using Python, count the number of valid Scrabble words. Note that the first two lines in the file should be ignored. Furthermore, the file contains one valid word per line. Since the file contains a large number of words, the optimal solution reads the file line by line (instead of the whole contents at once) to minimize memory use.
+4. Download the [official Scrabble word list](https://www.wordgamedictionary.com/twl06/download/twl06.txt) (`twl06.txt`) and put it into the current working directory. Using Python, count the number of valid Scrabble words. Note that the first two lines in the file should be ignored. Furthermore, the file contains one valid word per line. Since the file contains a large number of words, an efficient solution reads the file line by line (instead of the whole contents at once) to minimize memory use.
 
-5. Extend the solution to the previous example to find the longest valid Scrabble word. How many letters do the longest words have? Can you list all of them if there are more? *Hint:* Do not count the newline characters at the end of every line &ndash; you could use the `strip` method to remove any whitespace characters.
+5. Extend the solution to the previous example to find the longest valid Scrabble word. How many letters do the longest words have? Can you list all of them if there are more? *Hint:* Do not count the newline characters at the end of every line (you could use the `strip` method to remove any whitespace characters).
 
 ---
-![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.
+![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by [Clemens Brunner](https://cbrnr.github.io/).

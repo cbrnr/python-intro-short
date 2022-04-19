@@ -36,13 +36,13 @@ Python distinguishes between two kinds of data types: *mutable* and *immutable* 
 
 From the data type categorization we have just discussed, only `list`, `bytearray`, `dict`, and `set` are mutable &ndash; all other types are immutable.
 
-For example, let's see what immutable means for an `int` object. First we assign the name `a` to the immutable `int` object `2`:
+For example, let's see what immutable means for an `int` object. First, we assign the name `a` to the immutable `int` object `2`:
 
 ```python
 >>> a = 2
 ```
 
-The `id` function returns the unique ID of a Python object. This is just a number, but if two objects have different IDs we know that they are two different objects. Conversely, if two objects have identical IDs we know that they are really only one and the same object.
+The `id` function returns the unique ID of a Python object. If two objects have different IDs, we know that they are two different objects. Conversely, if two objects have identical IDs, we know that they are really only one and the same object.
 
 ```python
 >>> id(a)
@@ -62,7 +62,7 @@ To verify that `a` is attached to a different object now, we inspect its ID:
 4549479392
 ```
 
-The ID is different than before, which means that `a` now refers to a different object. In other words, re-assigning `a` did *not* change the original `2` object (it cannot be changed because an `int` object is immutable), but the name simply points to a different object.
+The ID is different than before, which means that `a` now refers to a different object. In other words, re-assigning `a` did *not* change the original `2` object (it cannot be changed because an `int` object is immutable), but the name simply points to a different object now.
 
 In this chapter, we will see that strings are also immutable &ndash; once a string is created it cannot be changed/modified anymore. Consider the following example where we are trying to change one character in an existing string (more on the mechanics and meaning of the square bracket notation later):
 
@@ -80,7 +80,7 @@ Clearly, modifying a string after it has been created is not supported because s
 
 Creating strings
 ----------------
-Alright, so a string is an immutable sequence of characters. All elements of a string are of the same type (characters), so we refer to a string as a *flat* sequence (in contrast, *container* sequences can contain elements of different arbitrary types). Python uses single or double quotes to enclose the contents of a string, for instance:
+Alright, so a string is an immutable sequence of characters. All elements of a string are of the same type (characters), so we refer to a string as a *flat* sequence (in contrast, *container* sequences can contain elements of different arbitrary types). Python uses single or double quotes to enclose the content of a string, for instance:
 
 ```python
 >>> s1 = "String"
@@ -217,10 +217,10 @@ We can also create an empty string like this:
 0
 ```
 
-Therefore, the enclosing quotes are *never* part of the actual string content.
+The enclosing quotes are *never* part of the actual string!
 
 ### Concatenation
-Strings are immutable, so we cannot change them.
+Strings are immutable, so we cannot change them after they have been created:
 
 ```python
 >>> s = "house"
@@ -240,7 +240,7 @@ However, if we want to replace one or more characters in a string, we can always
 'mouse'
 ```
 
-The previous snippet uses all characters except the first of the string `"house"` (so `s[1:]` is just `"ouse"`). It then prepends the string `"m"`, which creates a new string object. Finally, we assign the name `s` to the new string.
+The previous snippet uses all characters except the first of the string `"house"` (so `s[1:]` is just `"ouse"`). It then prepends the string `"m"`, which together creates a new string object. Finally, we assign the name `s` to the new string.
 
 Apparently, we can concatenate strings with the `+` operator. This creates a new string by appending all strings in the operation. Another example:
 
@@ -269,7 +269,7 @@ For example, strings have an `upper` method, which returns a new string in all c
 'HELLO!'
 ```
 
-The method call `x.upper()` basically calls a function `upper` and automatically gets `x` as its first argument. However, this special method call syntax makes it clear that `upper` is directly attached to a string object (`int` objects do not have an `upper` method for example).
+The method call `x.upper()` basically calls a function `upper` and automatically passes the string object `x` as its first argument. We could also use `str.upper(x)` instead. However, the special method call syntax makes it clear that `upper` is directly attached to a string object (`int` objects do not have an `upper` method for example).
 
 Bear in mind that all string methods return *new* strings, because existing strings are immutable.
 
@@ -299,13 +299,13 @@ However, we can re-assign the name `x` to the newly created string if we want:
 The built-in `dir` function lists all methods associated with an object. Therefore, if we want to find out which string methods are available, we call `dir` and pass a string object as the argument:
 
 ```python
->>> dir(x)   # x was defined in the previous example
+>>> dir(x)   # x was defined in the previous example and is a string object
 ['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
 ```
 
 This is quite some list. However, we can ignore all names starting and ending with two underscores (for example, `__add__`, `__class__`, and so on). These so-called "dunder" methods are reserved for internal use.
 
-When using IPython, there is a nicer way to get a list of methods: if you type `x.` and then hit the Tab key, IPython will create a popup containing all available methods (and it will automatically hide all dunder methods). This makes it especially easy to explore what's available, because after selecting a method we can display its documentation with the `?`, for example `x.upper?`.
+When using IPython, there is a nicer way to get a list of available methods: if you type `x.` and then hit the <kbd>Tab</kbd> key, IPython will show a popup containing all available methods (and it will automatically hide all dunder methods). This makes it especially easy to explore what's available, because after selecting a method we can display its documentation with the `?`, for example `x.upper?`.
 
 In addition to `upper` and `lower`, other case-changing methods are `capitalize`, `casefold`, `swapcase`, and `title`.
 
@@ -376,12 +376,12 @@ We can find the index of the first `"i"`:
 Note that `s[14]` refers to the fifteenth letter. The method accepts an optional `start` argument, which denotes where to start the search:
 
 ```python
->>> s.find("i", 15)
+>>> s.find("i", 15)  # the next "i"
 22
 ```
 
 ### Iterating over strings
-The `in` operator checks whether a certain string is contained in another string:
+The `in` keyword checks whether a certain string is contained in another string:
 
 ```python
 >>> s = "computer"
@@ -436,7 +436,7 @@ def find(s, sub):
     return -1  # no match
 ```
 
-Similarly, here's a custom function which mimics the `count` method:
+Similarly, here's a custom function which replicates the `count` method:
 
 ```python
 def count(s, sub):
@@ -455,8 +455,8 @@ Exercises
 
 3. Assume we have the following string `s = "Edukational Neuroscience"`. How can we replace the `"k"` with a `"c"` and create a new string with the correct spelling from the given string?
 
-4. A palindrome is a word or a sentence which reads the same forwards and backwards, for example "madam" or "Was it a car or a cat I saw?". Write a function `is_palindrome`, which returns `True` if a given string is a palindrome (or `False` if not). It is helpful to convert all characters to lowercase. Furthermore, whitespace and punctuation needs to be ignored if the function also needs to work with sentences.
+4. A palindrome is a word or a sentence which reads the same forwards and backwards, for example "madam" or "Was it a car or a cat I saw?". Write a function `is_palindrome`, which returns `True` if a given string is a palindrome (or `False` if not). It is helpful to convert all characters to lowercase as a first step inside the function. Furthermore, whitespace and punctuation needs to be ignored if the function also needs to work with sentences.
 
 
 ---
-![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.
+![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by [Clemens Brunner](https://cbrnr.github.io/).

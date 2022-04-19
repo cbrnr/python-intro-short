@@ -2,9 +2,9 @@
 ==========
 Introduction
 ------------
-In this workshop you will learn to program in Python. This is a course for beginners, so you do not need to be fluent in any other programming language. In fact, it is perfectly OK if you have never programmed before.
+In this workshop you will learn the basics of the Python programming language. This is a course for beginners, so you do not need to be fluent in any other programming language. In fact, it is perfectly OK if you have never programmed before.
 
-We will start from scratch and learn how to set up a working Python environment, including package management and related housekeeping tasks. Once you have Python on your computer, we will dive into its elegant syntax and talk about basic building blocks of the Python language, such as functions, conditions, and loops. We will then discuss important data types in Python, focussing on strings, lists, and dictionaries. Afterwards, we will start using these building blocks to solve simple tasks such as reading/writing text from/to a file. Finally, we will briefly introduce widely used third-party packages for scientific computing. Specifically, we will touch upon packages that allow us to efficiently work with numerical data and tabular data, including simple graphical representations.
+We will start from scratch and learn how to set up a working Python environment, including package management and related housekeeping tasks. Once Python is installed on your computer, we will dive into the elegant syntax and basic building blocks of the Python language, such as functions, conditions, and loops. We will then discuss important data types in Python, focussing on strings, lists, and dictionaries. Afterwards, we will start using these building blocks to solve simple tasks such as reading/writing text from/to a file. Finally, we will briefly introduce widely used third-party packages for scientific computing. Specifically, we will touch upon packages that allow us to efficiently work with numerical data and tabular data, including simple graphical representations.
 
 With that out of the way, let's get started!
 
@@ -13,17 +13,17 @@ Overview
 ![https://xkcd.com/353/](https://imgs.xkcd.com/comics/python.png)
 (https://xkcd.com/353/)
 
-Here are some facts about Python (some of which might reflect my personal opinion):
+Here are some facts about Python:
 
 - Simple, elegant, and fun to learn and use
 - Open source (not only [free as in beer but also free as in speech](https://en.wikipedia.org/wiki/Gratis_versus_libre))
 - Cross-platform (Python runs on Windows, macOS, and Linux)
-- General-purpose programming language (Python is not specifically designed to be extremely good in one particular area such as statistics &ndash; it can be used for many different applications including data analysis, web servers, graphical user interfaces, programming the [Raspberry Pi](https://www.raspberrypi.org/), and so on)
+- General-purpose programming language (Python is not specifically designed to be extremely good in one particular area such as statistics &ndash; it can be used for many different applications including data science, web servers, graphical user interfaces, programming the [Raspberry Pi](https://www.raspberrypi.org/), ...)
 - Batteries included approach (the so-called [standard library](https://docs.python.org/3/library/) shipping with Python contains many useful things ready for use)
 - Huge amount of [third-party packages](https://pypi.org/) that implement even more useful things
 - Large and friendly community (Pythonistas)
 
-Python was first released by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) way back in 1991, and its popularity has skyrocketed in the past few years. While there are many ways to measure popularity of a programming language, the [TIOBE index](https://www.tiobe.com/tiobe-index/) simply counts the number of search engine results for queries containing the name of the programming language. According to this index, the most popular programming languages in January 2022 were:
+Python was first released by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) way back in 1991, and its popularity has skyrocketed in the past few years. While there are many ways to measure the popularity of a programming language, the [TIOBE index](https://www.tiobe.com/tiobe-index/) simply counts the number of search engine results for queries containing the name of the programming language. According to this index, the most popular programming languages in January 2022 were:
 
 | Rank  | Programming language | Rating
 | -----:| ---------------------| ------:
@@ -55,7 +55,7 @@ Python was first released by [Guido van Rossum](https://en.wikipedia.org/wiki/Gu
 
 Finally, one of the results of the [Stack Overflow Developer Survey 2021](https://insights.stackoverflow.com/survey/2021) is that *"Python passed SQL to become our third most popular technology"* and *"Python is the most wanted language for its fifth-year"*.
 
-So far we have only talked about Python without seeing what the language actually looks like. Here's a sneak peak at what you will be able to understand after completing this course:
+So far, we have only talked about Python without seeing what the language actually looks like. Here's a sneak peak at what you will be able to understand after completing this course:
 
 ```python
 print("Hello World!")
@@ -69,21 +69,23 @@ s = ", ".join([str(i) for i in range(10)])
 lst = [k**2 for k in range(0, 100, 10)]
 ```
 
+In summary, Python is extremely popular and fun to use, so let's install it on our computer.
+
 Installation
 ------------
-The [official Python website](https://www.python.org/) is a great resource for everything related to Python. The [download](https://www.python.org/downloads/) section contains installers for many platforms, including Windows and macOS. If you are on Linux, I recommend that you use your package manager to install Python (in most cases, Python will already be installed anyway).
+The [official Python website](https://www.python.org/) is a great resource for everything related to Python. The [download](https://www.python.org/downloads/) section contains installers for many platforms, including Windows and macOS. If you are on Linux, I recommend that you use your package manager (such as `apt`, `yum`, or `pacman`) to install Python (in most cases, Python will already be installed anyway).
 
-On Windows, make sure to check the option "Add Python 3.10 to PATH" – by default this is disabled. I strongly recommend to use the suggested values for all other settings (but if you do not have administrator privileges you can uncheck the first option "Install launcher for all users (recommended)").
+On Windows, make sure to check the option *"Add Python 3.10 to PATH"* – by default this is disabled. I strongly recommend to use the suggested values for all other settings (but if you do not have administrator privileges you can uncheck the first option *"Install launcher for all users (recommended)"*).
 
 ![Install on Windows](install_windows.png)
 
 First steps
 -----------
-After installing Python, it is fun and instructive to enter some simple Python commands and see what happens. The program which understands and interprets Python commands is called the *Python interpreter*. It can be invoked in various ways, but one of the easiest options is to run it is from the command line (or terminal), a powerful text-based program provided by your operating system.
+After installing Python, it is instructive to enter some simple Python commands and see what happens. The program which understands and interprets Python commands is called the *Python interpreter*. It can be invoked in various ways, but one of the easiest options is to run it from the command line (or terminal), a powerful text-based program provided by your operating system.
 
-- On Windows, you should see a start menu entry inside the Python folder named "Python 3.10 (64-bit)" (or similar). Alternatively, you can launch Python from a regular command prompt: start "Command Prompt" or "Windows Terminal" and type in `python`.
-- On macOS, start the "Terminal" app and type in `python`.
-- On Linux, start your favorite terminal app and type in `python`.
+- On Windows, you should see a start menu entry inside the Python folder named "Python 3.10 (64-bit)" (or similar). Alternatively, you can launch Python from a regular command prompt: start "Command Prompt" or "Windows Terminal" and type `python` (followed by <kbd>Enter</kbd>).
+- On macOS, start the "Terminal" app and type `python` (followed by <kbd>Enter</kbd>).
+- On Linux, start your favorite terminal app and type `python` (followed by <kbd>Enter</kbd>).
 
 A black or white text window will open – this is the so-called *interactive* Python interpreter. You can enter commands, and Python will happily try to execute what you just typed (this workflow is called [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop), short for read-eval-print loop).
 
@@ -91,7 +93,7 @@ The interactive Python interpreter includes a *prompt*, which is typically eithe
 - `>>>`
 - `In [1]:`
 
-Whatever it looks like, the prompt indicates that Python is ready to receive user input. You can type in a Python command and hit enter to run it. Python will immediately show the result of this command (if any) on the next line.
+Whatever it looks like, the prompt indicates that Python is ready to receive user input. You can type a Python command and hit <kbd>Enter</kbd> to run it. Python will immediately show the result of this command (if any) on the next line.
 
 Let's try to use Python as a calculator. Python supports the four basic arithmetic operations (addition, subtraction, multiplication, and division):
 
@@ -123,7 +125,7 @@ In addition, Python can also compute the result of integer division and its rema
 1
 ```
 
-Exponentiation (raising one number to the power of another) works with the `**` operator:
+Exponentiation (raising one number to the power of another) uses the `**` operator:
 ```python
 >>> 2**64
 18446744073709551616
@@ -143,9 +145,9 @@ Note that Python accepts only regular parentheses (and not square or curly brack
 51.93333333333333
 ```
 
-Bear in mind that decimal numbers use a point as decimal separator and not a comma (as is common in German-speaking regions).
+Bear in mind that decimal numbers use a point as the decimal separator and not a comma (as is common in German-speaking regions).
 
-For more advanced calculations such as square roots, logarithms, or trigonometric functions, we need to `import `[`math`](https://docs.python.org/3/library/math.html) (part of the standard library) to use functions from the `math` module:
+For more advanced calculations such as square roots, logarithms, or trigonometric functions, we need to import (activate) the [`math`](https://docs.python.org/3/library/math.html) module (part of the standard library) to use the various functions it provides:
 
 ```python
 >>> import math
@@ -163,7 +165,7 @@ Mathematical constants such as Euler's number *e* (`math.e`) and $\pi$ (`math.pi
 4.862996449527442
 ```
 
-There are many more useful things in the `math` module, but we won't cover them here. If you are interested, check out the [`math` module documentation](https://docs.python.org/3/library/math.html).
+There are a lot more useful things in the `math` module, but we won't cover them here. If you are interested, check out the [`math` module documentation](https://docs.python.org/3/library/math.html).
 
 Exercises
 ---------
@@ -175,9 +177,9 @@ Exercises
 
 4. Assume you measured the following values: 11, 27, 15, 10, 33, 18, 25, 22, 39, and 11. Calculate the arithmetic mean in a single line of code.
 
-5. Evaluate the following mathematical expression in a single line of code (don't forget to `import math` to compute the square root and $\pi$):
+5. Evaluate the following mathematical expression in a single line of code (don't forget to `import math` for the square root and $\pi$):
 
   $$\frac{(5^5 - \pi) \cdot \frac{19}{3}}{\sqrt{13} + 7^{\frac{2}{3}}}$$
 
 ---
-![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.
+![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by [Clemens Brunner](https://cbrnr.github.io/).

@@ -1,6 +1,6 @@
 9 – Dictionaries
 ================
-The last built-in data type we are going to cover is the dictionary (`dict`). Just like its name implies, a dictionary is a mapping data type, which maps keys to values. It works a little like a real-word English-German dictionary. Let's assume we wanted to look up the German translation of "cat". We'd flip through the pages until we found the entry for "cat". This entry would contain the German translation "Katze". In this example, "cat" is the key and "Katze" is its value. Therefore, a dictionary is a mapping from keys to values. A dictionary can contain many key-value pairs.
+The last built-in data type we are going to cover is the dictionary (`dict`). Just like its name implies, a dictionary is a mapping data type, which maps keys to values. It works a little like a real-word dictionary. Let's assume we wanted to look up the German translation of "cat". We'd flip through the pages of an English-German dictionary until we found the entry for "cat". This entry would contain the German translation "Katze". In this example, "cat" is the key and "Katze" is its value. Therefore, a dictionary is a mapping from keys to values. A dictionary can contain many key-value pairs.
 
 Creating dictionaries
 ---------------------
@@ -23,7 +23,7 @@ Note that in the second version, dictionary keys need to be valid Python names, 
 {1: 'one', 2: 'two'}
 ```
 
-In this case, `dict` raises a syntax error:
+In this case, `dict` raises a syntax error because argument names must not start with a digit:
 
 ```python
 >>> dict(1="one", 2="two")
@@ -49,7 +49,7 @@ Traceback (most recent call last):
 KeyError: 'dog'
 ```
 
-Dictionaries are mutable, which mean that we can modify existing dictionary entries.
+Dictionaries are mutable, which means that we can modify existing dictionary entries.
 
 ```python
 >>> d["snake"] = "Python"
@@ -65,9 +65,9 @@ We can add new entries simply by assigning a value to a new key using square bra
 {'house': 'Haus', 'cat': 'Katze', 'snake': 'Python', 'bug': 'Wanze'}
 ```
 
-Again, order is irrelevant in dictionaries. There is no first, second or last item in a dictionary &ndash; values can only access by their key.
+Again, order is irrelevant in dictionaries. There is no first, second or last item in a dictionary &ndash; values can only be accessed by their key.
 
-So far, we have only used strings as dictionary keys. However, we can actually use any *immutable* data type as a key, including integers, floats, and tuples. Importantly, we cannot use lists as keys because lists are mutable. This restriction does not apply to dictionary values, which can be mutable or immutable objects.
+So far, we have used strings as dictionary keys. However, we can actually use any *immutable* data type as a key, including integers, floats, and tuples. Importantly, we cannot use lists as keys because lists are mutable. This restriction does not apply to dictionary values, which can be mutable or immutable objects.
 
 ```python
 >>> x = {13: "A", "c": 2.22, (0, 1): [1, 2, 3]}
@@ -83,7 +83,7 @@ The previous assignment demonstrates what happens when we try to create a dictio
 
 Working with dictionaries
 -------------------------
-As expected, we can use the `len` function to inspect the number of entries in a dictionary:
+As expected, we can use the `len` function to determine the number of entries in a dictionary:
 
 ```python
 >>> d = {"house": "Haus", "cat": "Katze", "snake": "Schlange"}
@@ -102,7 +102,7 @@ dict_values(['Haus', 'Katze', 'Schlange'])
 
 These methods return list-like objects.
 
-Using the `in` operator we can check if the dictionary contains a specific *key*:
+Using the `in` keyword we can check if the dictionary contains a specific *key*:
 
 ```python
 >>> "cat" in d
@@ -155,11 +155,11 @@ We can use this list-like sequence of tuples in our for-loop, which means that w
 
 ```python
 >>> for key, value in d.items():
-...    print(key, ":", value)
+...    print(key, "=>", value)
 ...
-house : Haus
-cat : Katze
-snake : Schlange
+house => Haus
+cat => Katze
+snake => Schlange
 ```
 
 Here's another example of tuple unpacking:
@@ -172,7 +172,7 @@ Here's another example of tuple unpacking:
 13
 ```
 
-The tuple `12, 13` on the right-hand side contains two elements. On the left-hand side we assign two names, one for each tuple component (the tuple components are unpacked into separate names). That way, the canonical way to swap values of two different names in Python is very short and sweet:
+The tuple `12, 13` on the right-hand side contains two elements. On the left-hand side we assign two names, one for each tuple element (the tuple elements are unpacked into separate names). That way, the canonical way to swap two valuesin Python is very short and sweet:
 
 ```python
 >>> a, b = b, a
@@ -200,11 +200,11 @@ Traceback (most recent call last):
 KeyError: 'dog'
 ```
 
-There are two additional options to get values from a dict without raising an error. First, the `get` method returns a user-defined default value (by default `None`) if a key does not exist:
+There are two additional options to get values from a dictionary without raising an error. First, the `get` method returns a user-defined default value (by default `None`) if a key does not exist:
 
 ```python
 >>> d.get("dog")  # returns None
->>> d.get("dog", "UNDEFINED")
+>>> d.get("dog", "UNDEFINED")  # returns "UNDEFINED" if key does not exist
 'UNDEFINED'
 >>> d.get("cat", "UNDEFINED")
 'Katze'
@@ -217,7 +217,7 @@ However, `get` does not add new entries to the dictionary (in our example, there
 {'house': 'Haus', 'cat': 'Katze', 'snake': 'Schlange'}
 ```
 
-If we do want to add new key/value pairs whenever we access a non-existing entry, we can use the `setdefault` method instead of `get`:
+If we do want to add new key/value pairs whenever we access a non-existing key, we can use the `setdefault` method instead of `get`:
 
 ```python
 >>> d.setdefault("dog", "UNDEFINED")
@@ -238,4 +238,4 @@ Exercises
 
 
 ---
-![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Clemens Brunner.
+![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by [Clemens Brunner](https://cbrnr.github.io/).

@@ -12,6 +12,3 @@ A short introduction to Python
 9. [Dictionaries](09-Dictionaries/09-Dictionaries.md)
 10. [Modules and packages](10-Modules_and_Packages/10-Modules_and_Packages.md)
 11. [Input and output](11-Input_and_Output/11-Input_and_Output.md)
-12. [Numeric data](12-Numeric_Data/12-Numeric_Data.md)
-13. Tabular data
-14. Visualizing data

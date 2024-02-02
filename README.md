@@ -1,5 +1,4 @@
-A short introduction to Python
-==============================
+# A short introduction to Python
 
 1. [Basics](01/01.md)
 2. [Python environment](02/02.md)

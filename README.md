@@ -1,7 +1,7 @@
 # A short introduction to Python
 
 1. [Basics](https://python-intro-01.netlify.app/)
-2. [Python environment](02/02.md)
+2. [Python environment](https://python-intro-02.netlify.app/)
 3. [Names, expressions, statements](03/03.md)
 4. [Functions](04/04.md)
 5. [Conditions](05/05.md)

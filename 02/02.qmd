@@ -1,6 +1,21 @@
-# 2 – The Python Environment
+---
+title: "2 – The Python Environment"
+subtitle: "Introduction to Python"
+author: "Clemens Brunner"
+date: 2024-02-14
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+cap-location: margin
+---
 
-## Components
+## Introduction
 
 Python consists of the Python programming language, a Python interpreter (a program that interprets and runs Python code), and an extensive standard library. The reference (official) Python interpreter is written in the C programming language and is therefore called [CPython](https://github.com/python/cpython).
 
@@ -8,24 +23,29 @@ Python consists of the Python programming language, a Python interpreter (a prog
 
 The Python programming language includes only relatively few keywords and built-in functions. However, the [standard library](https://docs.python.org/3/library/) extends the core functionality with additional data types, input/output, regular expressions, mathematical functions, data compression, networking, multimedia services, graphical user interfaces, and much more. The standard library is part of any Python installation, so it is always available at your fingertips.
 
+:::{.callout-tip}
+In the previous chapter, we used `import math` to access mathematical functions and constants. Importing is necessary before we can use things contained in any module.
+:::
+
 Python can be further extended with third-party packages that are not part of the official Python distribution. Installing these packages is straightforward, because they are available from a central repository called the [Python Packaging Index (PyPI)](https://pypi.org). We will discuss how to install, update, and uninstall third-party packages later in this chapter.
 
-As for any programming language, a good text editor or integrated development environment (IDE) is an essential tool for writing Python code. Good text editors include support for syntax highlighting, indentation, line numbers, [linting](https://en.wikipedia.org/wiki/Lint_(software)), code inspection, and more. Here is a selection of popular editors (all of them are free, open source, and available on Windows, macOS, and Linux):
+As for any programming language, a code editor or integrated development environment (IDE) is an essential tool for writing Python code. Good code editors include support for syntax highlighting, indentation, line numbers, [linting](https://en.wikipedia.org/wiki/Lint_(software)), code inspection, and more. Here is a selection of popular editors (all of them are free, open source, and available on Windows, macOS, and Linux):
 
 - [Visual Studio Code](https://code.visualstudio.com)
 - [PyCharm](https://www.jetbrains.com/pycharm/)
-- [Atom](https://atom.io)
 - [Spyder](https://www.spyder-ide.org)
 
-We will use Visual Studio Code in this workshop, but feel free to try out alternative editors and choose the one that you like best!
+I recommend [Visual Studio Code](https://code.visualstudio.com) if you have never used Python before. However, feel free to try other programs such as [PyCharm](https://www.jetbrains.com/pycharm/), which also provides a great Python development experience.
 
 
 ## Visual Studio Code
 
-After installing [Visual Studio Code](https://code.visualstudio.com/), there are a two things you need to tweak for a great Python editing experience:
+If you decide to install Visual Studio Code, there are two things you should do before you start writing Python code:
 
-1. Go to the *Extensions* section in the left sidebar, search for "Python", and install the official Python extension.
-2. I recommend that you enable [PEP8](https://www.python.org/dev/peps/pep-0008/) style checking (more on that later). Open the Command Palette (<kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>P</kbd> on Windows and Linux, <kbd>⌘</kbd><kbd>Shift</kbd><kbd>P</kbd> on macOS) and type "linter". Click on the entry "Python: Select Linter" and choose "flake8". If Visual Studio Code asks if you want to install the flake8 tool, click on "Install" (alternatively, you can always `pip install flake8` at any time, we will discuss this in a minute).
+1. Click on the *Extensions* section in the left sidebar, search for "Python", and install the official [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
+2. I recommend that you follow the [PEP8](https://www.python.org/dev/peps/pep-0008/) coding style. In Visual Studio Code, install the [Flake8 extension](https://marketplace.visualstudio.com/items?itemName=ms-python.flake8) to enable automatic PEP8-aware linting.
+
+That's it, you are now ready to start working with Python. If you have never used Visual Studio Code before, you can check out the [Python in Visual Studio Code overview](https://code.visualstudio.com/docs/languages/python) before moving on to the next section.
 
 
 ## Getting help
@@ -37,61 +57,58 @@ One of the most important activities when programming is reading documentation. 
 
 Almost any real-world project requires functionality that is not available in Python out of the box. Therefore, it is important to know how to install additional third-party packages. You might also want to uninstall packages that you don't need anymore to save disk space. It is also a good idea to keep all installed packages up to date, because package maintainers fix bugs and add new features all the time.
 
-All of these tasks can be performed with the `pip` command line tool, which is contained in the `pip` package that is bundled with Python. We will explore how `pip` performs important package management tasks. First, we need to open a terminal:
+All of these tasks can be performed with the `pip` command line tool, which is bundled with the Python installation. To use it, we need to open a terminal:
 
 - On Windows, open the "Command Prompt" or "Windows Terminal" app from the start menu.
 - On macOS, open the "Terminal" app.
 - On Linux, open your favorite terminal app.
 
-A [terminal](https://en.wikipedia.org/wiki/Terminal_emulator) is a program that runs a [shell](https://en.wikipedia.org/wiki/Shell_(computing)) which interprets text commands to control the operating system. Note that the `$` sign is the prompt for the terminal, so it is not part of the commands and should not be typed in (just like the Python prompt `>>>`). On Windows, the default prompt is the path followed by a `>` character (such as `C:\Program Files\>`), but we will use `$` throughout the course material.
+:::{.callout-note}
+On macOS, the tool is called `pip3` instead of `pip` (just like we use `python3` instead of `python` to invoke the Python interpreter).
+:::
 
-Let's test if we can successfully run the `pip` tool. In the terminal, type:
+:::{.callout-important}
+A [terminal](https://en.wikipedia.org/wiki/Terminal_emulator) is a program that runs a [shell](https://en.wikipedia.org/wiki/Shell_(computing)), which interprets text commands to control the operating system. Note that `pip` is *not* a Python command, so make sure to enter `pip` commands in the shell and not in the Python interpreter.
+:::
+
+Let's test if we can successfully run the `pip` tool. In your terminal, type:
 
 ```shell
-$ pip --version
-pip 21.3.1 from /usr/local/lib/python3.10/site-packages/pip (python 3.10)
+pip --version
 ```
 
-This command should display the `pip` version (21.3.1 in the example) and its location in the file system. If this results in an error message, something is wrong with your Python installation (in this case, consult the [installation instructions](https://docs.python.org/3/using/index.html) to fix the problem).
+This command should display the `pip` version (for example, 23.3.1) and its location in the file system. If this results in an error message, something is wrong with your Python installation (in this case, consult the [installation instructions](https://docs.python.org/3/using/index.html) to fix the problem).
 
 It is useful to know which Python packages are already installed. We can use the following command to find out:
 
 ```shell
-$ pip list
+pip list
 ```
 
-This will generate a list of installed packages, including their names and versions. If you want to see more details about an installed package, use the following command (the example uses the `setuptools` package, so replace the package name with the desired package you would like to inspect):
+This will generate a list of installed packages, including their names and versions. If you have just installed Python, this list will only contain a few entries.
+
+Before installing a new package, we need to know the name of the package. You can query the [PyPI website](https://pypi.org/) to find a specific package. You can then install that package as follows (replace `<package_name>` with the actual name):
 
 ```shell
-$ pip show setuptools
+pip install <package_name>
 ```
 
-If the package is not installed, you will get a warning message.
-
-Before installing a new package, we need to know the name of the package. You can query the [PyPI website](https://pypi.org/) to find out if a specific package exists. If the search returns results, you can install that package as follows (replace `<package_name>` with the actual name):
+It is also straightforward to uninstall a package:
 
 ```shell
-$ pip install <package_name>
+pip uninstall <package_name>
 ```
 
-We mentioned the `ipython` package previously, an enhanced interactive Python interpreter. If you want to give it a try, go ahead and install it with `pip install ipython`. You can then start the enhanced interactive interpreter with `ipython` instead of `python`.
-
-It is pretty straightforward to uninstall a package:
+Finally, you can get a list of outdated packages:
 
 ```shell
-$ pip uninstall <package_name>
-```
-
-Finally, you can get a list of outdated packages with:
-
-```shell
-$ pip list --outdated
+pip list --outdated
 ```
 
 If this command shows packages that have newer versions available, you can upgrade each individual package with:
 
 ```shell
-$ pip install --upgrade <package_name>
+pip install --upgrade <package_name>
 ```
 
 
@@ -102,14 +119,17 @@ The Python interpreter can operate in two modes, namely in interactive or in scr
 
 ### Interactive mode (REPL)
 
-Interactive mode is useful for running single lines of code, because Python immediately shows the result. We have already used this mode before when we used Python as a calculator. To recap, interactive mode features a prompt (either `>>>` or `In [1]:`), which indicates that Python is ready and waiting for user input. Importantly, Python also displays the results of calculations automatically in interactive mode. For example:
+The interactive mode is useful for running single lines of code, because Python immediately shows the result. We have already used this mode before when we used Python as a calculator. To recap, interactive mode features a prompt (`>>>`), which indicates that Python is ready and waiting for user input. Importantly, Python also displays the results of calculations automatically in interactive mode. For example:
 
-```python
->>> 1 + 4
-5
+```{python}
+1 + 4
 ```
 
-The result `5` is displayed automatically right after the command. In general, if you start Python by typing `python` (or `ipython` if you have installed the `ipython` package) on the command line, Python will start in interactive mode. In case you were wondering, you can exit the interactive interpreter by typing `exit()` (or <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>D</kbd> on macOS or Linux).
+The result `5` is displayed automatically right after the command. In general, if you start Python by typing `python` (or `ipython` if you have installed the `ipython` package) on the command line, Python will start in interactive mode.
+
+:::{.callout-tip}
+You can exit the interactive interpreter by typing `exit()` (or alternatively <kbd>Ctrl</kbd><kbd>D</kbd> on macOS or Linux).
+:::
 
 
 ### Script mode
@@ -125,7 +145,7 @@ When we run this script with `python test.py` from the command line, Python exec
 
 ## Python syntax
 
-Let's return to the Python programming language and in particular its syntax (which describes the rules and structure of code statements). One of the most unique features of Python is that it uses significant [whitespace](https://en.wikipedia.org/wiki/Whitespace_character) (in almost all cases this means spaces) for grouping code into blocks. This results in fewer lines of code and therefore less visual noise, because no special grouping symbols (such as `begin`/`end` or `{`/`}`) are needed.
+Let's return to the Python programming language and in particular its syntax (which describes the rules and structure of code statements). One of the most unique features of Python is that it uses significant [whitespace](https://en.wikipedia.org/wiki/Whitespace_character) (in almost all cases this means spaces) for grouping code into blocks. This results in fewer lines of code and therefore less visual noise, because no special grouping symbols (such as `begin` or `end`) are needed.
 
 Consider the following example code snippet:
 
@@ -144,57 +164,42 @@ counter = do_something()
 print(counter)
 ```
 
-It is not important to understand what this code is doing (we will learn that in the following lessons), so let's focus on its structure.
+It is not important to understand what this code is doing at this point, so let's focus on its structure.
 
-First, we notice a line starting with a `#` character. This line is a *comment*, and Python ignores everything from the `#` character until the end of the line. This means that we can use comments to explain portions of the code in plain English. If we forget to prepend a comment with the `#` character, Python tries to interpret this as a command, and in most cases this will result in a syntax error:
+First, we notice a line starting with a `#` character. This line is a *comment*, and Python ignores everything from the `#` character until the end of the line. This means that we can use comments to explain portions of the code in plain English (or whatever natural language you like to use).
 
-```python
->>> this is a comment
-  File "<stdin>", line 1
-    this is a comment
-              ^^^^^^^
-SyntaxError: invalid syntax
-```
-
-Using a proper comment, Python ignores everything and happily does nothing:
-
-```python
->>> # this is a comment
-```
-
-In the code example, we also observe blocks of code *indented* (shifted) to the right. By convention, most Pythonistas use *four spaces* to denote one level of indentation. Indented lines of code belong together. For example, the seven lines below `def do_something(n_times=10):` define a block of code belonging to that statement (note that statements introducing a block always end with a `:`). Within this block, there are two additional blocks defined by additional indentation.
+Next, we can see *indented* lines of code (which means shifted to the right). By convention, most Pythonistas use *four spaces* to denote one level of indentation. Indented lines of code belong together. For example, the seven lines below `def do_something(n_times=10):` define a block of code belonging to that `def` statement (note that statements introducing a block always end with a colon). Within this block, there are two additional blocks defined by additional indentation.
 
 Blocks are necessary to define scopes, something which we will discuss later in this course.
 
-Finally, the example contains *function calls*. We will discuss functions in detail later in this course, but for now you can think of a function as a mini-program. Whenever you call a function, Python runs the whole mini-program defined by the function. The syntax for calling a function is a pair of parenthesis `()` right after the name of the function. In the example code, `range(n_times)`, `print(i)`, `print("Odd")`, `do_something()`, and `print(counter)` are all function calls. Note that you can supply so-called *arguments* between the parentheses if the function takes parameters. All function calls in the example have exactly one argument, except for `do_something()`, which has no argument. Arguments allow us to pass additional information to the function.
+Finally, the example contains *function calls*. We will discuss functions in detail later in this course, but for now you can think of a function as a mini-script. Whenever you call a function, Python runs the whole mini-script defined by the function. The syntax for calling a function is a pair of parenthesis `()` right after the name of the function. In the example code, `range(n_times)`, `print(i)`, `print("Odd")`, `do_something()`, and `print(counter)` are all function calls. Note that you can supply so-called *arguments* between the parentheses if the function takes parameters. All function calls in the example have exactly one argument, except for `do_something()`, which has no argument. Arguments allow us to pass additional information to the function.
 
-Like most programming languages, Python is very picky about correct syntax. For example, capitalization matters, so `print` is not the same as `Print`. A missing `:` in places where a colon should be triggers a syntax error. Incorrect indentation can either lead to a syntax error or to non-intended behavior (which means the Python program runs without errors, but does not do what the programmer intended). It is very instructive to try out code in the interactive interpreter, for example:
+Like most programming languages, Python is very picky about correct syntax. For example, capitalization matters, so `print` is not the same as `Print`. A missing `:` in places where a colon should be triggers a syntax error. Incorrect indentation can either lead to a syntax error or to non-intended behavior (which means the Python program runs without errors, but does not do what the programmer intended). It is very instructive to try out invalid code in the interactive interpreter, for example:
 
-```python
->>> Print("Hello")
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'Print' is not defined. Did you mean: 'print'?
+```{python}
+#| error: true
+Print("Hello")
 ```
 
-It is important to be familiar with Python error messages to interpret them correctly and efficiently (after all, the goal should be to fix the error), so make errors and learn from them!
+It is important to be familiar with Python error messages to interpret them correctly and efficiently (after all, the goal should be to fix them), so make errors and learn from them!
 
 
 ## Python code style
 
-On the other hand, there are also stylistic issues that Python does not care about at all. The following two statements are equivalent for Python:
+There are also stylistic issues that Python does not care about at all. The following two statements are equivalent for Python:
 
-```python
->>> x = 1 + 2 + 3 * (16 - 7)
->>> x=1+    2+  3*  (   16-7    )
+```{python}
+x = 1 + 2 + 3 * (16 - 7)
+x=1+    2+  3*  (   16-7    )
+x=1+2+3*(16-7)
 ```
 
-Arguably, the first one is much easier to read. The [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) summarizes coding conventions that describe how Python code should look like to enhance readability. It is worth going through the document (at least superficially), but most editors perform PEP8 checks automatically as you type. If you have set up Visual Studio Code as described previously, code that does not comply to PEP8 should be highlighted (and you can manually fix it).
+Arguably, the first statement is much easier to read than the other two. The [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) summarizes coding conventions that describe how Python code should look like to enhance readability. It is worth going through the document (at least superficially), but most editors perform PEP8 checks automatically as you type. If you have set up Visual Studio Code as described previously, code that does not comply to PEP8 should be highlighted (and you can manually fix it).
 
 
 ## Additional learning resources
 
-Here are a few Python resources for beginners that might be helpful in addition to this course.
+Here are a few Python resources for beginners that might be helpful after completing this course.
 
 
 ### Online documentation
@@ -226,8 +231,11 @@ Here are a few Python resources for beginners that might be helpful in addition 
 ## Exercises
 
 1. Create a list of installed packages in your Python environment.
+
 2. Update all installed packages. Find out if `ipython` and `numpy` are installed, and if not, install these packages.
+
 3. Install the `mne` package. Afterwards, uninstall it again.
+
 4. Create a short Python script called `test.py` with the following contents:
    - The first line should be a comment with your name.
    - The second line should be empty.
@@ -235,6 +243,7 @@ Here are a few Python resources for beginners that might be helpful in addition 
    - The last line should be empty.
 
    Make sure that the code is formatted according to PEP8!
+
 5. Display the help text for the `print` function in the interactive Python interpreter.
 
 ---

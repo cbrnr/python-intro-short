@@ -15,8 +15,6 @@ theme:
 cap-location: margin
 ---
 
-# 1 – Basics
-
 ## Introduction
 
 In this workshop, you will learn the basics of the Python programming language. This is a course for beginners, so you do not need to be fluent in any other programming language. In fact, it is perfectly fine if you have never programmed before.

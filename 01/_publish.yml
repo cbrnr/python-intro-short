@@ -1,0 +1,4 @@
+- source: 01.qmd
+  netlify:
+    - id: a72c34e2-4269-4334-98e3-da5bbe1f3543
+      url: 'https://python-intro-01.netlify.app/'

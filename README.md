@@ -2,7 +2,7 @@
 
 1. [Basics](https://python-intro-01.netlify.app/)
 2. [Python environment](https://python-intro-02.netlify.app/)
-3. [Names, expressions, statements](03/03.md)
+3. [Names, expressions, statements](https://python-intro-03.netlify.app/)
 4. [Functions](04/04.md)
 5. [Conditions](05/05.md)
 6. [Loops](06/06.md)

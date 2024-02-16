@@ -1,4 +1,19 @@
-# 10 – Modules and packages
+---
+title: "10 – Modules and packages"
+subtitle: "Introduction to Python"
+author: "Clemens Brunner"
+date: 2024-02-14
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+cap-location: margin
+---
 
 ## Introduction
 
@@ -9,49 +24,54 @@ A *module* is a Python script that we can import in our own code in order to use
 
 ## Importing modules
 
-We have already used functions from the `math` module (which is part of the standard library). Before using functions defined in a module, we have to import either the whole module or only specific functions from the module. Usually (by PEP8 convention), we import all modules at the top of a script.
+We have already used functions from the `math` module (which is part of the standard library). Before using functions defined in a module, we have to import either the entire module or only specific functions from the module. Usually (by PEP8 convention), we import modules at the top of a script.
 
-Here's an example where we import the whole `math` module and then use some of its names and functions:
+Here's an example where we import the entire `math` module and then use some of its names and functions:
 
-```python
->>> import math
->>> math.pi
-3.141592653589793
->>> math.e
-2.718281828459045
->>> math.sin(math.pi)
-1.2246467991473532e-16  # practically zero (limited float precision)
->>> math.cos(math.pi)
--1.0
+```{python}
+import math
+math.pi
+```
+
+```{python}
+math.e
+```
+
+```{python}
+math.sin(math.pi)
+```
+
+```{python}
+math.cos(math.pi)
 ```
 
 After `import math`, we can access the contents of the module by prepending `math.` to the actual names contained in the module (`math.pi`, `math.e`, `math.sin`, and so on).
 
 The `dir` function lists all definitions contained in a module (we can ignore the dunder names, which are reserved for internal use):
 
-```python
->>> dir (math)
-['__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'comb', 'copysign', 'cos', 'cosh', 'degrees', 'dist', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'gcd', 'hypot', 'inf', 'isclose', 'isfinite', 'isinf', 'isnan', 'isqrt', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'log2', 'modf', 'nan', 'perm', 'pi', 'pow', 'prod', 'radians', 'remainder', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'tau', 'trunc']
+```{python}
+dir(math)
 ```
 
-If we only want to use a limited number of functions from a module, we can save us some typing by importing functions from a module like this:
+If we only want to use a limited number of functions from a module, we can save us some typing by importing specific functions from a module like this:
 
-```python
->>> from math import sqrt, pi
->>> sqrt(4)
-2.0
->>> 2 * 3**2 * pi
-56.548667764616276
+```{python}
+from math import pi, sqrt
+sqrt(4)
 ```
 
-That way, we can use the functions directly as `sqrt` and `pi` instead of `math.sqrt` and `math.pi`, respectively.
+```{python}
+2 * 3**2 * pi
+```
+
+That way, we can use these functions directly as `sqrt` and `pi` instead of `math.sqrt` and `math.pi`, respectively.
 
 
 ## Writing custom modules
 
 We are not restricted to using predefined modules – Python lets us write our own modules. This is especially useful to structure a longer program into several files. For example, let's assume that we wrote our own `mean` function, which computes the arithmetic mean of a list of numbers with the following relatively naive implementation:
 
-```python
+```{python}
 def mean(values):
     s = 0
     for v in values:
@@ -59,111 +79,106 @@ def mean(values):
     return s / len(values)
 ```
 
-We could put this function in our own module called `stats`. This is just a Python file called `stats.py`, and its sole contents is the function definition.
+We could put this function in our own module called `stats`. This is just a Python file called [`stats.py`](stats.py), and its contents is the function definition.
 
-Note that this file should be saved in the current working directory, which corresponds to the directory that the Python interpreter is currently working in. In IPython, we can find out what the working directory is by typing `pwd` (print working directory). If this is not the location we want, we can change the working directory using the `cd` (change directory) command (followed by the path to the directory we would like to use).
+Note that this file should be available in the current working directory, which corresponds to the directory that the Python interpreter is currently working in. We can then import either our `stats` module or the `mean` function from our `stats` module directly:
 
-We can then import either our `stats` module or the `mean` function from our `stats` module directly:
-
-```python
->>> import stats
->>> dir(stats)
-['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'mean']
+```{python}
+import stats
+dir(stats)
 ```
 
 The only non-dunder name is indeed our `mean` function, which we can now use as:
 
-```python
->>> stats.mean(range(1, 101))
-50.5
+```{python}
+stats.mean(range(1, 101))
 ```
 
 Alternatively, we can only import the `mean` function:
 
-```python
->>> from stats import mean
->>> mean(range(1, 101))
-50.5
+```{python}
+from stats import mean
+mean(range(1, 101))
 ```
 
 Optionally, we can rename either the imported module or the imported function during import:
 
-```python
->>> import stats as st
->>> st.mean([1, 2, 3])
-2.0
+```{python}
+import stats as st
+st.mean([1, 2, 3])
 ```
 
 ```python
->>> from stats import mean as m
->>> m(range(50, 76))
-62.5
+from stats import mean as m
+m(range(50, 76))
 ```
 
 Sometimes, this is useful when modules or function names are very long. In addition, some popular third-party modules like NumPy are imported with shorter names by convention:
 
 ```python
->>> import numpy as np  # convention
+import numpy as np  # convention
 ```
 
 Behind the scenes, nothing fancy is happening when we use alternative names for imported modules. This is just a shorter version for writing:
 
 ```python
->>> import numpy  # imports module and assigns the name numpy
->>> np = numpy  # create another name np (an alias)
->>> del numpy  # delete the original name numpy (we still have np)
+import numpy  # imports module and assigns the name numpy
+np = numpy  # create another name np (an alias)
+del numpy  # delete the original name numpy (we still have np)
 ```
 
 
 ## Selected examples from the standard library
 
-We will now briefly discuss some common modules from the standard library. First, note that our `mean` function is already implemented in the `statistics` module:
+We will now briefly discuss some common modules from the standard library. First, note that a `mean` function is already implemented in the `statistics` module:
 
-```python
->>> import statistics
->>> statistics.mean(range(1, 101))
-50.5
+```{python}
+import statistics
+statistics.mean(range(1, 101))
 ```
 
 This module contains some additional useful statistical functions (check out the output of `dir(statistics)` for an exhaustive list).
 
 Generating random numbers is a common task in many applications. Python includes the `random` module, which contains many functions related to random number generation.
 
-```python
->>> import random
+```{python}
+import random
 ```
 
-Note that computers cannot produce true random numbers. Instead, they use sophisticated algorithms to generate pseudo-random numbers, which behave like true random numbers but can be generated by a deterministic algorithm. It is good practice to initialize the random number generator with `random.seed` before drawing random numbers, because this makes the code reproducible. Setting the random seed makes sure that we get the exact same random numbers whenever we run our script. Let's look at an example, which draws three random integers from the range of 0 to 100:
+Computers cannot produce true random numbers. Instead, they use sophisticated algorithms to generate pseudo-random numbers, which behave like true random numbers but can be generated by a deterministic algorithm. It is good practice to initialize the random number generator with `random.seed` before drawing random numbers, because this makes the code reproducible. Setting the random seed makes sure that we get the exact same random numbers whenever we run our script. Let's look at an example, which draws three random integers from the range of 0 to 100:
 
-```python
->>> random.seed(42)  # initialize the random number generator
->>> random.randint(0, 100)
-81
->>> random.randint(0, 100)
-14
->>> random.randint(0, 100)
-3
+```{python}
+random.seed(42)  # initialize the random number generator
+random.randint(0, 100)
 ```
 
-The initial function call `random.seed(42)` puts the random number generator in a defined state. The concrete number `42` is not important, but if we use the same number every time we re-run the script, we will get the same random numbers. In other words, if we run the previous four lines again, we will get the same random numbers 81, 14, and 3.
+```{python}
+random.randint(0, 100)
+```
+
+```{python}
+random.randint(0, 100)
+```
+
+The initial function call `random.seed(42)` puts the random number generator in a defined state. The concrete number `42` is not important, but if we use the same seed every time we re-run the script, we will get the same random numbers. In other words, if we run the previous four lines again, we will always get the same sequence of random numbers.
 
 The `random` module has many useful functions. For example, we can randomly sample from a list with `random.choice` (we do not set `random.seed` every time, this should only happen once per session, preferrably at the very top of a script):
 
-```python
->>> x = ["a", "b", "c", "d", "e"]
->>> random.choice(x)
-'c'
->>> random.choice(range(1, 1001))
-251
+```{python}
+x = ["a", "b", "c", "d", "e"]
+random.choice(x)
+```
+
+```{python}
+random.choice(range(1, 1001))
 ```
 
 There is also a function that randomly shuffles the elements of a list in-place:
 
-```python
->>> x = ["a", "b", "c", "d", "e"]
->>> random.shuffle(x)
->>> x
-['b', 'd', 'a', 'c', 'e']
+```{python}
+x = ["a", "b", "c", "d", "e"]
+random.shuffle(x)
+x
 ```
 
 This concludes our extremely short tour of some important modules in the standard library.
@@ -206,38 +221,39 @@ Each directory containing a file called `__init__.py` is a package. In our examp
 Let's see how we can import the contents of the package in Python. We can import individual modules with dot notation:
 
 ```python
->>> import sound.effects.echo
+import sound.effects.echo
 ```
 
 We can then use functions defined in that module, but we have to prepend the full name. For example, calling the function `echofilter` in that module needs to be written like this:
 
 ```python
->>> sound.effects.echo.echofilter(input, output, delay=0.7, atten=4)
+sound.effects.echo.echofilter(input, output, delay=0.7, atten=4)
 ```
 
 Alternatively, we can import the module `echo` as:
 
 ```python
->>> from sound.effects import echo
+from sound.effects import echo
 ```
 
 This makes calling functions from that module shorter:
 
 ```python
->>> echo.echofilter(input, output, delay=0.7, atten=4)
+echo.echofilter(input, output, delay=0.7, atten=4)
 ```
 
 Finally, we could also import just the function `echofilter`:
 
 ```python
->>> from sound.effects.echo import echofilter
->>> echofilter(input, output, delay=0.7, atten=4)
+from sound.effects.echo import echofilter
+echofilter(input, output, delay=0.7, atten=4)
 ```
 
 Or even shorter:
+
 ```python
->>> from sound.effects.echo import echofilter as ef
->>> ef(input, output, delay=0.7, atten=4)
+from sound.effects.echo import echofilter as ef
+ef(input, output, delay=0.7, atten=4)
 ```
 
 The packages NumPy, SciPy, Pandas, and Matplotlib are essential tools for performing data science with Python. By convention, these packages are imported as follows:

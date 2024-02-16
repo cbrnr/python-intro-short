@@ -11,4 +11,4 @@
 9. [Dictionaries](https://python-intro-09.netlify.app)
 10. [Modules and packages](https://python-intro-10.netlify.app)
 11. [Input and output](https://python-intro-11.netlify.app)
-12. [Exercises](12/12.md)
+12. [Exercises](https://python-intro-12.netlify.app)

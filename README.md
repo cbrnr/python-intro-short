@@ -7,7 +7,7 @@
 5. [Conditions](https://python-intro-05.netlify.app)
 6. [Loops](https://python-intro-06.netlify.app)
 7. [Strings](https://python-intro-07.netlify.app)
-8. [Lists](08/08.md)
+8. [Lists](https://python-intro-08.netlify.app)
 9. [Dictionaries](09/09.md)
 10. [Modules and packages](10/10.md)
 11. [Input and output](11/11.md)

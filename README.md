@@ -5,7 +5,7 @@
 3. [Names, expressions, statements](https://python-intro-03.netlify.app/)
 4. [Functions](https://python-intro-04.netlify.app/)
 5. [Conditions](https://python-intro-05.netlify.app)
-6. [Loops](06/06.md)
+6. [Loops](https://python-intro-06.netlify.app)
 7. [Strings](07/07.md)
 8. [Lists](08/08.md)
 9. [Dictionaries](09/09.md)

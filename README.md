@@ -8,7 +8,7 @@
 6. [Loops](https://python-intro-06.netlify.app)
 7. [Strings](https://python-intro-07.netlify.app)
 8. [Lists](https://python-intro-08.netlify.app)
-9. [Dictionaries](09/09.md)
+9. [Dictionaries](https://python-intro-09.netlify.app)
 10. [Modules and packages](10/10.md)
 11. [Input and output](11/11.md)
 12. [Exercises](12/12.md)

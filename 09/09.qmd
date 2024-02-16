@@ -1,0 +1,253 @@
+---
+title: "9 – Dictionaries"
+subtitle: "Introduction to Python"
+author: "Clemens Brunner"
+date: 2024-02-14
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+cap-location: margin
+---
+
+## Introduction
+
+The last built-in data type we are going to cover is the dictionary (`dict`). Just like its name implies, a dictionary is a mapping data type, which maps keys to values. It works a little like a real-word dictionary. Let's assume we wanted to look up the German translation of "cat". We'd flip through the pages of an English-German dictionary until we found the entry for "cat". This entry would contain the German translation "Katze". In this example, "cat" is the key and "Katze" is its value. Therefore, a dictionary is a mapping from keys to values. A dictionary can contain many key-value pairs.
+
+
+## Creating dictionaries
+
+Here's how we define a `dict` in Python. We use curly braces to create a dict, and we supply a comma-separated list of key-value pairs inside the braces. The key-value pairs are separated by colons. Here's an example:
+
+```{python}
+d = {"house": "Haus", "cat": "Katze", "snake": "Schlange"}
+```
+
+Alternatively, we can also use the `dict` function and create key-value pairs with keyword arguments:
+
+```{python}
+d = dict(house="Haus", cat="Katze", snake="Schlange")
+```
+
+Note that in the second version, dictionary keys need to be valid Python names, whereas the first version is more flexible. For example, we can use an `int` as a key, but only when we use curly bracket notation:
+
+```{python}
+{1: "one", 2: "two"}
+```
+
+The `dict` function raises a syntax error, because argument names must not start with a digit:
+
+```{python}
+#| error: true
+dict(1="one", 2="two")
+```
+
+Just like in lists and strings, Python uses square brackets to access individual elements in a dict. However, because dictionaries are not ordered, we use its keys to retrieve their corresponding values. Let's demonstrate this with the dictionary we defined previously:
+
+```{python}
+d["cat"]
+```
+
+```{python}
+d["house"]
+```
+
+When we use a key that does not exist in the dictionary, Python raises an error:
+
+```{python}
+#| error: true
+d["dog"]
+```
+
+Dictionaries are mutable, which means that we can modify existing dictionary entries:
+
+```{python}
+d["snake"] = "Python"
+d
+```
+
+We can add new entries simply by assigning a value to a new key using square bracket notation:
+
+```{python}
+d["bug"] = "Wanze"
+d
+```
+
+:::{.callout-important}
+Again, order is irrelevant in dictionaries. There is no first, second or last item in a dictionary – values can only be accessed by their key.
+:::
+
+So far, we have used strings as dictionary keys. However, we can actually use any *immutable* data type as a key, including integers, floats, and tuples. Importantly, we cannot use lists as keys, because lists are mutable. This restriction does *not* apply to dictionary *values*, which can be mutable or immutable objects.
+
+```{python}
+x = {13: "A", "c": 2.22, (0, 1): [1, 2, 3]}
+x
+```
+
+```{python}
+#| error: true
+x[[4, 5, 6]] = "X"  # try to add new entry with mutable key (list)
+```
+
+The previous assignment demonstrates what happens when we try to create a dictionary entry with a list as a key: we get a `TypeError` (note that the error message says that the type is *unhashable* – for most purposes, unhashable means mutable, although technically these are different concepts).
+
+
+## Working with dictionaries
+
+Not surprisingly, we can use the `len` function to determine the number of entries in a dictionary:
+
+```{python}
+d = {"house": "Haus", "cat": "Katze", "snake": "Schlange"}
+len(d)
+```
+
+Notice that an entry is a key/value pair. We can get the keys or values separately with the `keys` and `values` methods, respectively:
+
+```{python}
+d.keys()
+```
+
+```{python}
+d.values()
+```
+
+These methods return list-like objects (you can basically think of them as lists).
+
+Using the `in` keyword, we can check if the dictionary contains a specific *key*:
+
+```{python}
+"cat" in d
+```
+
+```{python}
+"Katze" in d
+```
+
+If we want to check for a specific *value*, we can perform our query on `d.values()` instead:
+
+```{python}
+"cat" in d.values()
+```
+
+```{python}
+"Katze" in d.values()
+```
+
+
+## Iterating over dictionaries
+
+Dictionaries are iterable, and if we create a loop over a dict, we actually loop over its keys:
+
+```{python}
+for key in d:
+    print(key)
+```
+
+Using the current key in each iteration, we can access the corresponding value via indexing:
+
+```{python}
+for key in d:
+    print(key, ":", d[key])
+```
+
+Of course we could also iterate over `d.values()` specifically, but often it is necessary to iterate over both keys and values simultaneously. The dict method `items` returns key/value pairs as tuples:
+
+```{python}
+d.items()
+```
+
+We can use this list-like sequence of tuples in our loop, which means that we get a tuple in each iteration. However, instead of assigning one name to the tuple, we can unpack its two items into two distinct names (this is called tuple unpacking):
+
+```{python}
+for key, value in d.items():
+   print(key, "=>", value)
+```
+
+:::{.callout-tip}
+Here's another example of tuple unpacking:
+
+```{python}
+a, b = 12, 13
+a
+```
+
+```{python}
+b
+```
+
+The tuple `12, 13` on the right-hand side contains two items. On the left-hand side we assign two names, one for each tuple item (the tuple items are unpacked into separate names). Because Python always evaluates the right-hand side first, the canonical way to swap two values in Python is very short and sweet:
+
+```{python}
+a, b = b, a
+```
+
+This swaps the values of `a` and `b`, which we can confirm by printing their values:
+
+```{python}
+a
+```
+
+```{python}
+b
+```
+:::
+
+
+## Setting default values
+
+We have already seen that accessing a non-existing dictionary entry results in a `KeyError`:
+
+```{python}
+#| error: true
+d = {"house": "Haus", "cat": "Katze", "snake": "Schlange"}
+d["dog"]
+```
+
+There are two additional options to get values from a dictionary without raising an error. First, the `get` method returns a user-defined default value (by default `None`) if a key does not exist:
+
+```{python}
+d.get("dog")  # returns None
+```
+
+```{python}
+d.get("dog", "UNDEFINED")  # returns "UNDEFINED" if the key does not exist
+```
+
+```{python}
+d.get("cat", "UNDEFINED")  # returns the value if the key exists
+```
+
+However, `get` does not automatically *add* new entries to the dictionary (in our example, there is still no `"dog"` entry in `d`):
+
+```{python}
+d
+```
+
+If we do want to add new key/value pairs whenever we access a non-existing key, we can use the `setdefault` method instead of `get`:
+
+```{python}
+d.setdefault("dog", "UNDEFINED")
+```
+
+```{python}
+d
+```
+
+
+## Exercises
+
+1. Create a dictionary containing three arbitrary elements. How can you access those three values individually?
+
+2. Add a fourth entry to the dictionary.
+
+3. Iterate over the dictionary and output all key/value pairs on separate lines.
+
+4. Access a non-existing element in the dictionary with the three different options discussed in this chapter.
+
+---
+![https://creativecommons.org/licenses/by-nc-sa/4.0/](cc_license.png) This document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) by [Clemens Brunner](https://cbrnr.github.io/).

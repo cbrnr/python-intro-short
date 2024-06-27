@@ -2,7 +2,7 @@
 title: "5 – Conditions"
 subtitle: "Introduction to Python"
 author: "Clemens Brunner"
-date: 2024-02-14
+date: 2024-07-01
 format:
   html:
     page-layout: full
@@ -17,12 +17,12 @@ cap-location: margin
 
 ## Introduction
 
-As our programs grow more complex, we frequently want to run a block of code only if a specific condition is met. For example, we might want to output a message only if a certain number is less than some specified value. This is where conditions come in handy – they allow us to run code only if a condition is fulfilled. Conditions are another important building block of almost any real-world program. Just like functions, conditions allow us to control the flow of execution.
+As our programs become more complex, we will often need to run a block of code only if a specific condition is met. For example, we might want to output a message only if a certain number is less than some specified value. This is where conditions come in handy – they allow us to run code only if a condition is fulfilled. Conditions are another important building block of almost any real-world program. Just like functions, conditions allow us to control the flow of execution.
 
 
 ## Comparisons
 
-A condition is based on a comparison. A comparison is an expression, which means that it has a value. Because a condition can only be either true or false, Python has a special data type `bool` exactly for this purpose. A `bool` can either be `True` or `False` (notice the capitalization of the first letters):
+A condition is based on a comparison. A comparison is an expression, which means that it has a value. Because a condition can only be either true or false, Python has a special data type `bool` exactly for this purpose. Therefore, a `bool` can either be `True` or `False` (notice the capitalization of the first letters):
 
 ```{python}
 x = True
@@ -52,6 +52,10 @@ Here are some examples:
 x = 2
 x == 2
 ```
+
+:::{.callout-tip}
+Mixing up the equality operator `==` with the assignment operator `=` is a common mistake, so make sure to use the correct operator in your code!
+:::
 
 ```{python}
 x != 2
@@ -117,14 +121,22 @@ not (0 < x < 10)
 (x < 0) or (x >= 2)
 ```
 
-Finally, Python has `is` and `in` keywords that also produce boolean results. The `is` keyword checks if two *objects* are identical (as opposed to `==`, which only checks if two *values* are identical). This distinction is important, but we won't need it very often (especially because we are just beginning to learn Python).
+:::{.callout-note}
+Python also has an exclusive or (XOR) operator `^`, which returns `True` if exactly one of the two operands is `True`:
 
-The `in` keyword checks whether some value is contained in some sequence. We will come back to this operator when we introduce Python lists (the `list` type).
+```{python}
+True ^ False
+```
+
+```{python}
+True ^ True
+```
+:::
 
 
 ### Comparing floating point numbers
 
-Python distinguishes between integer numbers (`int`) and floating point numbers (`float`). These two types represent numbers differently. Most noteably, `int` numbers have *exact* internal representations, whereas `float` numbers can only be stored with *limited precision*. This can lead to subtle issues especially when comparing two floating point numbers for equality:
+Python distinguishes between integer numbers (`int`) and floating point numbers (`float`). These two types represent numbers differently. Most noteably, `int` numbers have *exact* internal representations, whereas `float` numbers can only be stored with *limited precision*. This can lead to subtle issues, especially when comparing two floating point numbers for equality:
 
 ```{python}
 0.1 + 0.1 + 0.1 == 0.3
@@ -144,7 +156,7 @@ math.isclose(0.1 + 0.1 + 0.1, 0.3)
 ```
 
 :::{.callout-tip}
-Python supports expressing decimal numbers using [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation), which uses a representation with powers of ten. It uses the symbol `e`, which can be read as "times ten to the power of". The following examples illustrate this concept:
+Python supports expressing decimal numbers using [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) with powers of ten. It uses the symbol `e`, which can be read as "times ten to the power of". The following examples illustrate this concept:
 
 ```{python}
 1e0  # 1 times 10 to the power of 0
@@ -228,7 +240,7 @@ if a > 0:
 
 ### Example 2
 
-We can add an optional `else` branch, which Python runs if none of the previous conditions returned `True`:
+We can add an optional `else` branch, which Python runs if none of the previous conditions evaluated to `True`:
 
 ```{python}
 a = 0
@@ -262,7 +274,7 @@ else:
 
 ### Example 4
 
-Due to the fact that Python only runs the code associated with the *first* condition yielding `True`, the order of conditions is important. Consider the following two examples containing identical conditions, but in a different order:
+Due to the fact that Python only runs the code associated with the *first* condition yielding `True`, the *order* of conditions is important. Consider the following two examples containing identical conditions, but in a different order:
 
 ```{python}
 a = 4
@@ -277,7 +289,7 @@ else:
     print("Four")
 ```
 
-Now we only swap the order of the two `elif` branches:
+Now we swap the order of the two `elif` branches:
 
 ```python
 a = 4

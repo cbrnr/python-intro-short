@@ -2,7 +2,7 @@
 title: "6 – Loops"
 subtitle: "Introduction to Python"
 author: "Clemens Brunner"
-date: 2024-02-14
+date: 2024-07-01
 format:
   html:
     page-layout: full
@@ -17,7 +17,7 @@ cap-location: margin
 
 ## Introduction
 
-It is often necessary to repeat statements a certain number of times. For example, let's assume that we wanted to print "Hello!" five times. Rather naively, we could write this simply as:
+It is often necessary to repeat statements a certain (or undefined) number of times. For example, let's assume that we wanted to print "Hello!" five times. Rather naively, we could write this simply as:
 
 ```{python}
 print("Hello")
@@ -27,12 +27,12 @@ print("Hello")
 print("Hello")
 ```
 
-Although this does the job, it is really cumbersome to repeat the same line of code multiple times. Furthermore, imagine we made a mistake and we really wanted to print "Bye" instead of "Hello" – we'd have to change our code in five different locations.
+Although this does the job, it is really cumbersome to repeat the same line of code multiple times. Furthermore, imagine we made a mistake and we really wanted to print "Bye" instead of "Hello" – we'd have to change our code in five different locations!
 
 
 ## `for`-loops
 
-Python supports two types of loops (`for`-loops and `while`-loops), which enable us to perform repeated actions. Like functions and conditions, loops also control the program flow. Our previous example could be rewritten as follows:
+Python supports two types of loops (`for`-loops and `while`-loops), which enable us to perform repeated actions. Like functions and conditions, loops control the program flow. Our previous example could be rewritten as follows:
 
 ```{python}
 for i in range(5):
@@ -41,9 +41,13 @@ for i in range(5):
 
 This is obviously much shorter than writing out each repetition manually (even more so if the loop involves more iterations). Furthermore, if we want to make changes, we only need to do it once inside the body of the loop.
 
-Let's analyze the structure of a `for`-loop in Python. The first part should look familiar: just like functions and conditions, `for`-loops start with a header. This time, the header is introduced by the `for` keyword. Next, the loop header defines a name (`i` in our case), which will get individual values of a sequence-like object, which is specified last (`range(5)` in the example). In each iteration of the loop, `i` gets the current value of the sequence we are iterating over. A colon concludes the loop header.
+Let's analyze the structure of a `for`-loop in Python. The first part should look familiar: just like functions and conditions, `for`-loops start with a header. This time, the header is introduced with the `for` keyword. Next, the loop header defines a name (`i` in our case), which will get individual values of a sequence-like object, which is specified last (`range(5)` in the example). In each iteration of the loop, `i` gets the current value of the sequence we are iterating over. A colon concludes the loop header.
 
 The indented part after the header forms the body of the loop. This code block is what is actually repeated (in our example, `print("Hello")` is repeatedly called five times).
+
+:::{.callout-note}
+Since we are not using the value of `i` in the loop body, it is common to use the name `_` instead. Note that this is just a convention, there is nothing special about the name `_` at all.
+:::
 
 We can further inspect what's going on by printing `i` inside the loop:
 
@@ -59,7 +63,7 @@ Note that `i` remains available after the loop – its value will be `4`, becaus
 Alright, so `range(5)` produces a sequence of five numbers, starting at 0 and ending with 4. The loop iterates over all elements of this sequence until it is exhausted, after which the loop stops. In each iteration of the loop, `i` contains the i-th element of the sequence, and this particular value is used when running the body of the loop.
 
 :::{.callout-note}
-Actually, `range` can also be called with two arguments, which are then interpreted as start and stop values of the created range. However, the stop value does not belong to the sequence anymore (this is because the difference between stop and start gives the number of elements):
+Actually, `range` can also be called with two arguments, which are then interpreted as start and stop values of the created range. However, the stop value does not belong to the sequence anymore (this is because the difference between stop and start is supposed to equal the number of elements):
 
 ```{python}
 list(range(2, 8))  # 8 - 2 = 6 values (from 2 to 7)
@@ -67,14 +71,14 @@ list(range(2, 8))  # 8 - 2 = 6 values (from 2 to 7)
 
 Note that we have to use `list` in order to see all the elements that `range` creates at once (more on lists soon).
 
-If called with a third argument, `range` interprets this as a step value:
+If called with a third argument, `range` interprets this argument as a step size:
 
 ```{python}
 list(range(2, 8, 2))  # values from 2 to 7, but only every second value
 ```
 :::
 
-A loop can iterate not only over `range`, but over any *sequence-like* object (a data type that can contain more than one item). We will learn more about three widely-used container types (strings, lists, and dictionaries) in the next chapters.
+A loop can iterate not only over `range`, but over *any sequence-like* object (a data type that can contain more than one item). We will learn more about three widely-used container types (strings, lists, and dictionaries) in the next chapters.
 
 Here's a short preview of what a loop can do. First, we can iterate over a string:
 
@@ -114,6 +118,10 @@ print(i)
 
 This example searches for the first occurrence of the character `"e"` within the string `"Hide and seek"`. If it finds it, the name `i` contains the position (index) of this character within the string (`3` in this example, because we initialize `i` with zero). Notice that once we have found the character (`c == "e"`), we immediately break out of the loop (which means Python immediately jumps to the end of the loop, which is the `print(i)` function call). As we will see soon, `break` is especially useful in `while`-loops.
 
+:::{.callout-note}
+The statement `i += 1` is shorthand for `i = i + 1` (increment `i` by one).
+:::
+
 The next example demonstrates the use of the `continue` statement, which causes Python to immediately jump back to the loop header and begin the next iteration.
 
 ```{python}
@@ -129,7 +137,7 @@ Of course, we could have used an `else` branch here, but the goal was to show an
 
 ## `while`-loops
 
-In addition to `for`-loops, Python also supports `while`-loops. In general, both loop types can be used interchangeably, but `while`-loops are especially useful when we want a loop that never stops (an infinite loop), or in cases where we don't know in advance how many iterations we are going to perform.
+In addition to `for`-loops, Python also supports `while`-loops. In general, both loop types can be used interchangeably, but `while`-loops are especially useful when we need a loop that never stops (an infinite loop), or in cases where we don't know in advance how many iterations we are going to perform.
 
 Here's our first `for`-loop example transformed to a `while`-loop:
 
@@ -154,7 +162,7 @@ while True:
 
 The `while`-loop makes this use case quite natural. Apparently, `while True` is *always* `True`, so the loop will go on forever. However, notice that there is a `break` statement inside the loop body, which will exit the loop immediately. This will only happen if the user input (stored in `line`) equals `"q"`.
 
-Here's another fun little example which involves a (potentially) infinite `while`-loop. It also contains a condition with `if`, `elif`, and `else` blocks. The job of the user is to guess the value of `number` (which is 23 in this case, but we assume that the user doesn't know this value). If the guess is correct, we `break` out of the loop and the program is done. If the user's guess is incorrect, we give a hint and go to the next iteration.
+Here's another fun little example which involves a (potentially) infinite `while`-loop. It also contains a condition with `if`, `elif`, and `else` blocks. The task of the user is to guess the value of `number` (which is 23 in this case, but we assume that the user doesn't know this value). If the guess is correct, we `break` out of the loop and the program is done. If the user's guess is incorrect, we give a hint and go to the next iteration.
 
 ```python
 number = 23

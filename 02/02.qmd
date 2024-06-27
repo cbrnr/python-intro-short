@@ -2,7 +2,7 @@
 title: "2 – The Python Environment"
 subtitle: "Introduction to Python"
 author: "Clemens Brunner"
-date: 2024-02-14
+date: 2024-07-01
 format:
   html:
     page-layout: full

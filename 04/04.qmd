@@ -2,7 +2,7 @@
 title: "4 – Functions"
 subtitle: "Introduction to Python"
 author: "Clemens Brunner"
-date: 2024-02-14
+date: 2024-07-01
 format:
   html:
     page-layout: full
@@ -17,31 +17,36 @@ cap-location: margin
 
 ## Introduction
 
-Functions encapsulate code, or in other words, functions group lines of code that belong together. They promote reusability and prevent code duplication. For example, if you need to perform repeated calculations consisting of several lines of code, the corresponding code might be outsourced into a function. We will see examples of Python functions soon, but first we will discuss how to call and define functions.
+Functions encapsulate code that performs a specific task, or in other words, functions group lines of code that belong together. They promote reusability and prevent code duplication. For example, if you need to perform repeated calculations consisting of several lines of code, the corresponding code might be outsourced into a function. We will see examples of Python functions soon, but first we will discuss how to call and define functions.
 
 
 ## Calling functions
 
-We have already mentioned that we *call* an existing function with its name followed by a pair of parentheses. Inside the parentheses, a function can accept arguments, which are specific values we provide when we call the function.
+We have already mentioned that we *call* an existing function with its name followed by a pair of parentheses. Inside the parentheses, a function can accept arguments, which are specific values we provide to customize its behavior.
 
 For example, we already saw the built-in functions `print` and `type`. Here's how we call these functions:
 
 ```{python}
 print("Hello")
+```
+
+```{python}
 type("Hello")
 ```
 
-Notice that both functions are called with one argument (the string `"Hello"` in this case). However, we can also call some functions without any argument:
+Notice that both functions are called with one argument (the string `"Hello"` in this case). However, we can also call a function without any argument:
 
 ```{python}
 print()
 ```
 
+If and how many arguments a function accepts depends entirely on the specific function. The `print` function, for example, can accept any number of arguments, whereas the `len` function (which we will cover in a later chapter) accepts exactly one argument.
+
 :::{.callout-important}
 No matter how many arguments a function takes (this really depends on the specific function), we need to supply the *pair of parentheses* in order to call the function.
 :::
 
-Calling a function instructs Python to *run* all lines of code belonging to that function. In the examples we've just shown, we do not even know which lines of code get executed when we run the `print` or `type` functions. However, this is not important as long as the functions do what they are supposed to do. This is what encapsulation actually means: a function encapsulates its code, and we can call a function without ever knowing what code it contains.
+Calling a function instructs Python to *run* all lines of code belonging to that function. In the examples we've just shown, we do not even know which lines of code get executed when we run the `print` or `type` functions. However, this is not important as long as the functions do what they are supposed to do. This is what encapsulation actually means: a function encapsulates its code, and we can call a function without ever knowing its implementation details.
 
 
 ## Defining functions
@@ -55,14 +60,14 @@ def function_name(<arg1>, <arg2>, ...):
     <optionally return something>
 ```
 
-Let's break this down. A function definition starts with a function header introduced with the keyword `def`. Then we specify the function name (keeping in mind the naming rules we've already discussed), followed by a pair of parentheses. If our function requires additional information to do its job, we specify its parameters inside the parentheses (separated by commas). Each parameter gets its own name, and the function replaces all parameters with specific values that are provided when the function is called (these specific values are called *arguments*). Finally, the function header needs to be concluded with a `:`.
+Let's break this down. A function definition starts with a function header introduced with the keyword `def`. Then we specify the function name (keeping in mind the naming rules we've already discussed), followed by a pair of parentheses. If our function requires additional information to do its job, we specify its *parameters* inside the parentheses (separated by commas). Each parameter gets its own name, and the function replaces all parameters with specific values that are provided when the function is called (these specific values are called *arguments*). Finally, the function header needs to be concluded with a `:` symbol.
 
 Next, we indent all lines that belong to the function body. That way, Python knows which lines to execute when we call the function. A function body can consist of one or several lines of code. If the function has parameters, their specific values are available within the function body (that is, parameter names get replaced with specific argument values). Optionally, a function can return a value (for example, the result of a computation). This return value can be evaluated and used just like any expression.
 
 
 ### Example 1
 
-Let's review some examples of simple functions. The following function is named `test1`, has no parameters, and its body consists of two lines of code. When called, the function internally assigns the name `s` to the string `"Hello World!"`, which it then prints to the screen. This function does not return a value.
+Let's review some examples of simple functions. The following function is named `test1`, has no parameters, and its body consists of two lines of code. When called, the function internally assigns the name `s` to the string `"Hello World!"`, which it then prints to the screen. This function does *not* return a value.
 
 ```{python}
 def test1():
@@ -71,10 +76,10 @@ def test1():
 ```
 
 :::{.callout-note}
-When typing this function definition in the interactive interpreter, the prompt changes from `>>>` to `...` after the first line, because Python knows that the function definition is incomplete. As with the regular prompt, do not type the `...` characters when you define this function.
+When typing this function definition in the interactive interpreter, the prompt changes from `>>>` to `...` after the first line, because Python knows that the function definition is incomplete. As with the regular prompt, do not type the `...` characters when you define this function in the REPL.
 :::
 
-Notice that running these three lines of code in Python does *not* actually *run* the function – they *define* the function so that Python now knows that a function `test1` exists. We still have to *call* this function in order to run it:
+Notice that running these three lines of code in Python does *not* actually *run* the function – they merely *define* the function so that Python now knows that a function `test1` exists. We still have to *call* this function in order to run it:
 
 ```{python}
 test1()
@@ -93,7 +98,7 @@ def test2():
    return s
 ```
 
-This function contains a `return` statement, which in this case means that the function returns `s` (which is equal to the string `"Hello world!"`) to the caller. After defining this function, we can call it:
+This function contains a `return` statement, which in this case means that the function returns `s` (which is equal to the string `"Hello world!"`). After defining this function, we can call it:
 
 ```{python}
 test2()
@@ -115,10 +120,14 @@ h
 type(h)
 ```
 
+:::{.callout-tip}
+Make sure that you understand the difference in behavior between the two functions `test1` and `test2`! The first function prints a string to the screen (and returns nothing), whereas the second function returns a string.
+:::
+
 
 ### Example 3
 
-Let's define an even more sophisticated function, this time we add two parameters `x` and `y`. The function should return the sum of these two parameters, which is why we call our function `add`:
+Let's define an even more sophisticated function, this time we throw two parameters `x` and `y` into the mix. The function should return the sum of these two parameters, which is why we aptly name it `add`:
 
 ```{python}
 def add(x, y):
@@ -165,7 +174,7 @@ a - 20
 
 ## Defining default arguments
 
-Python functions have an extremely useful feature. When defining a function, parameters can get default values, so-called default arguments. This means that parameters with default values are *optional* when the function is called – values for these optional parameters do not need to be passed.
+Python functions have an extremely useful feature. When defining a function, parameters can get default values, so-called *default arguments*. This means that all parameters with default values are *optional* when the function is called – values for these optional parameters do not need to be passed.
 
 Here's our `add` function definition from before, but this time the second parameter gets a default value of `1`:
 
@@ -198,13 +207,17 @@ def many_args(a, b, c=0, d=1, e=0, f=5, g=5, h=0, i=-1):
    pass
 ```
 
-Parameters `a` and `b` are mandatory, whereas the remaining seven parameters have default values (and are therefore optional). Let's assume we want to call the function with arguments `a=10` and `b=5`, and we want only one of the remaining seven parameters to differ from their default value – say, we only want `h=-5`. Using positional arguments, we need to include arguments for parameters that we do not want to change (because we need to get to the eigth parameter):
+:::{.callout-note}
+The `pass` statement is a placeholder that literally does nothing. Since Python requires at least one indented line of code in a function body, we have to use `pass` here in order to define a function that does not do anything.
+:::
+
+Parameters `a` and `b` are mandatory, whereas the remaining seven parameters have default values (and are therefore optional). Let's assume we want to call the function with arguments `a=10` and `b=5`, and we want only one of the remaining seven parameters to differ from their default value – say, we only want `h=-5`. Using positional arguments, we need to include arguments for parameters that we do not even want to change (because we need to get to the eigth parameter):
 
 ```{python}
 many_args(10, 5, 0, 1, 0, 5, 5, -5)
 ```
 
-This is where *keyword arguments* come to the rescue. Whenever we call a function, we can always explicitly include the parameter name in addition to its specific value like this:
+This is where *keyword arguments* come to the rescue. Whenever we call a function, we can always explicitly include the parameter *name* in addition to its specific value like this:
 
 ```{python}
 many_args(a=10, b=5, h=-5)
@@ -283,7 +296,7 @@ Whenever Python comes across a line containing a function header, it takes note 
 
 Consider the following example:
 
-```python
+```{.python code-line-numbers="true"}
 a = 5
 print("Hello")
 
@@ -301,14 +314,14 @@ Let's see how Python runs this script step by step:
 
 1. Python starts at the first line and assigns `a = 5`.
 2. In the next line, we call the function `print("Hello")`. This function is a built-in function, so we don't know which code gets executed when we call this function (it is defined somewhere else outside our script).
-3. Python registers our `test` function in the next line, taking note that this function requires two arguments `x` and `y` when called.
-4. Now all of the lines in the function body are skipped, and Python runs the first statement after the function, namely `print("World")`.
-5. Next, Python calls the `test` function with arguments `5` and `6`, so it jumps to the function header and assigns concrete values `x=5` and `y=6` to both parameters.
-6. Python will now run the code in the function body. First, it computes `x + 2` and re-assigns the name `x` to this result (after this line, `x` is equal to `7`).
+3. Python registers our `test` function in line 4, taking note that this function requires two arguments `x` and `y` when called.
+4. Lines 5–7 in the function body are skipped, and Python runs the first statement after the function, namely `print("World")` on line 9.
+5. Next, Python calls the `test` function with arguments `5` and `6` on line 10. This means that it jumps to the function header in line 4 and assigns concrete values `x=5` and `y=6` to both parameters.
+6. Python will now run the code in the function body in lines 5–7. First, it computes `x + 2` and re-assigns the name `x` to this result (after this line, `x` is equal to `7`).
 7. Similarly, Python decreases the value of `y` by `3`, so `y` is now `3`.
 8. The function returns the product `x * y`, which equals `7 * 3` or `21`.
-9. Python is now back in the function call line and assigns the name `z` to the return value of the function, so `z` gets the value `21`.
-10. Finally, Python calls the function `print(z)`, which prints `21` to the screen.
+9. Python is now back in the function call on line 10 and assigns the name `z` to the return value of the function, so `z` gets the value `21`.
+10. Finally, Python calls the function `print(z)` on line 11, which prints `21` to the screen.
 11. Python has reached the end of the script, so we're done.
 
 You can run this example script interactively on [Python Tutor](http://www.pythontutor.com/visualize.html#mode=edit) – copy and paste the code and click on "Visualize Execution" to get a graphical step-by-step representation of what Python is doing behind the scenes.
@@ -318,7 +331,7 @@ Alternatively, you can use the debug facilities of Visual Studio Code to step th
 
 ## Scope
 
-In the previous example, the function `test` has two parameters `x` and `y`, which are only accessible *within* the function. These names do *not* exist outside the function, so they are bound to the local scope of that function.
+In the previous example, the function `test` had two parameters `x` and `y`, which are only accessible *within* the function. These names do *not* exist outside the function, so they are bound to the local scope of that function.
 
 
 ### Example 1
@@ -343,7 +356,7 @@ print(s)
 
 ### Example 2
 
-Interestingly, we can access names from higher-level scopes without any problem. For example, we can use names defined in the global scope (outside of any function) inside a function body:
+Interestingly, we can access names from higher-level scopes without any problem. For example, we can use names defined in the *global* scope (outside of any function) inside a function body (but not vice versa):
 
 ```{python}
 s = 15  # global scope
@@ -357,7 +370,7 @@ print(s)
 
 ### Example 3
 
-In Python, local names can shadow global names. In the following example, the local name `s` inside the function body shadows the global name `s`. This means that inside the function, a different (local) name `s` is used. Outside the function, only the global `s` exists.
+In Python, local names can *shadow* global names. In the following example, the local name `s` inside the function body shadows the global name `s`. This means that inside the function, a different (local) name `s` is used. Outside the function, only the global `s` exists.
 
 ```{python}
 s = 15

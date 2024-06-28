@@ -2,7 +2,7 @@
 title: "9 – Dictionaries"
 subtitle: "Introduction to Python"
 author: "Clemens Brunner"
-date: 2024-02-14
+date: 2024-07-01
 format:
   html:
     page-layout: full
@@ -17,18 +17,18 @@ cap-location: margin
 
 ## Introduction
 
-The last built-in data type we are going to cover is the dictionary (`dict`). Just like its name implies, a dictionary is a mapping data type, which maps keys to values. It works a little like a real-word dictionary. Let's assume we wanted to look up the German translation of "cat". We'd flip through the pages of an English-German dictionary until we found the entry for "cat". This entry would contain the German translation "Katze". In this example, "cat" is the key and "Katze" is its value. Therefore, a dictionary is a mapping from keys to values. A dictionary can contain many key-value pairs.
+The last built-in data type we are going to cover is the dictionary (`dict`). Just like its name implies, a dictionary is a mapping data type, which maps keys to values. It works a little like a real-word dictionary. Let's assume we wanted to look up the German translation of "cat". We'd flip through the pages of an English-German dictionary until we found the entry for "cat". This entry would contain the German translation "Katze". In this example, "cat" is the key and "Katze" is its value. Therefore, a dictionary is a mapping from keys to values. A dictionary can contain many key/value pairs.
 
 
 ## Creating dictionaries
 
-Here's how we define a `dict` in Python. We use curly braces to create a dict, and we supply a comma-separated list of key-value pairs inside the braces. The key-value pairs are separated by colons. Here's an example:
+We use curly braces to create a `dict`, and we supply a comma-separated list of key/value pairs inside the braces (the key/value pairs are separated by colons). Here's an example:
 
 ```{python}
 d = {"house": "Haus", "cat": "Katze", "snake": "Schlange"}
 ```
 
-Alternatively, we can also use the `dict` function and create key-value pairs with keyword arguments:
+Alternatively, we can also use the `dict` function and create key/value pairs with keyword arguments:
 
 ```{python}
 d = dict(house="Haus", cat="Katze", snake="Schlange")
@@ -141,7 +141,7 @@ If we want to check for a specific *value*, we can perform our query on `d.value
 
 ## Iterating over dictionaries
 
-Dictionaries are iterable, and if we create a loop over a dict, we actually loop over its keys:
+Dictionaries are iterable, and if we create a loop over a dict, we actually loop over its *keys*:
 
 ```{python}
 for key in d:
@@ -155,13 +155,13 @@ for key in d:
     print(key, ":", d[key])
 ```
 
-Of course we could also iterate over `d.values()` specifically, but often it is necessary to iterate over both keys and values simultaneously. The dict method `items` returns key/value pairs as tuples:
+Of course, we could also iterate over `d.values()` specifically, but often it is necessary to iterate over both keys and values simultaneously. The dict method `items` returns key/value pairs as tuples:
 
 ```{python}
 d.items()
 ```
 
-We can use this list-like sequence of tuples in our loop, which means that we get a tuple in each iteration. However, instead of assigning one name to the tuple, we can unpack its two items into two distinct names (this is called tuple unpacking):
+We can use this list-like sequence of tuples in a loop, which means that we get a tuple in each iteration. However, instead of assigning one name to the tuple, we can unpack its two items into two distinct names (this is called *tuple unpacking*):
 
 ```{python}
 for key, value in d.items():
@@ -180,7 +180,7 @@ a
 b
 ```
 
-The tuple `12, 13` on the right-hand side contains two items. On the left-hand side we assign two names, one for each tuple item (the tuple items are unpacked into separate names). Because Python always evaluates the right-hand side first, the canonical way to swap two values in Python is very short and sweet:
+The tuple `12, 13` on the right-hand side contains two items. On the left-hand side, we assign a name to each item in the tuple, effectively unpacking the tuple into individual names. Because Python always evaluates the right-hand side first, the canonical way to swap two values in Python is very short and sweet:
 
 ```{python}
 a, b = b, a

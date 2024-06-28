@@ -2,7 +2,7 @@
 title: "11 – Input and output"
 subtitle: "Introduction to Python"
 author: "Clemens Brunner"
-date: 2024-02-14
+date: 2024-07-01
 format:
   html:
     page-layout: full
@@ -22,7 +22,7 @@ We will now delve into simple input and output (I/O) operations, which includes 
 
 ## String formatting
 
-We are already familiar with the built-in `print` function. If we pass it an argument, the function will print this argument on the screen (more technically, it will write to standard output):
+We are already familiar with the built-in `print` function. If we call `print` with an argument, the function will print this argument on the screen (more technically, it will write to standard output):
 
 ```{python}
 print("Hello")
@@ -40,13 +40,13 @@ In fact, `print` accepts an arbitrary number of arguments:
 print("Hello", "world", "this", "is", 2020)
 ```
 
-When there is more than one argument, `print` automatically creates a space to separate the arguments in the output. We can use the `sep` parameter to change this default argument from `" "` to any string we want. For example, we could set `sep` to an empty string:
+When there is more than one argument, `print` automatically creates a space to separate the arguments in the output. We can use the `sep` argument to change the default from `" "` to any string we want. For example, we could set `sep` to an empty string:
 
 ```{python}
 print("Hello", "world", "this", "is", 2020, sep="")
 ```
 
-Strings are perfectly suited to output information either to the screen or to a file (because strings can contain arbitrary characters including numbers). Therefore, we can use the `str` function to convert arbitrary data types to strings:
+Strings are perfectly suited to output information either to the screen or to a file, because strings can represent almost any kind of information. Therefore, we can use the `str` function to convert arbitrary data types to strings:
 
 ```{python}
 str(55)
@@ -77,7 +77,13 @@ Constructing output strings like this quickly becomes cumbersome. Luckily, Pytho
 f"This is an f-string"
 ```
 
-In this example, we don't really need an f-string, because a regular string could also do the job. However, we can now add an expression inside the string, which Python will evaluate and replace in the result (note that we use the name `a` defined previously as `a = 5`):
+In this example, we don't really need an f-string, because a regular string could also do the job.
+
+:::{.callout-tip}
+Just to be clear, both a regular string and an f-string create a plain old `str` object. The difference is that during creation, f-strings support interpolating expressions into the resulting string object.
+:::
+
+However, we can now add an expression inside the string, which Python will evaluate and replace in the result (note that we use the name `a` defined previously as `a = 5`):
 
 ```{python}
 f"The first number is {a}."
@@ -109,7 +115,7 @@ The format specification mini-language is very powerful. It is worth going throu
 
 ## Reading text files
 
-Often it is necessary to read data from a (text) file. For example, a data analysis script in Python will need to import some data as one of the first steps. If the file is a text file (as opposed to a binary file), reading its contents is straightforward. The `open` function opens the specified file and returns a file handle object, which can be used to read from and/or write to the file:
+Often, it is necessary to read data from a file. For example, a data analysis script in Python will need to import some data as one of the first steps. If the file is a text file (as opposed to a binary file), reading its contents is straightforward. The `open` function opens the specified file and returns a file handle object, which can be used to read from or write to the file:
 
 ```{python}
 f = open("text.txt")
@@ -127,13 +133,13 @@ It is easy to forget to close the file, so Python provides a context manager (a 
 
 ```{python}
 with open("text.txt") as f:
-    print("read file contents")
-    print("once we're done we don't have to close the file")
+    print("read file contents using f")
+    print("once we're done, we don't have to close the file")
 
 print("Back to normal, the end of the with block closed the file automatically!")
 ```
 
-We will now discuss which commands read the contents of a text file. To do this, we will use methods of the file object `f`. The `read` method reads the *entire* file and returns its contents as a string. For example, let's assume the file [`text.txt`](text.txt) is located in the current working directory and contains the following five lines of text (there are three lines with text and two blank lines):
+We will now discuss which commands support reading the contents of a text file. To do this, we will use methods of the file object `f`. The `read` method reads the *entire* file and returns its contents as a single string. For example, let's assume the file [`text.txt`](text.txt) is located in the current working directory and contains the following five lines of text (there are three lines with text and two blank lines):
 
 ```
 Hello!
@@ -175,9 +181,9 @@ with open("text.txt") as f:
     print(lines)
 ```
 
-The simplest way to read from the file a second time is to close it and open it. That way, the file handle is initialized and points to the start of the file again.
+The simplest way to read from the file a second time is to close it and open it again. That way, the file handle is initialized and points to the start of the file again.
 
-Sometimes it is useful to read the contents of a file line by line. This is what the `readline` method does:
+Sometimes, it is useful to read the contents of a file line by line. For example, very large text files might be too large to fit into a single string object if the computer does not have enough memory. Instead, the `readline` method returns the contents of a file line by line:
 
 ```{python}
 with open("text.txt") as f:
@@ -216,7 +222,7 @@ with open("test2.txt", "w") as f:
     f.write(s)
 ```
 
-Using the `mode="a"` argument, we can append to an existing file:
+Using `mode="a"`, we can append to an existing file:
 
 ```python
 s = "\nMore content!"

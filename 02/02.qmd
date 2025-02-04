@@ -2,7 +2,7 @@
 title: "2 – The Python Environment"
 subtitle: "Introduction to Python"
 author: "Clemens Brunner"
-date: 2024-07-01
+date: 2025-02-05
 format:
   html:
     page-layout: full
@@ -17,40 +17,39 @@ cap-location: margin
 
 ## Introduction
 
-Python consists of the Python programming language, a Python interpreter (a program that interprets and runs Python code), and an extensive standard library. The reference (official) Python interpreter is written in the C programming language and is therefore called [CPython](https://github.com/python/cpython).
+Python consists of the Python programming language, a Python interpreter (a program that interprets and runs Python code), and an extensive standard library.
 
-![Python components](python_components.png)
+![Python components](python-components.png){width=50%}
 
 The Python programming language includes only relatively few keywords and built-in functions. However, the [standard library](https://docs.python.org/3/library/) extends the core functionality with additional data types, input/output, regular expressions, mathematical functions, data compression, networking, multimedia services, graphical user interfaces, and much more. The standard library is part of any Python installation, so it is always available at your fingertips.
 
 :::{.callout-tip}
-In the previous chapter, we used `import math` to access mathematical functions and constants. Importing is necessary before we can use things contained in any module.
+In the previous chapter, we used `import math` to access mathematical functions and constants from the `math` module (which is part of the standard library). Importing is necessary before we can use things contained in any module.
 :::
 
 Python can be further extended with third-party packages that are not part of the official Python distribution. Installing these packages is straightforward, because they are available from a central repository called the [Python Packaging Index (PyPI)](https://pypi.org). We will discuss how to install, update, and uninstall third-party packages later in this chapter.
 
-As for any programming language, a code editor or integrated development environment (IDE) is an essential tool for writing Python code. Good code editors include support for syntax highlighting, indentation, line numbers, [linting](https://en.wikipedia.org/wiki/Lint_(software)), code inspection, and more. Here is a selection of popular editors (all of them are free, open source, and available on Windows, macOS, and Linux):
-
-- [Visual Studio Code](https://code.visualstudio.com)
-- [PyCharm](https://www.jetbrains.com/pycharm/)
-- [Spyder](https://www.spyder-ide.org)
-
-I recommend [Visual Studio Code](https://code.visualstudio.com) if you have never used Python before. However, feel free to try other programs such as [PyCharm](https://www.jetbrains.com/pycharm/), which also provides a great Python development experience.
+As for any programming language, a code editor or integrated development environment (IDE) is an essential tool for writing Python code. Good code editors include support for syntax highlighting, indentation, line numbers, [linting](https://en.wikipedia.org/wiki/Lint_(software)), code inspection, and more. We will use [IDLE](https://docs.python.org/3/library/idle.html) in this course, which is included in the official Python installers. IDLE is a very simple IDE, which is ideal for anyone who is just getting started with Python. However, you might want to switch to a more advanced code editor, such as [Visual Studio Code](https://code.visualstudio.com/) or [PyCharm](https://www.jetbrains.com/pycharm/), as you become more proficient with Python.
 
 
-## Visual Studio Code
+## IDLE
 
-If you decide to install Visual Studio Code, there are two things you should do before you start writing Python code:
+After starting IDLE, you will see a window with a Python shell (also called the interactive interpreter):
 
-1. Click on the *Extensions* section in the left sidebar, search for "Python", and install the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
-2. I recommend that you follow the [PEP8](https://www.python.org/dev/peps/pep-0008/) coding style for Python code that you write. To automatically format your code in Visual Studio Code, install the [Ruff extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff), which provides support for linting and code formatting according to PEP8 standards.
+![](idle-shell.png)
 
-That's it, you are now ready to start working with Python. If you have never used Visual Studio Code before, you can check out the [Python in Visual Studio Code overview](https://code.visualstudio.com/docs/languages/python) before moving on to the next section.
+In the previous chapter, we used the interactive interpreter directly from the terminal, but we can also use IDLE to run Python code interactively. The interactive interpreter is a great tool for testing small code snippets, for example to check the result of a calculation or to experiment with a new function. However, the interactive interpreter does not save your code. If you restart it, everything you typed in a previous session is lost, because you will always start with a clean slate.
+
+To save your code, you need to write it to a text file with the file extension `.py` (such files are also called *Python scripts*). IDLE provides a text editor for creating, writing, and modifying Python scripts, which can then be executed by the Python interpreter:
+
+![](idle-editor.png)
+
+To create a new script, select "File" > "New File" from the menu. You can then write your Python code in the editor and save it to a file with the `.py` extension. To run the entire script, select "Run" > "Run Module" from the menu. The output of the script will be displayed in the interactive interpreter.
 
 
 ## Getting help
 
-One of the most important activities when programming is reading documentation. Besides querying your favorite web search engine or GPT model, the Python interpreter can display short help texts for many Python commands. For example, to view the documentation for the `print` function, you can type `help(print)` in the Python interpreter.
+One of the most important activities when programming is reading documentation. Besides querying your favorite web search engine or AI assistant, the Python interpreter can display short help texts for many Python commands. For example, to view the documentation for the `print` function, you can type `help(print)` in the Python interpreter.
 
 
 ## Managing packages
@@ -120,7 +119,7 @@ As you get more proficient with Python, you might want to create a [virtual envi
 
 ## Interactive vs. script mode
 
-The Python interpreter can operate in two modes, namely in interactive or in script mode.
+The Python interpreter behaves slightly differently depending on how it is used, namely interactively or running an entire script.
 
 
 ### Interactive mode (REPL)
@@ -134,13 +133,13 @@ The interactive mode is useful for executing single lines of code, because Pytho
 The result `5` is displayed automatically right after the command. In general, if you start Python by typing `python` on the command line, Python will start in interactive mode.
 
 :::{.callout-tip}
-You can exit the interactive interpreter by typing `exit()` (or alternatively <kbd>Ctrl</kbd><kbd>D</kbd> on macOS or Linux).
+You can exit the interactive interpreter by typing `exit` (or alternatively <kbd>Ctrl</kbd><kbd>D</kbd> on macOS or Linux).
 :::
 
 
 ### Script mode
 
-In contrast to interactive mode, Python can run many lines of code in one go using script mode. A Python script is a plain text file (ending in `.py`) containing Python code. In general, one line contains exactly one code statement. Compared to interactive mode, Python does *not* display results automatically. For example, let's assume that a Python script named `test.py` contains the following line:
+In contrast to interactive mode, Python can run many lines of code in one go using script mode. As we already know, a Python script is a plain text file (ending in `.py`) containing Python code. In general, one line contains exactly one code statement. Compared to interactive mode, Python does *not* display results automatically. For example, let's assume that a Python script named `test.py` contains the following line:
 
 ```python
 1 + 4
@@ -170,7 +169,9 @@ counter = do_something()
 print(counter)
 ```
 
-It is not important to understand what this code is doing at this point, so let's focus on its structure.
+:::{.callout-note}
+It is not important to understand what this code is doing at this point as we only want to focus on its structure!
+:::
 
 First, we notice that line 1 starts with a `#` character. This line is a *comment*, and Python ignores everything from the `#` character to the end of the line. This means that we can use comments to explain portions of the code in plain English (or whatever natural language you like to use). Line 6 also contains a comment, but this time directly after a statement.
 
@@ -180,6 +181,7 @@ Blocks are necessary to define scopes, something which we will discuss later in 
 
 Finally, the example contains *function calls*. We will discuss functions in detail later in this course, but for now you can think of a function as a mini-script. Whenever you call a function, Python runs the whole mini-script defined by the function. The syntax for calling a function is a pair of parenthesis `()` right after the function name. In the example code, `range(n_times)`, `print(i)`, `print("Odd")`, `do_something()`, and `print(counter)` are all function calls. Note that you can supply so-called *arguments* between the parentheses if the function takes parameters. All function calls in the example have exactly one argument, except for `do_something()`, which has no argument. Arguments allow us to pass additional information to the function (but again, more on functions later).
 
+:::{.callout-tip}
 Like most programming languages, Python is very picky about correct syntax. For example, capitalization matters, so `print` is not the same as `Print`. A missing `:` in places where a colon should be triggers a syntax error. Incorrect indentation can either lead to a syntax error or to non-intended behavior (which means the Python program runs without errors, but does not do what the programmer intended). It is very instructive to try out invalid code in the interactive interpreter, for example:
 
 ```{python}
@@ -188,6 +190,7 @@ Print("Hello")
 ```
 
 It is important to be familiar with Python error messages to interpret them correctly and efficiently (after all, the goal should be to fix them), so make errors and learn from them!
+:::
 
 
 ## Python code style
@@ -200,7 +203,7 @@ x=1+    2+  3*  (   16-7    )
 x=1+2+3*(16-7)
 ```
 
-Arguably, the first statement is much easier to read than the other two. The [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) summarizes coding conventions that describe how Python code should look like to enhance readability. It is worth going through the document (at least superficially), but if you have installed the Ruff extension in Visual Studio Code (as described previously), you can simply let the extension format your code using the "Format Document" action.
+Arguably, the first statement is much easier to read than the other two. The [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) summarizes coding conventions that describe how Python code should look like to enhance readability. There are automated tools that reformat Python code according to PEP8 (such as [Ruff](https://docs.astral.sh/ruff/)), but we will not use them in this course. However, it is still a good idea to follow PEP8 as closely as possible, because it makes your code more readable and understandable for others (and for yourself in the future).
 
 
 ## Additional learning resources
@@ -211,8 +214,9 @@ Here are a few Python resources for beginners that might be helpful after comple
 ### Online documentation
 
 - The [official Python documentation](https://docs.python.org/3/) has everything you need to know, including a nice [tutorial](https://docs.python.org/3/tutorial/index.html).
+- To get started with IDLE, check out this very nice [IDLE tutorial](https://realpython.com/python-idle/).
 - If you search the web for a specific Python problem, chances are that you will land on [Stack Overflow](https://stackoverflow.com/questions/tagged/python), which has many questions and answers related to Python.
-- ChatGPT (and other GPT models) can also be helpful for Python questions. Just ask your question in plain English, and the model will try to help you. However, be aware that the model might not always provide the correct answer!
+- ChatGPT (and other GPT models) can also be helpful for Python questions. Just ask your question in plain English, and the model will try to help you. However, be aware that the model might not always provide a correct answer!
 
 
 ### Online courses
@@ -239,7 +243,7 @@ Here are a few Python resources for beginners that might be helpful after comple
 
 1. Create a list of installed packages in your Python environment.
 
-2. Update all installed packages. Find out if `ipython` and `numpy` are installed, and if not, install these packages.
+2. Update all installed packages. Find out if `numpy` is installed, and if not, install this packages.
 
 3. Install the `mne` package. Afterwards, uninstall it again. What happens to the dependencies of the `mne` package when you uninstall it?
 

@@ -1,5 +1,5 @@
 ---
-title: "8 – Lists and tuples"
+title: "8 – Lists and Tuples"
 subtitle: "Introduction to Python"
 author: "Clemens Brunner"
 date: 2025-02-05

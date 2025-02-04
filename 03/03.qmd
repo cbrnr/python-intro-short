@@ -1,5 +1,5 @@
 ---
-title: "3 – Names, expressions, and statements"
+title: "3 – Names, Expressions, and Statements"
 subtitle: "Introduction to Python"
 author: "Clemens Brunner"
 date: 2025-02-05

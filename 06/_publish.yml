@@ -1,4 +1,4 @@
 - source: 06.qmd
   netlify:
     - id: bcf4fe67-8285-4973-9b70-de9793a850a6
-      url: 'https://python-intro-06.netlify.app'
+      url: https://python-intro-06.netlify.app

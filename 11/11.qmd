@@ -1,8 +1,8 @@
 ---
-title: "11 – Input and output"
+title: "11 – Input and Output"
 subtitle: "Introduction to Python"
 author: "Clemens Brunner"
-date: 2024-07-01
+date: 2025-02-05
 format:
   html:
     page-layout: full

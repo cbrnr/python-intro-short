@@ -1,4 +1,4 @@
 - source: 08.qmd
   netlify:
     - id: 512e6f5e-2385-47ff-be9a-3aecda1597b0
-      url: 'https://python-intro-08.netlify.app'
+      url: https://python-intro-08.netlify.app

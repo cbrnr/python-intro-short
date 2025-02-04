@@ -1,4 +1,4 @@
 - source: 07.qmd
   netlify:
     - id: f2821280-5ff9-4714-b8dd-5dc83c83a2a2
-      url: 'https://python-intro-07.netlify.app'
+      url: https://python-intro-07.netlify.app

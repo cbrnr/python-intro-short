@@ -36,7 +36,7 @@ Here are some facts about Python:
 - General-purpose programming language, meaning that Python is not specifically designed to be extremely good in one particular area such as statistics – it can be used for many different applications including data science, web servers, graphical user interfaces, programming the [Raspberry Pi](https://www.raspberrypi.org/), ...
 - Batteries included approach (the [standard library](https://docs.python.org/3/library/) shipping with Python contains many useful things ready for use)
 - Huge number of [third-party packages](https://pypi.org/) that implement even more useful things
-- Large and friendly community (Python users are called Pythonistas)
+- Large and friendly community
 
 Python was first released by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) way back in 1991, and its popularity has skyrocketed in the past years. While there are many ways to measure the popularity of a programming language, Python has consistently ranked among the top languages for years (for example according to [PYPL](https://pypl.github.io/PYPL.html), the [TIOBE index](https://www.tiobe.com/tiobe-index/), and the [IEEE Spectrum Top Programming Languages](https://spectrum.ieee.org/top-programming-languages-2024)). Also, one of the results of the [Stack Overflow Developer Survey 2024](https://survey.stackoverflow.co/2024/) is that Python is among the [most popular technologies](https://survey.stackoverflow.co/2024/technology/#most-popular-technologies) as well as highly [admired and desired](https://survey.stackoverflow.co/2024/technology/#admired-and-desired).
 

@@ -2,7 +2,7 @@
 title: "1 – Basics"
 subtitle: "Introduction to Python"
 author: "Clemens Brunner"
-date: 2024-07-01
+date: 2025-02-05
 format:
   html:
     page-layout: full
@@ -38,9 +38,9 @@ Here are some facts about Python:
 - Huge number of [third-party packages](https://pypi.org/) that implement even more useful things
 - Large and friendly community (Python users are called Pythonistas)
 
-Python was first released by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) way back in 1991, and its popularity has skyrocketed in the past years. While there are many ways to measure the popularity of a programming language, Python has consistently ranked among the top languages for years (for example according to [PYPL](https://pypl.github.io/PYPL.html), the [TIOBE index](https://www.tiobe.com/tiobe-index/), and the [IEEE Spectrum Top Programming Languages](https://spectrum.ieee.org/the-top-programming-languages-2023)). Also, one of the results of the [Stack Overflow Developer Survey 2023](https://survey.stackoverflow.co/2023/) is that Python is among the [most popular technologies](https://survey.stackoverflow.co/2023/#technology-most-popular-technologies) as well as highly [admired and desired](https://survey.stackoverflow.co/2023/#technology-admired-and-desired).
+Python was first released by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) way back in 1991, and its popularity has skyrocketed in the past years. While there are many ways to measure the popularity of a programming language, Python has consistently ranked among the top languages for years (for example according to [PYPL](https://pypl.github.io/PYPL.html), the [TIOBE index](https://www.tiobe.com/tiobe-index/), and the [IEEE Spectrum Top Programming Languages](https://spectrum.ieee.org/top-programming-languages-2024)). Also, one of the results of the [Stack Overflow Developer Survey 2024](https://survey.stackoverflow.co/2024/) is that Python is among the [most popular technologies](https://survey.stackoverflow.co/2024/technology/#most-popular-technologies) as well as highly [admired and desired](https://survey.stackoverflow.co/2024/technology/#admired-and-desired).
 
-So far, we have only talked about Python without seeing what the language actually looks like. Here's a sneak peak at what you will be able to understand after completing this course:
+So far, we have only talked about Python without seeing what the language actually looks like. Here's a sneak peak at what you will be able to understand after completing this course (gray boxes contain Python code, whereas the result of a line of code is shown directly below it):
 
 ```{python}
 print("Hello World!")
@@ -66,19 +66,13 @@ In summary, Python is extremely popular and fun to use, so in the next section w
 
 The [official Python website](https://www.python.org/) is a great resource for everything related to Python. The [download](https://www.python.org/downloads/) section contains installers for many platforms, including Windows and macOS. If you are on Linux, I recommend that you use your package manager (such as `apt`, `yum`, or `pacman`) to install Python (in most cases, Python will already be installed anyway).
 
-:::{.callout-important}
-On Windows, make sure to check the option *"Add python.exe to PATH"*. I strongly recommend to use the suggested values for all other settings.
-:::
+On Windows, make sure to check the option *"Add python.exe to PATH"*. I strongly recommend to use the default values for all other settings.
 
 ![Python installer on Windows](install-python-windows.png)
 
 On macOS, run both "Install Certificates" and "Update Shell Profile" commands available in the application folder after the installation is complete:
 
 ![Python application folder on macOS](install-python-macos.png)
-
-:::{.callout-note}
-[Anaconda](https://www.anaconda.com/distribution/), a distribution with tons of pre-installed packages specifically tailored towards scientific computing, provides yet another way to install Python. If you want to use it, consider installing [Miniforge](https://github.com/conda-forge/miniforge) instead, which is more lightweight and uses [conda-forge](https://conda-forge.org) as its package repository.
-:::
 
 
 ## First steps

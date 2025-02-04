@@ -2,7 +2,7 @@
 title: "4 – Functions"
 subtitle: "Introduction to Python"
 author: "Clemens Brunner"
-date: 2024-07-01
+date: 2024-02-05
 format:
   html:
     page-layout: full
@@ -324,9 +324,9 @@ Let's see how Python runs this script step by step:
 10. Finally, Python calls the function `print(z)` on line 11, which prints `21` to the screen.
 11. Python has reached the end of the script, so we're done.
 
-You can run this example script interactively on [Python Tutor](http://www.pythontutor.com/visualize.html#mode=edit) – copy and paste the code and click on "Visualize Execution" to get a graphical step-by-step representation of what Python is doing behind the scenes.
+You can use the debug facilities of IDLE to step through the code. First, click anywhere in the first line to create a breakpoint (the line will be highlighted in yellow). Then, click on the "Debug" > "Debugger" (this menu is only available in the IDLE shell and not in the IDLE editor window). A new window titled "Debug Control" will open, and you can run this file as usual. Python will stop at the first breakpoint and you can step through the code line by line. The "Debug Control" window provides buttons to step into, over, or out of functions, as well as to continue running the code until the next breakpoint is reached. This window also shows the current state of all local variables (objects that you have given names in your code).
 
-Alternatively, you can use the debug facilities of Visual Studio Code to step through the code. First, click to the left of the first line number to create a breakpoint (a red circle). Then, click on the "Run and Debug" icon in the left sidebar and then on "Run and Debug". If you have not already saved your code, you will be prompted to do that now. When debugging for the first time, you are asked to select a debug mode – choose "Python File". Now Python will run the code up until it hits the first breakpoint, at which point it will pause execution. You can then inspect the current state and step through the remaining lines. The official [Visual Studio Code documentation](https://code.visualstudio.com/docs/python/debugging) provides more information on how to use the debugger.
+![IDLE's debug control window](debug-control.png)
 
 
 ## Scope

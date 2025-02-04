@@ -36,13 +36,13 @@ As for any programming language, a code editor or integrated development environ
 
 After starting IDLE, you will see a window with a Python shell (also called the interactive interpreter):
 
-![](idle-shell.png)
+![IDLE shell](idle-shell.png)
 
 In the previous chapter, we used the interactive interpreter directly from the terminal, but we can also use IDLE to run Python code interactively. The interactive interpreter is a great tool for testing small code snippets, for example to check the result of a calculation or to experiment with a new function. However, the interactive interpreter does not save your code. If you restart it, everything you typed in a previous session is lost, because you will always start with a clean slate.
 
 To save your code, you need to write it to a text file with the file extension `.py` (such files are also called *Python scripts*). IDLE provides a text editor for creating, writing, and modifying Python scripts, which can then be executed by the Python interpreter:
 
-![](idle-editor.png)
+![IDLE editor](idle-editor.png)
 
 To create a new script, select "File" > "New File" from the menu. You can then write your Python code in the editor and save it to a file with the `.py` extension. To run the entire script, select "Run" > "Run Module" from the menu. The output of the script will be displayed in the interactive interpreter.
 

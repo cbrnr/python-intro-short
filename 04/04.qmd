@@ -71,8 +71,8 @@ Let's review some examples of simple functions. The following function is named 
 
 ```{python}
 def test1():
-   s = "Hello world!"
-   print(s)
+    s = "Hello world!"
+    print(s)
 ```
 
 :::{.callout-note}
@@ -94,8 +94,8 @@ Let's modify the first example so that it returns a value. Here's our new functi
 
 ```{python}
 def test2():
-   s = "Hello world!"
-   return s
+    s = "Hello world!"
+    return s
 ```
 
 This function contains a `return` statement, which in this case means that the function returns `s` (which is equal to the string `"Hello world!"`). After defining this function, we can call it:
@@ -131,7 +131,7 @@ Let's define an even more sophisticated function, this time we throw two paramet
 
 ```{python}
 def add(x, y):
-   return x + y
+    return x + y
 ```
 
 Once the `add` function is defined, we have to call it with two arguments:
@@ -180,7 +180,7 @@ Here's our `add` function definition from before, but this time the second param
 
 ```{python}
 def add(x, y=1):
-   return x + y
+    return x + y
 ```
 
 Now we can also call `add` with just *one* argument (`x`), because if we do not supply a value for `y`, Python will use its default value of `1`:
@@ -204,7 +204,7 @@ However, this can quickly get unwieldy if a function has many parameters. Consid
 
 ```{python}
 def many_args(a, b, c=0, d=1, e=0, f=5, g=5, h=0, i=-1):
-   pass
+    pass
 ```
 
 :::{.callout-note}
